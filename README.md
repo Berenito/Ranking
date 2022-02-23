@@ -1,5 +1,5 @@
 # Ranking (Development of EUF ranking system)
-Version: 2021-12-03
+Version: 2022-02-23 (I need to update README)
 
 The goal of this code is to provide a structure to the implementation of the ranking algorithms so they can be immediately applied to any available dataset. It also provides a possibility to gain insights about the games datasets and the way to export the results to reasonable formats.
 
