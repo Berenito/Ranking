@@ -3,7 +3,7 @@
 Possible easy example of ranking algo usage.
 """
 
-import helpfunctions_dataset as hf_d
+import helpfunctions.helpfunctions_dataset as hf_d
 
 # -----
 
