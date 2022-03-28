@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 import helpfunctions.helpfunctions_dataset as hf_d
 import helpfunctions.helpfunctions_plotly as hf_p
-import helpfunctions.helpfunctions_excel as hf_e
+#import helpfunctions.helpfunctions_excel as hf_e
 import algos.rank_diff_functions as rdf
 import algos.game_weight_functions as gwf
 import algos.rank_fit_functions as rff
@@ -217,7 +217,7 @@ class GamesDataset:
 
     def plot_bar_race_fig(self, c_plot_list, filename=None, include_weekly=False):
         """
-        Export to experimental visualization of the dataset progress (top 20 teams). 
+        Export to experimental visualization of the dataset progress (top 20 teams).
         -----
         Input:
             c_plot_list - columns to plot (max 5-6)
@@ -254,7 +254,7 @@ class RankingAlgorithm:
             algo_name - used for naming exported stuff
             kwargs - additional inputs to rating_func
         Output:
-            initialized RankingAlgorithm object 
+            initialized RankingAlgorithm object
         Examples:
             example_algo = RankingAlgorithm(example_func, algo_name='Example_Algo', p1=100, p2=200)
             usau_algo = RankingAlgorithm(get_usau_ratings, algo_name='USAU_Algo')
@@ -271,7 +271,7 @@ class RankingAlgorithm:
         -----
         Input:
             dataset - GamesDataset object or df_games
-            date - only games up to date will be included, None -> include all 
+            date - only games up to date will be included, None -> include all
         Output:
             ratings - series with the calculated ratings
         Examples:
