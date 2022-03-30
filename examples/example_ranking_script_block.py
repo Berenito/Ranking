@@ -3,6 +3,8 @@ Example to show the intended usage of the implemented GamesDataset and BlockRank
 """
 
 from ranking_classes import GamesDataset, BlockRankingAlgorithm
+from helpfunctions.helpfunctions_excel import export_to_excel
+from helpfunctions.helpfunctions_plotly import plot_bar_race_fig
 
 # ------------------------------
 
@@ -10,7 +12,7 @@ division = 'Men'
 
 # Prepare dataset
 dataset_name = 'USAU_2021_{}'.format(division)
-dataset_path = 'data/games_usau_cody_2021_{}.csv'.format(division.lower())
+dataset_path = '../data/games_usau_cody_2021_{}.csv'.format(division.lower())
 
 #
 usau_dataset = GamesDataset(dataset_path, dataset_name)
@@ -31,10 +33,10 @@ usau_dataset.get_ratings(usau_algo, block_algo=True)
 usau_dataset.get_weekly_ratings(usau_algo, verbose=True)  # this takes some time
 
 # Export Results
-usau_dataset.export_to_excel()
-usau_dataset.export_to_excel(include_weekly=True)
+# export_to_excel(usau_dataset)
+export_to_excel(usau_dataset, include_weekly=True)
 #
 c_plot_list = ['Rating_USAU', 'Rating_Windmill', 'Games',
                'W_Ratio', 'Opponent_W_Ratio', 'Avg_Point_Diff']
-usau_dataset.plot_bar_race_fig(c_plot_list)
-usau_dataset.plot_bar_race_fig(c_plot_list, include_weekly=True)
+# plot_bar_race_fig(usau_dataset, c_plot_list)
+plot_bar_race_fig(usau_dataset, c_plot_list, include_weekly=True)

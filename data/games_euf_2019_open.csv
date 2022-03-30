@@ -1,0 +1,1421 @@
+,Tournament,Date,Team_1,Team_2,Score_1,Score_2
+0,2019-EUCRN,2019-08-03,PirU,Me & My Monkey,14,12
+1,2019-EUCRN,2019-08-03,RealFive,Shadows,15,5
+2,2019-EUCRN,2019-08-03,Sokol,Rampage,7,10
+3,2019-EUCRN,2019-08-03,JuPiter,Flying Steps,9,8
+4,2019-EUCRN,2019-08-03,RealFive,Rampage,15,11
+5,2019-EUCRN,2019-08-03,Sokol,Shadows,15,12
+6,2019-EUCRN,2019-08-03,PirU,Flying Steps,13,7
+7,2019-EUCRN,2019-08-03,JuPiter,Me & My Monkey,15,10
+8,2019-EUCRN,2019-08-03,PirU,JuPiter,11,15
+9,2019-EUCRN,2019-08-03,Rampage,Shadows,15,10
+10,2019-EUCRN,2019-08-03,RealFive,Sokol,12,10
+11,2019-EUCRN,2019-08-03,Flying Steps,Me & My Monkey,6,12
+12,2019-EUCRN,2019-08-04,RealFive,PirU,15,7
+13,2019-EUCRN,2019-08-04,JuPiter,Rampage,8,11
+14,2019-EUCRN,2019-08-04,Sokol,Flying Steps,12,13
+15,2019-EUCRN,2019-08-04,Me & My Monkey,Shadows,9,15
+16,2019-EUCRN,2019-08-04,RealFive,Rampage,15,1
+17,2019-EUCRN,2019-08-04,PirU,JuPiter,9,10
+18,2019-EUCRN,2019-08-04,Flying Steps,Shadows,11,9
+19,2019-EUCRN,2019-08-04,Sokol,Me & My Monkey,14,10
+20,2019-EUCRE,2019-08-23,THE BRIDGE,Gigolo,15,12
+21,2019-EUCRE,2019-08-23,Uprising,thebigEZ,10,15
+22,2019-EUCRE,2019-08-23,Yellow Block open,Catchup Graz,10,15
+23,2019-EUCRE,2019-08-23,Cosmo Men,Prague Devils,9,15
+24,2019-EUCRE,2019-08-23,FWD>>,Mojra,15,14
+25,2019-EUCRE,2019-08-23,FUJ,Terrible Monkeys,15,9
+26,2019-EUCRE,2019-08-23,Catchup Graz,Gigolo,15,10
+27,2019-EUCRE,2019-08-23,THE BRIDGE,thebigEZ,11,15
+28,2019-EUCRE,2019-08-23,Uprising,Yellow Block open,15,10
+29,2019-EUCRE,2019-08-23,FWD>>,Terrible Monkeys,15,11
+30,2019-EUCRE,2019-08-23,FUJ,Cosmo Men,15,12
+31,2019-EUCRE,2019-08-23,Prague Devils,Mojra,15,14
+32,2019-EUCRC,2019-08-24,Family Ultimate,Gentle Open,11,12
+33,2019-EUCRC,2019-08-24,Mooncatchers,Frank N,13,11
+34,2019-EUCRC,2019-08-24,Force Elektro 1,KFK - Copenhagen Frisbee Club,3,13
+35,2019-EUCRC,2019-08-24,HELGTRE OPEN,Heidees,9,13
+36,2019-EUCRC,2019-08-24,M.U.C.,KFK - Copenhagen Frisbee Club,13,9
+37,2019-EUCRC,2019-08-24,Bad Skid,Gentle Open,13,8
+38,2019-EUCRC,2019-08-24,Ragnarok,Frank N,12,9
+39,2019-EUCRC,2019-08-24,7Schwaben,Heidees,7,13
+40,2019-EUCRC,2019-08-24,M.U.C.,Force Elektro 1,13,6
+41,2019-EUCRC,2019-08-24,7Schwaben,HELGTRE OPEN,13,9
+42,2019-EUCRC,2019-08-24,Bad Skid,Family Ultimate,13,9
+43,2019-EUCRC,2019-08-24,Ragnarok,Mooncatchers,9,13
+44,2019-EUCRC,2019-08-24,Gentle Open,Frank N,13,10
+45,2019-EUCRC,2019-08-24,Ragnarok,Family Ultimate,13,11
+46,2019-EUCRC,2019-08-24,KFK - Copenhagen Frisbee Club,HELGTRE OPEN,13,3
+47,2019-EUCRC,2019-08-24,7Schwaben,Force Elektro 1,13,5
+48,2019-EUCRC,2019-08-24,Bad Skid,KFK - Copenhagen Frisbee Club,13,8
+49,2019-EUCRC,2019-08-24,Mooncatchers,7Schwaben,9,13
+50,2019-EUCRC,2019-08-24,M.U.C.,Gentle Open,13,12
+51,2019-EUCRC,2019-08-24,Heidees,Ragnarok,13,10
+52,2019-EUCRE,2019-08-24,Cosmo Men,Terrible Monkeys,9,15
+53,2019-EUCRE,2019-08-24,FWD>>,Prague Devils,15,10
+54,2019-EUCRE,2019-08-24,FUJ,Mojra,15,11
+55,2019-EUCRE,2019-08-24,Uprising,Gigolo,15,5
+56,2019-EUCRE,2019-08-24,THE BRIDGE,Catchup Graz,7,15
+57,2019-EUCRE,2019-08-24,Yellow Block open,thebigEZ,14,15
+58,2019-EUCRE,2019-08-24,FUJ,FWD>>,15,13
+59,2019-EUCRE,2019-08-24,Cosmo Men,Mojra,15,14
+60,2019-EUCRE,2019-08-24,Terrible Monkeys,Prague Devils,11,15
+61,2019-EUCRE,2019-08-24,thebigEZ,Catchup Graz,15,8
+62,2019-EUCRE,2019-08-24,Uprising,THE BRIDGE,9,15
+63,2019-EUCRE,2019-08-24,Yellow Block open,Gigolo,15,10
+64,2019-EUCRE,2019-08-24,FUJ,Prague Devils,15,11
+65,2019-EUCRE,2019-08-24,FWD>>,Cosmo Men,15,13
+66,2019-EUCRE,2019-08-24,Terrible Monkeys,Mojra,7,15
+67,2019-EUCRE,2019-08-24,thebigEZ,Gigolo,15,6
+68,2019-EUCRE,2019-08-24,THE BRIDGE,Yellow Block open,15,11
+69,2019-EUCRE,2019-08-24,Uprising,Catchup Graz,13,15
+70,2019-EUCRW,2019-08-24,Clapham Ultimate,BAF,15,4
+71,2019-EUCRW,2019-08-24,Devon Ultimate,Fire of London,15,4
+72,2019-EUCRW,2019-08-24,EMO 1,Rebel Ultimate,11,15
+73,2019-EUCRW,2019-08-24,Ranelagh,XVI,15,12
+74,2019-EUCRW,2019-08-24,Manchester Ultimate,Alba,5,15
+75,2019-EUCRW,2019-08-24,YOpen,Chevron Action Flash,3,15
+76,2019-EUCRW,2019-08-24,Brighton Open,Ka-Pow!,14,15
+77,2019-EUCRW,2019-08-24,Bristol Open 1,PELT Ultimate,3,15
+78,2019-EUCRW,2019-08-24,BAF,EMO 1,7,15
+79,2019-EUCRW,2019-08-24,Manchester Ultimate,YOpen,13,14
+80,2019-EUCRW,2019-08-24,Fire of London,Brighton Open,11,12
+81,2019-EUCRW,2019-08-24,XVI,Bristol Open 1,15,6
+82,2019-EUCRW,2019-08-24,Devon Ultimate,Ka-Pow!,15,9
+83,2019-EUCRW,2019-08-24,Alba,Chevron Action Flash,12,13
+84,2019-EUCRW,2019-08-24,Ranelagh,PELT Ultimate,12,9
+85,2019-EUCRW,2019-08-24,Clapham Ultimate,Rebel Ultimate,15,6
+86,2019-EUCRW,2019-08-24,Bristol Open 1,BAF,11,15
+87,2019-EUCRW,2019-08-24,Fire of London,Manchester Ultimate,15,12
+88,2019-EUCRW,2019-08-24,Alba,EMO 1,15,5
+89,2019-EUCRW,2019-08-24,Rebel Ultimate,YOpen,15,5
+90,2019-EUCRW,2019-08-24,Ka-Pow!,XVI,8,15
+91,2019-EUCRW,2019-08-24,PELT Ultimate,Brighton Open,15,8
+92,2019-EUCRW,2019-08-24,Clapham Ultimate,Ranelagh,15,4
+93,2019-EUCRW,2019-08-24,Devon Ultimate,Chevron Action Flash,6,15
+94,2019-EUCRC,2019-08-25,HELGTRE OPEN,Family Ultimate,13,12
+95,2019-EUCRC,2019-08-25,Force Elektro 1,Frank N,9,13
+96,2019-EUCRC,2019-08-25,KFK - Copenhagen Frisbee Club,Ragnarok,13,3
+97,2019-EUCRC,2019-08-25,Mooncatchers,Gentle Open,13,7
+98,2019-EUCRC,2019-08-25,Bad Skid,Heidees,13,11
+99,2019-EUCRC,2019-08-25,7Schwaben,M.U.C.,6,13
+100,2019-EUCRC,2019-08-25,HELGTRE OPEN,Frank N,9,13
+101,2019-EUCRC,2019-08-25,Family Ultimate,Force Elektro 1,13,6
+102,2019-EUCRC,2019-08-25,KFK - Copenhagen Frisbee Club,Mooncatchers,11,13
+103,2019-EUCRC,2019-08-25,Ragnarok,Gentle Open,13,12
+104,2019-EUCRC,2019-08-25,Bad Skid,M.U.C.,13,9
+105,2019-EUCRC,2019-08-25,Heidees,7Schwaben,13,8
+106,2019-EUCRE,2019-08-25,FUJ,Catchup Graz,15,11
+107,2019-EUCRE,2019-08-25,thebigEZ,FWD>>,11,13
+108,2019-EUCRE,2019-08-25,Prague Devils,Uprising,9,6
+109,2019-EUCRE,2019-08-25,THE BRIDGE,Mojra,10,13
+110,2019-EUCRE,2019-08-25,Catchup Graz,thebigEZ,0,1
+111,2019-EUCRE,2019-08-25,Prague Devils,Mojra,12,14
+112,2019-EUCRE,2019-08-25,Catchup Graz,Mojra,0,1
+113,2019-EUCRW,2019-08-25,EMO 1,Ka-Pow!,15,13
+114,2019-EUCRW,2019-08-25,YOpen,Brighton Open,10,15
+115,2019-EUCRW,2019-08-25,Alba,XVI,15,13
+116,2019-EUCRW,2019-08-25,PELT Ultimate,Rebel Ultimate,14,15
+117,2019-EUCRW,2019-08-25,Bristol Open 1,Fire of London,14,15
+118,2019-EUCRW,2019-08-25,Manchester Ultimate,BAF,15,10
+119,2019-EUCRW,2019-08-25,Devon Ultimate,Ranelagh,7,15
+120,2019-EUCRW,2019-08-25,Alba,Rebel Ultimate,15,13
+121,2019-EUCRW,2019-08-25,Clapham Ultimate,Chevron Action Flash,15,10
+122,2019-EUCRW,2019-08-25,EMO 1,Brighton Open,13,9
+123,2019-EUCRW,2019-08-25,YOpen,Ka-Pow!,1,15
+124,2019-EUCRW,2019-08-25,XVI,PELT Ultimate,13,14
+125,2019-EUCRW,2019-08-25,Bristol Open 1,Manchester Ultimate,13,15
+126,2019-EUCRW,2019-08-25,Fire of London,BAF,15,8
+127,2019-EUCRW,2019-08-25,Devon Ultimate,Alba,10,15
+128,2019-EUCRS,2019-08-31,Donkey Divers,Flying Angels Bern,11,15
+129,2019-EUCRS,2019-08-31,Cusb Red Bulls,Iznogood,10,15
+130,2019-EUCRS,2019-08-31,Freespeed,Tchac,15,10
+131,2019-EUCRS,2019-08-31,CUSB La Fotta,Crazy Dogs I,15,8
+132,2019-EUCRS,2019-08-31,Iznogood,Tchac,12,11
+133,2019-EUCRS,2019-08-31,CUSB La Fotta,Cotarica Grandes,15,6
+134,2019-EUCRS,2019-08-31,Freespeed,Panthers Bern,15,12
+135,2019-EUCRS,2019-08-31,Flying Angels Bern,Crazy Dogs I,15,14
+136,2019-EUCRS,2019-08-31,CUSB La Fotta,Flying Angels Bern,15,8
+137,2019-EUCRS,2019-08-31,Freespeed,Iznogood,13,14
+138,2019-EUCRS,2019-08-31,Cotarica Grandes,Donkey Divers,14,13
+139,2019-EUCRS,2019-08-31,Panthers Bern,Cusb Red Bulls,11,15
+140,2019-EUCRS,2019-09-01,Crazy Dogs I,Cotarica Grandes,15,10
+141,2019-EUCRS,2019-09-01,Freespeed,Cusb Red Bulls,15,13
+142,2019-EUCRS,2019-09-01,Tchac,Panthers Bern,11,15
+143,2019-EUCRS,2019-09-01,CUSB La Fotta,Donkey Divers,15,7
+144,2019-EUCRS,2019-09-01,Iznogood,Panthers Bern,15,7
+145,2019-EUCRS,2019-09-01,Flying Angels Bern,Cotarica Grandes,15,6
+146,2019-EUCRS,2019-09-01,Cusb Red Bulls,Tchac,13,11
+147,2019-EUCRS,2019-09-01,Donkey Divers,Crazy Dogs I,11,15
+148,2019-EUCRS,2019-09-01,CUSB La Fotta,Iznogood,15,6
+149,2019-EUCRS,2019-09-01,Flying Angels Bern,Freespeed,13,14
+150,2019-EUCRS,2019-09-01,Crazy Dogs I,Cusb Red Bulls,9,15
+151,2019-EUCRS,2019-09-01,Cotarica Grandes,Panthers Bern,13,11
+152,2019-EUCRS,2019-09-01,Donkey Divers,Tchac,9,15
+153,2019-EUCF,2019-09-27,Cotarica Grandes,Heidees,15,10
+154,2019-EUCF,2019-09-27,RealFive,Alba,14,15
+155,2019-EUCF,2019-09-27,7Schwaben,KFK - Copenhagen Frisbee Club,15,14
+156,2019-EUCF,2019-09-27,FUJ,Rampage,15,6
+157,2019-EUCF,2019-09-27,Crazy Dogs I,M.U.C.,7,15
+158,2019-EUCF,2019-09-27,CUSB La Fotta,Ranelagh,14,10
+159,2019-EUCF,2019-09-27,Flying Angels Bern,Flying Steps,15,6
+160,2019-EUCF,2019-09-27,Mojra,Freespeed,9,15
+161,2019-EUCF,2019-09-27,thebigEZ,Chevron Action Flash,7,15
+162,2019-EUCF,2019-09-27,Mooncatchers,Iznogood,15,11
+163,2019-EUCF,2019-09-27,Cusb Red Bulls,Clapham Ultimate,9,15
+164,2019-EUCF,2019-09-27,Bad Skid,FWD>>,15,9
+165,2019-EUCF,2019-09-27,CUSB La Fotta,7Schwaben,15,8
+166,2019-EUCF,2019-09-27,Cotarica Grandes,RealFive,15,14
+167,2019-EUCF,2019-09-27,KFK - Copenhagen Frisbee Club,Ranelagh,14,15
+168,2019-EUCF,2019-09-27,FUJ,Crazy Dogs I,15,8
+169,2019-EUCF,2019-09-27,Alba,Heidees,15,13
+170,2019-EUCF,2019-09-27,M.U.C.,Rampage,15,14
+171,2019-EUCF,2019-09-27,Chevron Action Flash,Mooncatchers,15,10
+172,2019-EUCF,2019-09-27,Clapham Ultimate,Freespeed,15,12
+173,2019-EUCF,2019-09-27,Flying Angels Bern,Bad Skid,11,15
+174,2019-EUCF,2019-09-27,FWD>>,Flying Steps,15,9
+175,2019-EUCF,2019-09-27,thebigEZ,Iznogood,10,15
+176,2019-EUCF,2019-09-27,Mojra,Cusb Red Bulls,8,15
+177,2019-EUCF,2019-09-27,Ranelagh,7Schwaben,15,11
+178,2019-EUCF,2019-09-27,FUJ,M.U.C.,14,15
+179,2019-EUCF,2019-09-27,Heidees,RealFive,7,15
+180,2019-EUCF,2019-09-27,Rampage,Crazy Dogs I,15,12
+181,2019-EUCF,2019-09-27,CUSB La Fotta,KFK - Copenhagen Frisbee Club,15,8
+182,2019-EUCF,2019-09-27,Cotarica Grandes,Alba,9,15
+183,2019-EUCF,2019-09-27,Flying Angels Bern,FWD>>,13,15
+184,2019-EUCF,2019-09-27,Mojra,Clapham Ultimate,9,15
+185,2019-EUCF,2019-09-27,Freespeed,Cusb Red Bulls,10,15
+186,2019-EUCF,2019-09-27,Flying Steps,Bad Skid,8,15
+187,2019-EUCF,2019-09-27,Iznogood,Chevron Action Flash,9,15
+188,2019-EUCF,2019-09-27,thebigEZ,Mooncatchers,13,15
+189,2019-EUCF,2019-09-28,Chevron Action Flash,Cusb Red Bulls,15,10
+190,2019-EUCF,2019-09-28,Alba,Ranelagh,15,14
+191,2019-EUCF,2019-09-28,Cotarica Grandes,FWD>>,15,14
+192,2019-EUCF,2019-09-28,Mooncatchers,FUJ,12,15
+193,2019-EUCF,2019-09-28,Clapham Ultimate,Iznogood,15,8
+194,2019-EUCF,2019-09-28,Bad Skid,Freespeed,15,8
+195,2019-EUCF,2019-09-28,M.U.C.,RealFive,13,15
+196,2019-EUCF,2019-09-28,CUSB La Fotta,Flying Angels Bern,15,11
+197,2019-EUCF,2019-09-28,Clapham Ultimate,Cotarica Grandes,15,4
+198,2019-EUCF,2019-09-28,7Schwaben,Mojra,15,11
+199,2019-EUCF,2019-09-28,thebigEZ,Flying Steps,15,5
+200,2019-EUCF,2019-09-28,Heidees,Crazy Dogs I,15,10
+201,2019-EUCF,2019-09-28,CUSB La Fotta,FUJ,15,10
+202,2019-EUCF,2019-09-28,Bad Skid,Chevron Action Flash,14,15
+203,2019-EUCF,2019-09-28,RealFive,Alba,14,9
+204,2019-EUCF,2019-09-28,Flying Angels Bern,Mooncatchers,15,11
+205,2019-EUCF,2019-09-28,Iznogood,FWD>>,15,14
+206,2019-EUCF,2019-09-28,Freespeed,Cusb Red Bulls,15,11
+207,2019-EUCF,2019-09-28,M.U.C.,Ranelagh,13,14
+208,2019-EUCF,2019-09-28,Rampage,KFK - Copenhagen Frisbee Club,15,14
+209,2019-EUCF,2019-09-28,Mooncatchers,M.U.C.,15,8
+210,2019-EUCF,2019-09-28,thebigEZ,7Schwaben,14,15
+211,2019-EUCF,2019-09-28,Flying Angels Bern,Ranelagh,14,15
+212,2019-EUCF,2019-09-28,Rampage,Heidees,12,14
+213,2019-EUCF,2019-09-28,Cotarica Grandes,Bad Skid,11,15
+214,2019-EUCF,2019-09-28,Clapham Ultimate,Chevron Action Flash,15,8
+215,2019-EUCF,2019-09-28,CUSB La Fotta,RealFive,15,11
+216,2019-EUCF,2019-09-28,FUJ,Alba,15,11
+217,2019-EUCF,2019-09-28,Iznogood,Freespeed,13,14
+218,2019-EUCF,2019-09-28,FWD>>,Cusb Red Bulls,14,15
+219,2019-EUCF,2019-09-28,KFK - Copenhagen Frisbee Club,Crazy Dogs I,13,15
+220,2019-EUCF,2019-09-28,Flying Steps,Mojra,15,13
+221,2019-EUCF,2019-09-29,Alba,Cotarica Grandes,4,15
+222,2019-EUCF,2019-09-29,Rampage,thebigEZ,8,15
+223,2019-EUCF,2019-09-29,Crazy Dogs I,Flying Steps,15,8
+224,2019-EUCF,2019-09-29,KFK - Copenhagen Frisbee Club,Mojra,15,8
+225,2019-EUCF,2019-09-29,FUJ,Bad Skid,12,15
+226,2019-EUCF,2019-09-29,RealFive,Chevron Action Flash,9,15
+227,2019-EUCF,2019-09-29,Ranelagh,Freespeed,14,15
+228,2019-EUCF,2019-09-29,Flying Angels Bern,Iznogood,15,10
+229,2019-EUCF,2019-09-29,Mooncatchers,Cusb Red Bulls,14,15
+230,2019-EUCF,2019-09-29,M.U.C.,FWD>>,13,15
+231,2019-EUCF,2019-09-29,Heidees,7Schwaben,11,15
+232,2019-EUCF,2019-09-29,CUSB La Fotta,Clapham Ultimate,15,7
+233,Nottingham Windfarm,2019-06-01,Alba,Rebel Ultimate,15,6
+234,Nottingham Windfarm,2019-06-01,Ka-Pow!,SMOG Open 1,14,13
+235,Nottingham Windfarm,2019-06-01,Bristol Open 1,EMO 2,14,11
+236,Nottingham Windfarm,2019-06-01,BLU,Birmingham Ultimate,11,15
+237,Nottingham Windfarm,2019-06-01,Chevron Action Flash,Ranelagh,7,14
+238,Nottingham Windfarm,2019-06-01,GB Men,Manchester Ultimate,15,1
+239,Nottingham Windfarm,2019-06-01,Clapham Ultimate,Brighton Open,15,7
+240,Nottingham Windfarm,2019-06-01,Reading Open 2,Kent Open,12,10
+241,Nottingham Windfarm,2019-06-01,Rebel Ultimate 2,Red Open 1,12,13
+242,Nottingham Windfarm,2019-06-01,Purple Cobras Open,ExeTour,12,11
+243,Nottingham Windfarm,2019-06-01,Camden Ultimate,Leamington Lemmings Open,11,15
+244,Nottingham Windfarm,2019-06-01,Reading Open 1,Ranelagh 2,9,14
+245,Nottingham Windfarm,2019-06-01,Thundering Him,Flump,7,11
+246,Nottingham Windfarm,2019-06-01,Glasgow Open 1,Ireland U24 Men,1,15
+247,Nottingham Windfarm,2019-06-01,BAF,Fire of London,13,10
+248,Nottingham Windfarm,2019-06-01,GB U24 Men,LLLeeds Open 1,15,7
+249,Nottingham Windfarm,2019-06-01,Birmingham Ultimate 2,YOpen 2,15,5
+250,Nottingham Windfarm,2019-06-01,Wight Wild Cards,South Wales Storm,8,13
+251,Nottingham Windfarm,2019-06-01,Red Open 2,Rogue Pandas,2,15
+252,Nottingham Windfarm,2019-06-01,Brixton Open,Curve Open,12,10
+253,Nottingham Windfarm,2019-06-01,Plymouth Ultimate,St Albans Open,15,7
+254,Nottingham Windfarm,2019-06-01,Flyght Club,Shake & Bake,10,15
+255,Nottingham Windfarm,2019-06-01,Ka-Pow!,Devon Ultimate,13,14
+256,Nottingham Windfarm,2019-06-01,Chevron Action Flash,GB Master Men,15,12
+257,Nottingham Windfarm,2019-06-01,GB Men,EMO 1,15,1
+258,Nottingham Windfarm,2019-06-01,Clapham Ultimate,PELT Ultimate,9,11
+259,Nottingham Windfarm,2019-06-01,Reading Open 2,The Brown Open 1,8,13
+260,Nottingham Windfarm,2019-06-01,Rebel Ultimate 2,Vision,12,10
+261,Nottingham Windfarm,2019-06-01,Purple Cobras Open,YOpen,10,11
+262,Nottingham Windfarm,2019-06-01,Camden Ultimate,Glasgow Open 2,12,8
+263,Nottingham Windfarm,2019-06-01,Ranelagh 2,Ireland U24 Men,11,15
+264,Nottingham Windfarm,2019-06-01,Reading Open 1,Glasgow Open 1,11,9
+265,Nottingham Windfarm,2019-06-01,GB U24 Men,BAF,15,4
+266,Nottingham Windfarm,2019-06-01,LLLeeds Open 1,Fire of London,7,11
+267,Nottingham Windfarm,2019-06-01,Plymouth Ultimate,Oxford Open,7,13
+268,Nottingham Windfarm,2019-06-01,Flyght Club,SCU 1,7,15
+269,Nottingham Windfarm,2019-06-01,Devon Ultimate,SMOG Open 1,14,13
+270,Nottingham Windfarm,2019-06-01,GB Master Men,Ranelagh,7,15
+271,Nottingham Windfarm,2019-06-01,EMO 1,Manchester Ultimate,14,7
+272,Nottingham Windfarm,2019-06-01,PELT Ultimate,Brighton Open,14,12
+273,Nottingham Windfarm,2019-06-01,The Brown Open 1,Kent Open,15,6
+274,Nottingham Windfarm,2019-06-01,Vision,Red Open 1,13,11
+275,Nottingham Windfarm,2019-06-01,YOpen,ExeTour,12,9
+276,Nottingham Windfarm,2019-06-01,Glasgow Open 2,Leamington Lemmings Open,5,15
+277,Nottingham Windfarm,2019-06-01,Bristol Open 1,Birmingham Ultimate,11,12
+278,Nottingham Windfarm,2019-06-01,Rebel Ultimate,Thundering Him,15,7
+279,Nottingham Windfarm,2019-06-01,Alba,Flump,15,7
+280,Nottingham Windfarm,2019-06-01,EMO 2,BLU,11,15
+281,Nottingham Windfarm,2019-06-01,Birmingham Ultimate 2,South Wales Storm,15,7
+282,Nottingham Windfarm,2019-06-01,YOpen 2,Wight Wild Cards,13,8
+283,Nottingham Windfarm,2019-06-01,Brixton Open,Rogue Pandas,10,13
+284,Nottingham Windfarm,2019-06-01,Curve Open,Red Open 2,15,5
+285,Nottingham Windfarm,2019-06-01,Oxford Open,St Albans Open,15,6
+286,Nottingham Windfarm,2019-06-01,SCU 1,Shake & Bake,7,11
+287,Nottingham Windfarm,2019-06-01,Rebel Ultimate,Bristol Open 1,14,11
+288,Nottingham Windfarm,2019-06-01,Flump,BLU,11,13
+289,Nottingham Windfarm,2019-06-01,BAF,Reading Open 1,10,12
+290,Nottingham Windfarm,2019-06-01,Fire of London,Ranelagh 2,11,10
+291,Nottingham Windfarm,2019-06-01,Chevron Action Flash,PELT Ultimate,14,9
+292,Nottingham Windfarm,2019-06-01,GB U24 Men,GB Master Men,15,8
+293,Nottingham Windfarm,2019-06-01,Ireland U24 Men,Manchester Ultimate,18,8
+294,Nottingham Windfarm,2019-06-01,Brighton Open,Alba,6,15
+295,Nottingham Windfarm,2019-06-01,SMOG Open 1,Birmingham Ultimate,15,10
+296,Nottingham Windfarm,2019-06-01,Devon Ultimate,EMO 1,15,7
+297,Nottingham Windfarm,2019-06-01,Clapham Ultimate,Ranelagh,11,10
+298,Nottingham Windfarm,2019-06-01,GB Men,Ka-Pow!,15,6
+299,Nottingham Windfarm,2019-06-01,The Brown Open 1,Glasgow Open 1,15,9
+300,Nottingham Windfarm,2019-06-01,Thundering Him,Rebel Ultimate 2,14,10
+301,Nottingham Windfarm,2019-06-01,YOpen,EMO 2,8,14
+302,Nottingham Windfarm,2019-06-01,LLLeeds Open 1,Leamington Lemmings Open,9,11
+303,Nottingham Windfarm,2019-06-01,Reading Open 2,Camden Ultimate,3,15
+304,Nottingham Windfarm,2019-06-01,Vision,Purple Cobras Open,8,15
+305,Nottingham Windfarm,2019-06-01,ExeTour,Shake & Bake,13,6
+306,Nottingham Windfarm,2019-06-01,Oxford Open,Glasgow Open 2,15,13
+307,Nottingham Windfarm,2019-06-01,Birmingham Ultimate 2,Red Open 1,8,11
+308,Nottingham Windfarm,2019-06-01,Kent Open,Rogue Pandas,14,13
+309,Nottingham Windfarm,2019-06-01,Plymouth Ultimate,Curve Open,12,8
+310,Nottingham Windfarm,2019-06-01,YOpen 2,SCU 1,2,15
+311,Nottingham Windfarm,2019-06-01,South Wales Storm,Flyght Club,8,13
+312,Nottingham Windfarm,2019-06-01,Red Open 2,Wight Wild Cards,8,13
+313,Nottingham Windfarm,2019-06-01,St Albans Open,Brixton Open,15,7
+314,Nottingham Windfarm,2019-06-02,SMOG Open 1,PELT Ultimate,9,12
+315,Nottingham Windfarm,2019-06-02,EMO 1,Alba,6,15
+316,Nottingham Windfarm,2019-06-02,Ireland U24 Men,Ranelagh,8,14
+317,Nottingham Windfarm,2019-06-02,Ka-Pow!,GB U24 Men,6,15
+318,Nottingham Windfarm,2019-06-02,Brixton Open,Red Open 2,15,6
+319,Nottingham Windfarm,2019-06-02,South Wales Storm,Wight Wild Cards,13,4
+320,Nottingham Windfarm,2019-06-02,YOpen,Camden Ultimate,5,13
+321,Nottingham Windfarm,2019-06-02,LLLeeds Open 1,Purple Cobras Open,11,12
+322,Nottingham Windfarm,2019-06-02,Vision,Kent Open,13,4
+323,Nottingham Windfarm,2019-06-02,Reading Open 2,Red Open 1,8,15
+324,Nottingham Windfarm,2019-06-02,SMOG Open 1,EMO 1,14,7
+325,Nottingham Windfarm,2019-06-02,PELT Ultimate,Alba,6,12
+326,Nottingham Windfarm,2019-06-02,Ranelagh,GB U24 Men,15,9
+327,Nottingham Windfarm,2019-06-02,Ireland U24 Men,Ka-Pow!,12,9
+328,Nottingham Windfarm,2019-06-02,Birmingham Ultimate 2,St Albans Open,7,8
+329,Nottingham Windfarm,2019-06-02,Flyght Club,Rogue Pandas,6,11
+330,Nottingham Windfarm,2019-06-02,Glasgow Open 2,SCU 1,7,14
+331,Nottingham Windfarm,2019-06-02,Plymouth Ultimate,Shake & Bake,11,7
+332,Nottingham Windfarm,2019-06-02,BLU,Manchester Ultimate,13,6
+333,Nottingham Windfarm,2019-06-02,GB Master Men,Rebel Ultimate,15,7
+334,Nottingham Windfarm,2019-06-02,Brighton Open,Fire of London,8,11
+335,Nottingham Windfarm,2019-06-02,Reading Open 1,Birmingham Ultimate,5,14
+336,Nottingham Windfarm,2019-06-02,Thundering Him,BAF,15,10
+337,Nottingham Windfarm,2019-06-02,Ranelagh 2,EMO 2,15,5
+338,Nottingham Windfarm,2019-06-02,Leamington Lemmings Open,Flump,8,15
+339,Nottingham Windfarm,2019-06-02,Bristol Open 1,The Brown Open 1,15,3
+340,Nottingham Windfarm,2019-06-02,GB Men,Clapham Ultimate,15,6
+341,Nottingham Windfarm,2019-06-02,Chevron Action Flash,Devon Ultimate,15,5
+342,Nottingham Windfarm,2019-06-02,Brixton Open,YOpen 2,11,5
+343,Nottingham Windfarm,2019-06-02,Curve Open,Wight Wild Cards,14,4
+344,Nottingham Windfarm,2019-06-02,YOpen,Rebel Ultimate 2,7,12
+345,Nottingham Windfarm,2019-06-02,Glasgow Open 1,Purple Cobras Open,5,15
+346,Nottingham Windfarm,2019-06-02,Vision,Oxford Open,15,9
+347,Nottingham Windfarm,2019-06-02,Reading Open 2,ExeTour,4,15
+348,Nottingham Windfarm,2019-06-02,Plymouth Ultimate,St Albans Open,7,9
+349,Nottingham Windfarm,2019-06-02,Rogue Pandas,SCU 1,7,11
+350,Nottingham Windfarm,2019-06-02,Shake & Bake,Birmingham Ultimate 2,11,6
+351,Nottingham Windfarm,2019-06-02,Flyght Club,Glasgow Open 2,1,11
+352,Nottingham Windfarm,2019-06-02,Manchester Ultimate,Rebel Ultimate,6,15
+353,Nottingham Windfarm,2019-06-02,BLU,GB Master Men,7,15
+354,Nottingham Windfarm,2019-06-02,Birmingham Ultimate,Fire of London,10,8
+355,Nottingham Windfarm,2019-06-02,Reading Open 1,Brighton Open,14,10
+356,Nottingham Windfarm,2019-06-02,YOpen 2,Red Open 2,9,7
+357,Nottingham Windfarm,2019-06-02,South Wales Storm,Curve Open,6,12
+358,Nottingham Windfarm,2019-06-02,Rebel Ultimate 2,Camden Ultimate,13,12
+359,Nottingham Windfarm,2019-06-02,LLLeeds Open 1,Glasgow Open 1,13,10
+360,Nottingham Windfarm,2019-06-02,Oxford Open,Kent Open,11,7
+361,Nottingham Windfarm,2019-06-02,ExeTour,Red Open 1,15,9
+362,Nottingham Windfarm,2019-06-02,Ka-Pow!,EMO 1,15,10
+363,Nottingham Windfarm,2019-06-02,Ireland U24 Men,SMOG Open 1,10,8
+364,Nottingham Windfarm,2019-06-02,Ranelagh,Alba,13,12
+365,Nottingham Windfarm,2019-06-02,GB U24 Men,PELT Ultimate,6,12
+366,Nottingham Windfarm,2019-06-02,BAF,EMO 2,11,9
+367,Nottingham Windfarm,2019-06-02,Thundering Him,Ranelagh 2,11,13
+368,Nottingham Windfarm,2019-06-02,Flump,Bristol Open 1,9,10
+369,Nottingham Windfarm,2019-06-02,Leamington Lemmings Open,The Brown Open 1,15,7
+370,Nottingham Windfarm,2019-06-02,St Albans Open,SCU 1,12,10
+371,Nottingham Windfarm,2019-06-02,Rogue Pandas,Plymouth Ultimate,12,11
+372,Nottingham Windfarm,2019-06-02,Shake & Bake,Glasgow Open 2,10,13
+373,Nottingham Windfarm,2019-06-02,Birmingham Ultimate 2,Flyght Club,13,9
+374,Nottingham Windfarm,2019-06-02,Birmingham Ultimate,GB Master Men,8,15
+375,Nottingham Windfarm,2019-06-02,BLU,Fire of London,10,15
+376,Nottingham Windfarm,2019-06-02,Reading Open 1,Rebel Ultimate,8,15
+377,Nottingham Windfarm,2019-06-02,Brighton Open,Manchester Ultimate,14,13
+378,Nottingham Windfarm,2019-06-02,The Brown Open 1,EMO 2,5,15
+379,Nottingham Windfarm,2019-06-02,BAF,Leamington Lemmings Open,7,11
+380,Nottingham Windfarm,2019-06-02,Ranelagh 2,Bristol Open 1,12,13
+381,Nottingham Windfarm,2019-06-02,Flump,Thundering Him,6,9
+382,Nottingham Windfarm,2019-06-02,GB Men,Chevron Action Flash,15,6
+383,Nottingham Windfarm,2019-06-02,Devon Ultimate,Clapham Ultimate,11,15
+384,Nottingham Windfarm,2019-06-02,Brixton Open,Curve Open,6,13
+385,Nottingham Windfarm,2019-06-02,YOpen 2,South Wales Storm,10,9
+386,Nottingham Windfarm,2019-06-02,Wight Wild Cards,Red Open 2,10,6
+387,Nottingham Windfarm,2019-06-02,Vision,ExeTour,13,12
+388,Nottingham Windfarm,2019-06-02,Red Open 1,Oxford Open,6,15
+389,Nottingham Windfarm,2019-06-02,Kent Open,Reading Open 2,9,8
+390,Nottingham Windfarm,2019-06-02,Rebel Ultimate 2,Purple Cobras Open,6,15
+391,Nottingham Windfarm,2019-06-02,LLLeeds Open 1,Camden Ultimate,13,7
+392,Nottingham Windfarm,2019-06-02,YOpen,Glasgow Open 1,11,13
+393,Junction 7,2019-06-22,SMOG Open 1,YOpen,14,3
+394,Junction 7,2019-06-22,LLLeeds Open 1,LED Open,15,2
+395,Junction 7,2019-06-22,Alba,Vision,11,8
+396,Junction 7,2019-06-22,Manchester Ultimate,The Brown Open 2,11,5
+397,Junction 7,2019-06-22,Alba,Uproar,15,3
+398,Junction 7,2019-06-22,Vision,The Brown Open 2,15,3
+399,Junction 7,2019-06-22,YOpen,LED Open,13,5
+400,Junction 7,2019-06-22,LLLeeds Open 1,The Brown Open 1,14,7
+401,Junction 7,2019-06-22,Manchester Ultimate,Uproar,15,1
+402,Junction 7,2019-06-22,SMOG Open 1,The Brown Open 1,14,4
+403,Junction 7,2019-06-22,Alba,The Brown Open 2,13,3
+404,Junction 7,2019-06-22,LLLeeds Open 1,YOpen,13,5
+405,Junction 7,2019-06-22,SMOG Open 1,LED Open,15,0
+406,Junction 7,2019-06-22,Manchester Ultimate,Vision,12,6
+407,Junction 7,2019-06-22,YOpen,The Brown Open 1,6,9
+408,Junction 7,2019-06-22,Vision,Uproar,10,6
+409,Junction 7,2019-06-22,Alba,Manchester Ultimate,12,7
+410,Junction 7,2019-06-22,SMOG Open 1,LLLeeds Open 1,15,6
+411,Junction 7,2019-06-22,The Brown Open 1,LED Open,11,7
+412,Junction 7,2019-06-22,Uproar,The Brown Open 2,3,11
+413,Junction 7,2019-06-23,Alba,LLLeeds Open 1,15,6
+414,Junction 7,2019-06-23,SMOG Open 1,Manchester Ultimate,15,9
+415,Junction 7,2019-06-23,Vision,YOpen,14,11
+416,Junction 7,2019-06-23,The Brown Open 2,The Brown Open 1,10,15
+417,Junction 7,2019-06-23,YOpen,Uproar,12,11
+418,Junction 7,2019-06-23,The Brown Open 2,LED Open,12,9
+419,Junction 7,2019-06-23,The Brown Open 1,Manchester Ultimate,10,12
+420,Junction 7,2019-06-23,LLLeeds Open 1,Vision,11,10
+421,Junction 7,2019-06-23,Alba,SMOG Open 1,11,15
+422,Junction 7,2019-06-23,LED Open,Uproar,15,4
+423,Junction 7,2019-06-23,YOpen,The Brown Open 2,12,7
+424,Junction 7,2019-06-23,The Brown Open 1,Vision,11,14
+425,Junction 7,2019-06-23,Manchester Ultimate,LLLeeds Open 1,14,8
+426,Midsummer Madness,2019-06-22,Ka-Pow!,Thundering Him,14,15
+427,Midsummer Madness,2019-06-22,Brighton Open,Flump,11,10
+428,Midsummer Madness,2019-06-22,EMO 1,BLU,5,15
+429,Midsummer Madness,2019-06-22,Ranelagh,Fire of London,9,14
+430,Midsummer Madness,2019-06-22,Kent Open,Curve Open,12,14
+431,Midsummer Madness,2019-06-22,Purple Cobras Open,Sharkbear!,12,3
+432,Midsummer Madness,2019-06-22,St Albans Open,Chiquititas,9,8
+433,Midsummer Madness,2019-06-22,Camden Ultimate,The Chilterns Collective,14,6
+434,Midsummer Madness,2019-06-22,Leamington Lemmings Open,SCU 1,15,7
+435,Midsummer Madness,2019-06-22,Oxford Open,Curve Open,11,12
+436,Midsummer Madness,2019-06-22,St Albans Open,Sharkbear!,9,10
+437,Midsummer Madness,2019-06-22,Purple Cobras Open,Chiquititas,13,4
+438,Midsummer Madness,2019-06-22,Thundering Him,Brighton Open,8,11
+439,Midsummer Madness,2019-06-22,BLU,Fire of London,8,14
+440,Midsummer Madness,2019-06-22,Brixton Open,The Chilterns Collective,13,8
+441,Midsummer Madness,2019-06-22,Cambridge 1,SCU 1,15,5
+442,Midsummer Madness,2019-06-22,Flump,Ka-Pow!,8,14
+443,Midsummer Madness,2019-06-22,Ranelagh,EMO 1,15,8
+444,Midsummer Madness,2019-06-22,Camden Ultimate,Brixton Open,13,7
+445,Midsummer Madness,2019-06-22,Leamington Lemmings Open,Cambridge 1,15,8
+446,Midsummer Madness,2019-06-22,Kent Open,Oxford Open,13,9
+447,Midsummer Madness,2019-06-22,Purple Cobras Open,St Albans Open,13,5
+448,Midsummer Madness,2019-06-22,Sharkbear!,Chiquititas,6,9
+449,Midsummer Madness,2019-06-22,Curve Open,Ka-Pow!,5,15
+450,Midsummer Madness,2019-06-22,Thundering Him,Fire of London,8,14
+451,Midsummer Madness,2019-06-22,Brighton Open,BLU,13,12
+452,Midsummer Madness,2019-06-22,St Albans Open,Kent Open,7,13
+453,Midsummer Madness,2019-06-22,Chiquititas,Oxford Open,11,5
+454,Midsummer Madness,2019-06-22,Cambridge 1,The Chilterns Collective,1,0
+455,Midsummer Madness,2019-06-22,Brixton Open,SCU 1,11,12
+456,Midsummer Madness,2019-06-22,Ranelagh,Leamington Lemmings Open,15,5
+457,Midsummer Madness,2019-06-22,Purple Cobras Open,EMO 1,13,9
+458,Midsummer Madness,2019-06-22,Flump,Camden Ultimate,13,12
+459,Midsummer Madness,2019-06-23,Cambridge 1,Curve Open,11,13
+460,Midsummer Madness,2019-06-23,EMO 1,SCU 1,15,5
+461,Midsummer Madness,2019-06-23,Leamington Lemmings Open,Kent Open,15,6
+462,Midsummer Madness,2019-06-23,Chiquititas,Camden Ultimate,6,11
+463,Midsummer Madness,2019-06-23,Brixton Open,St Albans Open,1,0
+464,Midsummer Madness,2019-06-23,Oxford Open,Sharkbear!,0,1
+465,Midsummer Madness,2019-06-23,Ranelagh,Thundering Him,14,13
+466,Midsummer Madness,2019-06-23,Flump,Fire of London,10,13
+467,Midsummer Madness,2019-06-23,BLU,Ka-Pow!,0,1
+468,Midsummer Madness,2019-06-23,Brighton Open,Purple Cobras Open,13,10
+469,Midsummer Madness,2019-06-23,St Albans Open,Sharkbear!,1,0
+470,Midsummer Madness,2019-06-23,Oxford Open,The Chilterns Collective,1,0
+471,Midsummer Madness,2019-06-23,Leamington Lemmings Open,Camden Ultimate,11,12
+472,Midsummer Madness,2019-06-23,EMO 1,Curve Open,15,9
+473,Midsummer Madness,2019-06-23,Cambridge 1,SCU 1,14,8
+474,Midsummer Madness,2019-06-23,Kent Open,Chiquititas,10,9
+475,Midsummer Madness,2019-06-23,Brixton Open,The Chilterns Collective,1,0
+476,Midsummer Madness,2019-06-23,Ranelagh,Fire of London,14,9
+477,Midsummer Madness,2019-06-23,Brighton Open,Ka-Pow!,10,15
+478,Midsummer Madness,2019-06-23,BLU,Purple Cobras Open,13,7
+479,Midsummer Madness,2019-06-23,Thundering Him,Flump,15,10
+480,Midsummer Madness,2019-06-23,Oxford Open,St Albans Open,9,8
+481,Midsummer Madness,2019-06-23,Brixton Open,Sharkbear!,0,1
+482,Midsummer Madness,2019-06-23,EMO 1,Camden Ultimate,13,6
+483,Midsummer Madness,2019-06-23,Leamington Lemmings Open,Curve Open,15,9
+484,Midsummer Madness,2019-06-23,Chiquititas,SCU 1,9,10
+485,Midsummer Madness,2019-06-23,Cambridge 1,Kent Open,15,7
+486,Midsummer Madness,2019-06-23,St Albans Open,The Chilterns Collective,1,0
+487,Midsummer Madness,2019-06-23,Ka-Pow!,Ranelagh,15,13
+488,Midsummer Madness,2019-06-23,Fire of London,Brighton Open,11,10
+489,Midsummer Madness,2019-06-23,Flump,Purple Cobras Open,12,11
+490,Midsummer Madness,2019-06-23,BLU,Thundering Him,10,7
+491,Midsummer Madness,2019-06-23,Brixton Open,Oxford Open,0,1
+492,Midsummer Madness,2019-06-23,The Chilterns Collective,Sharkbear!,0,1
+493,Rhymney Cup,2019-06-22,BAF,Red Open 2,15,3
+494,Rhymney Cup,2019-06-22,Devon Ultimate,South Wales Storm,15,5
+495,Rhymney Cup,2019-06-22,Birmingham Ultimate,Plymouth Ultimate,15,3
+496,Rhymney Cup,2019-06-22,Reading Open 2,Shake & Bake,13,10
+497,Rhymney Cup,2019-06-22,Reading Open 1,GB U24 Men,4,15
+498,Rhymney Cup,2019-06-22,GB U20 Men,Bristol University Open 1,15,1
+499,Rhymney Cup,2019-06-22,Bristol Open 1,Red Open 1,15,5
+500,Rhymney Cup,2019-06-22,Birmingham Ultimate,Reading Open 2,14,4
+501,Rhymney Cup,2019-06-22,Plymouth Ultimate,Shake & Bake,15,7
+502,Rhymney Cup,2019-06-22,Devon Ultimate,BAF,15,3
+503,Rhymney Cup,2019-06-22,South Wales Storm,Red Open 2,14,12
+504,Rhymney Cup,2019-06-22,GB U17 Open,South Wales Storm 2,11,9
+505,Rhymney Cup,2019-06-22,Bristol Open 1,GB U20 Men,8,15
+506,Rhymney Cup,2019-06-22,Red Open 1,Bristol University Open 1,15,5
+507,Rhymney Cup,2019-06-22,Reading Open 2,Plymouth Ultimate,12,7
+508,Rhymney Cup,2019-06-22,Birmingham Ultimate,Shake & Bake,15,7
+509,Rhymney Cup,2019-06-22,Reading Open 1,South Wales Storm 2,14,9
+510,Rhymney Cup,2019-06-22,GB U24 Men,GB U17 Open,15,1
+511,Rhymney Cup,2019-06-22,BAF,South Wales Storm,15,4
+512,Rhymney Cup,2019-06-22,Devon Ultimate,Red Open 2,15,4
+513,Rhymney Cup,2019-06-22,GB U24 Men,South Wales Storm 2,15,0
+514,Rhymney Cup,2019-06-22,Reading Open 1,GB U17 Open,15,3
+515,Rhymney Cup,2019-06-22,GB U20 Men,Red Open 1,15,2
+516,Rhymney Cup,2019-06-22,Bristol Open 1,Bristol University Open 1,15,8
+517,Rhymney Cup,2019-06-23,Reading Open 1,Birmingham Ultimate,10,11
+518,Rhymney Cup,2019-06-23,Reading Open 2,GB U24 Men,7,15
+519,Rhymney Cup,2019-06-23,Devon Ultimate,Bristol Open 1,15,8
+520,Rhymney Cup,2019-06-23,GB U20 Men,BAF,15,8
+521,Rhymney Cup,2019-06-23,GB U20 Men,GB U24 Men,6,15
+522,Rhymney Cup,2019-06-23,Devon Ultimate,Birmingham Ultimate,15,6
+523,Rhymney Cup,2019-06-23,South Wales Storm 2,Plymouth Ultimate,5,11
+524,Rhymney Cup,2019-06-23,South Wales Storm,Bristol University Open 1,11,4
+525,Rhymney Cup,2019-06-23,Shake & Bake,GB U17 Open,11,8
+526,Rhymney Cup,2019-06-23,Red Open 1,Red Open 2,12,7
+527,Rhymney Cup,2019-06-23,BAF,Reading Open 2,15,4
+528,Rhymney Cup,2019-06-23,Reading Open 1,Bristol Open 1,8,12
+529,Rhymney Cup,2019-06-23,Devon Ultimate,GB U24 Men,10,12
+530,Rhymney Cup,2019-06-23,GB U20 Men,Birmingham Ultimate,0,15
+531,Rhymney Cup,2019-06-23,South Wales Storm,Plymouth Ultimate,15,11
+532,Rhymney Cup,2019-06-23,Red Open 1,Shake & Bake,15,5
+533,Rhymney Cup,2019-06-23,GB U17 Open,Red Open 2,8,15
+534,Rhymney Cup,2019-06-23,Bristol University Open 1,South Wales Storm 2,12,13
+535,Rhymney Cup,2019-06-23,Red Open 1,South Wales Storm,9,15
+536,Rhymney Cup,2019-06-23,Plymouth Ultimate,Shake & Bake,11,10
+537,Rhymney Cup,2019-06-23,Bristol Open 1,BAF,13,10
+538,Rhymney Cup,2019-06-23,Reading Open 2,Reading Open 1,13,14
+539,Rhymney Cup,2019-06-23,Bristol University Open 1,GB U17 Open,9,8
+540,Rhymney Cup,2019-06-23,Red Open 2,South Wales Storm 2,8,15
+541,Edenbridge,2019-07-13,Brighton Open,Horsham Ultimate Open,15,10
+542,Edenbridge,2019-07-13,Camden Ultimate,Team Surrey Ultimate,10,13
+543,Edenbridge,2019-07-13,Kent Open,Brixton Open,13,10
+544,Edenbridge,2019-07-13,BLU,Brighton Ultimate 2,15,0
+545,Edenbridge,2019-07-13,Brighton Open,St Albans Open,14,5
+546,Edenbridge,2019-07-13,Camden Ultimate,Curve Open,13,11
+547,Edenbridge,2019-07-13,Kent Open,Plymouth Ultimate,8,14
+548,Edenbridge,2019-07-13,BLU,SCU 1,15,1
+549,Edenbridge,2019-07-13,St Albans Open,Horsham Ultimate Open,11,12
+550,Edenbridge,2019-07-13,Curve Open,Team Surrey Ultimate,10,12
+551,Edenbridge,2019-07-13,Plymouth Ultimate,Brixton Open,3,14
+552,Edenbridge,2019-07-13,SCU 1,Brighton Ultimate 2,15,5
+553,Edenbridge,2019-07-13,Camden Ultimate,St Albans Open,9,15
+554,Edenbridge,2019-07-13,Kent Open,Brighton Ultimate 2,15,2
+555,Edenbridge,2019-07-13,SCU 1,Plymouth Ultimate,14,11
+556,Edenbridge,2019-07-13,Horsham Ultimate Open,Curve Open,14,11
+557,Edenbridge,2019-07-13,Brighton Open,Team Surrey Ultimate,9,11
+558,Edenbridge,2019-07-13,BLU,Brixton Open,15,7
+559,Edenbridge,2019-07-14,BLU,Horsham Ultimate Open,15,7
+560,Edenbridge,2019-07-14,Brighton Open,Kent Open,10,13
+561,Edenbridge,2019-07-14,Brixton Open,Camden Ultimate,9,11
+562,Edenbridge,2019-07-14,Team Surrey Ultimate,Plymouth Ultimate,13,8
+563,Edenbridge,2019-07-14,Brighton Open,Horsham Ultimate Open,15,5
+564,Edenbridge,2019-07-14,SCU 1,Brighton Ultimate 2,12,6
+565,Edenbridge,2019-07-14,Curve Open,St Albans Open,8,15
+566,Edenbridge,2019-07-14,Brixton Open,Plymouth Ultimate,11,6
+567,Edenbridge,2019-07-14,Team Surrey Ultimate,Camden Ultimate,9,15
+568,Edenbridge,2019-07-14,SCU 1,St Albans Open,8,10
+569,Edenbridge,2019-07-14,Curve Open,Brighton Ultimate 2,12,5
+570,Edenbridge,2019-07-14,BLU,Kent Open,15,4
+571,Edenbridge,2019-07-14,Brixton Open,Brighton Open,5,15
+572,Edenbridge,2019-07-14,Horsham Ultimate Open,Plymouth Ultimate,13,10
+573,Edenbridge,2019-07-14,Camden Ultimate,BLU,8,13
+574,Edenbridge,2019-07-14,Kent Open,Team Surrey Ultimate,15,4
+575,Edenbridge,2019-07-14,Brighton Ultimate 2,St Albans Open,10,15
+576,Edenbridge,2019-07-14,SCU 1,Curve Open,10,11
+577,Moor Lane,2019-07-13,Manchester Ultimate,Birmingham Ultimate,11,15
+578,Moor Lane,2019-07-13,Flump,GB U20 Men,13,11
+579,Moor Lane,2019-07-13,Clapham Ultimate,Alba,15,7
+580,Moor Lane,2019-07-13,Ka-Pow!,Fire of London,15,8
+581,Moor Lane,2019-07-13,Leamington Lemmings Open,Shake & Bake,8,6
+582,Moor Lane,2019-07-13,Cambridge 1,Red Open 2,10,2
+583,Moor Lane,2019-07-13,Manchester Ultimate,Flump,12,11
+584,Moor Lane,2019-07-13,Birmingham Ultimate,GB U20 Men,13,7
+585,Moor Lane,2019-07-13,Clapham Ultimate,Ka-Pow!,15,8
+586,Moor Lane,2019-07-13,Alba,Fire of London,13,9
+587,Moor Lane,2019-07-13,Chevron Action Flash,Ranelagh,15,11
+588,Moor Lane,2019-07-13,Devon Ultimate,EMO 1,15,10
+589,Moor Lane,2019-07-13,Rebel Ultimate,Reading Open 1,15,8
+590,Moor Lane,2019-07-13,Bristol Open 1,LLLeeds Open 1,14,12
+591,Moor Lane,2019-07-13,The Brown Open 1,Oxford Open,8,15
+592,Moor Lane,2019-07-13,Red Open 1,Birmingham Ultimate 2,13,12
+593,Moor Lane,2019-07-13,Shake & Bake,Red Open 2,13,2
+594,Moor Lane,2019-07-13,Cambridge 1,LED Open,7,6
+595,Moor Lane,2019-07-13,BAF,Ireland Junior Men,15,6
+596,Moor Lane,2019-07-13,Purple Cobras Open,Vision,14,8
+597,Moor Lane,2019-07-13,EMO 2,Reading Open 2,14,13
+598,Moor Lane,2019-07-13,Thundering Him,YOpen,12,14
+599,Moor Lane,2019-07-13,Leamington Lemmings Open,LED Open,12,4
+600,Moor Lane,2019-07-13,Bristol Open 1,Reading Open 1,11,15
+601,Moor Lane,2019-07-13,Red Open 1,Oxford Open,10,15
+602,Moor Lane,2019-07-13,The Brown Open 1,Birmingham Ultimate 2,11,10
+603,Moor Lane,2019-07-13,Chevron Action Flash,EMO 1,15,8
+604,Moor Lane,2019-07-13,Devon Ultimate,Ranelagh,10,15
+605,Moor Lane,2019-07-13,Rebel Ultimate,LLLeeds Open 1,15,12
+606,Moor Lane,2019-07-13,Flump,Birmingham Ultimate,13,12
+607,Moor Lane,2019-07-13,Manchester Ultimate,GB U20 Men,6,15
+608,Moor Lane,2019-07-13,Ka-Pow!,Alba,9,14
+609,Moor Lane,2019-07-13,Clapham Ultimate,Fire of London,15,5
+610,Moor Lane,2019-07-13,Cambridge 1,Shake & Bake,6,10
+611,Moor Lane,2019-07-13,Leamington Lemmings Open,Red Open 2,13,3
+612,Moor Lane,2019-07-13,Rebel Ultimate,Bristol Open 1,9,13
+613,Moor Lane,2019-07-13,The Brown Open 1,Red Open 1,15,13
+614,Moor Lane,2019-07-13,Oxford Open,Birmingham Ultimate 2,12,7
+615,Moor Lane,2019-07-13,Chevron Action Flash,Devon Ultimate,12,7
+616,Moor Lane,2019-07-13,Ranelagh,EMO 1,13,9
+617,Moor Lane,2019-07-13,Reading Open 1,LLLeeds Open 1,9,12
+618,Moor Lane,2019-07-13,Thundering Him,Reading Open 2,15,8
+619,Moor Lane,2019-07-13,EMO 2,YOpen,12,8
+620,Moor Lane,2019-07-13,Purple Cobras Open,Ireland Junior Men,15,5
+621,Moor Lane,2019-07-13,BAF,Vision,14,11
+622,Moor Lane,2019-07-13,Shake & Bake,LED Open,11,4
+623,Moor Lane,2019-07-13,Thundering Him,EMO 2,13,9
+624,Moor Lane,2019-07-13,YOpen,Reading Open 2,10,14
+625,Moor Lane,2019-07-13,BAF,Purple Cobras Open,15,10
+626,Moor Lane,2019-07-13,Ireland Junior Men,Vision,14,6
+627,Moor Lane,2019-07-13,Leamington Lemmings Open,Cambridge 1,13,4
+628,Moor Lane,2019-07-13,LED Open,Red Open 2,8,7
+629,Moor Lane,2019-07-14,YOpen,Leamington Lemmings Open,6,14
+630,Moor Lane,2019-07-14,Ka-Pow!,Rebel Ultimate,15,6
+631,Moor Lane,2019-07-14,The Brown Open 1,Ireland Junior Men,11,9
+632,Moor Lane,2019-07-14,Birmingham Ultimate,Devon Ultimate,12,13
+633,Moor Lane,2019-07-14,Reading Open 2,Shake & Bake,15,8
+634,Moor Lane,2019-07-14,Oxford Open,Vision,12,9
+635,Moor Lane,2019-07-14,Cambridge 1,Birmingham Ultimate 2,9,11
+636,Moor Lane,2019-07-14,Red Open 1,Red Open 2,15,0
+637,Moor Lane,2019-07-14,Flump,EMO 1,13,8
+638,Moor Lane,2019-07-14,Fire of London,Bristol Open 1,15,5
+639,Moor Lane,2019-07-14,Ireland Junior Men,YOpen,9,10
+640,Moor Lane,2019-07-14,The Brown Open 1,Leamington Lemmings Open,14,15
+641,Moor Lane,2019-07-14,Oxford Open,Reading Open 2,8,9
+642,Moor Lane,2019-07-14,Vision,Shake & Bake,13,9
+643,Moor Lane,2019-07-14,BAF,EMO 2,10,13
+644,Moor Lane,2019-07-14,Thundering Him,Purple Cobras Open,15,12
+645,Moor Lane,2019-07-14,LLLeeds Open 1,Manchester Ultimate,12,11
+646,Moor Lane,2019-07-14,GB U20 Men,Reading Open 1,12,10
+647,Moor Lane,2019-07-14,Birmingham Ultimate,Bristol Open 1,15,8
+648,Moor Lane,2019-07-14,Devon Ultimate,Fire of London,15,7
+649,Moor Lane,2019-07-14,Flump,Ka-Pow!,9,11
+650,Moor Lane,2019-07-14,Red Open 1,Cambridge 1,15,7
+651,Moor Lane,2019-07-14,Birmingham Ultimate 2,LED Open,13,5
+652,Moor Lane,2019-07-14,EMO 1,Rebel Ultimate,13,12
+653,Moor Lane,2019-07-14,Chevron Action Flash,Alba,15,6
+654,Moor Lane,2019-07-14,Clapham Ultimate,Ranelagh,15,8
+655,Moor Lane,2019-07-14,GB U20 Men,Manchester Ultimate,10,8
+656,Moor Lane,2019-07-14,LLLeeds Open 1,Reading Open 1,11,9
+657,Moor Lane,2019-07-14,Thundering Him,EMO 2,15,9
+658,Moor Lane,2019-07-14,BAF,Purple Cobras Open,8,15
+659,Moor Lane,2019-07-14,Leamington Lemmings Open,Reading Open 2,12,15
+660,Moor Lane,2019-07-14,Oxford Open,The Brown Open 1,11,13
+661,Moor Lane,2019-07-14,Red Open 1,LED Open,15,4
+662,Moor Lane,2019-07-14,Birmingham Ultimate 2,Red Open 2,15,4
+663,Moor Lane,2019-07-14,Birmingham Ultimate,EMO 1,12,11
+664,Moor Lane,2019-07-14,YOpen,Vision,13,12
+665,Moor Lane,2019-07-14,Shake & Bake,Ireland Junior Men,13,12
+666,Moor Lane,2019-07-14,Clapham Ultimate,Chevron Action Flash,15,9
+667,Moor Lane,2019-07-14,Alba,Ranelagh,14,15
+668,Moor Lane,2019-07-14,GB U20 Men,LLLeeds Open 1,11,10
+669,Moor Lane,2019-07-14,Manchester Ultimate,Reading Open 1,15,11
+670,Moor Lane,2019-07-14,Rebel Ultimate,Bristol Open 1,12,13
+671,Moor Lane,2019-07-14,Devon Ultimate,Ka-Pow!,11,14
+672,Moor Lane,2019-07-14,Flump,Fire of London,8,13
+673,Regionals (North),2019-08-03,Alba,BAF,10,4
+674,Regionals (North),2019-08-03,Birmingham Ultimate,EMO 2,4,10
+675,Regionals (North),2019-08-03,Chevron Action Flash,Manchester Ultimate,12,6
+676,Regionals (North),2019-08-03,EMO 1,The Brown Open 1,13,4
+677,Regionals (North),2019-08-03,Birmingham Ultimate,Red Open 1,8,7
+678,Regionals (North),2019-08-03,Alba,EMO 2,12,6
+679,Regionals (North),2019-08-03,Chevron Action Flash,The Brown Open 1,13,1
+680,Regionals (North),2019-08-03,EMO 1,YOpen,11,4
+681,Regionals (North),2019-08-03,BAF,Red Open 1,13,6
+682,Regionals (North),2019-08-03,Manchester Ultimate,YOpen,10,4
+683,Regionals (North),2019-08-03,Chevron Action Flash,EMO 1,11,6
+684,Regionals (North),2019-08-03,Alba,Birmingham Ultimate,12,3
+685,Regionals (North),2019-08-03,EMO 1,Manchester Ultimate,9,6
+686,Regionals (North),2019-08-03,Birmingham Ultimate,BAF,11,9
+687,Regionals (North),2019-08-03,The Brown Open 1,YOpen,6,10
+688,Regionals (North),2019-08-03,EMO 2,Red Open 1,13,3
+689,Regionals (North),2019-08-03,Chevron Action Flash,YOpen,13,4
+690,Regionals (North),2019-08-03,Manchester Ultimate,The Brown Open 1,13,5
+691,Regionals (North),2019-08-03,BAF,EMO 2,6,9
+692,Regionals (North),2019-08-03,Alba,Red Open 1,12,10
+693,Regionals (North),2019-08-04,BAF,The Brown Open 1,12,6
+694,Regionals (North),2019-08-04,YOpen,Red Open 1,14,10
+695,Regionals (North),2019-08-04,EMO 2,Manchester Ultimate,10,15
+696,Regionals (North),2019-08-04,EMO 1,Birmingham Ultimate,15,3
+697,Regionals (North),2019-08-04,Birmingham Ultimate,YOpen,7,13
+698,Regionals (North),2019-08-04,EMO 2,BAF,8,14
+699,Regionals (North),2019-08-04,Chevron Action Flash,Manchester Ultimate,15,9
+700,Regionals (North),2019-08-04,Alba,EMO 1,15,4
+701,Regionals (North),2019-08-04,Birmingham Ultimate,EMO 2,0,15
+702,Regionals (North),2019-08-04,The Brown Open 1,Red Open 1,10,12
+703,Regionals (North),2019-08-04,Chevron Action Flash,Alba,13,10
+704,Regionals (North),2019-08-04,EMO 1,Manchester Ultimate,12,11
+705,Regionals (North),2019-08-04,BAF,YOpen,6,8
+706,Regionals (South),2019-08-03,Ka-Pow!,SCU 1,15,2
+707,Regionals (South),2019-08-03,Clapham Ultimate,Camden Ultimate,15,0
+708,Regionals (South),2019-08-03,Devon Ultimate,Reading Open 1,15,5
+709,Regionals (South),2019-08-03,Fire of London,Horsham Ultimate Open,15,5
+710,Regionals (South),2019-08-03,Ka-Pow!,Bristol Open 1,15,7
+711,Regionals (South),2019-08-03,Clapham Ultimate,BLU,15,7
+712,Regionals (South),2019-08-03,Devon Ultimate,Brighton Open,15,7
+713,Regionals (South),2019-08-03,Fire of London,Flump,13,11
+714,Regionals (South),2019-08-03,Bristol Open 1,SCU 1,15,7
+715,Regionals (South),2019-08-03,BLU,Camden Ultimate,15,4
+716,Regionals (South),2019-08-03,Brighton Open,Reading Open 1,14,11
+717,Regionals (South),2019-08-03,Flump,Horsham Ultimate Open,14,8
+718,Regionals (South),2019-08-03,Horsham Ultimate Open,Brighton Open,4,15
+719,Regionals (South),2019-08-03,BLU,SCU 1,15,4
+720,Regionals (South),2019-08-03,Camden Ultimate,Bristol Open 1,8,15
+721,Regionals (South),2019-08-03,Flump,Reading Open 1,11,10
+722,Regionals (South),2019-08-03,Devon Ultimate,Fire of London,14,11
+723,Regionals (South),2019-08-03,Clapham Ultimate,Ka-Pow!,15,7
+724,Regionals (South),2019-08-04,Reading Open 1,Horsham Ultimate Open,15,4
+725,Regionals (South),2019-08-04,Camden Ultimate,SCU 1,15,6
+726,Regionals (South),2019-08-04,BLU,Fire of London,11,9
+727,Regionals (South),2019-08-04,Clapham Ultimate,Flump,15,5
+728,Regionals (South),2019-08-04,Bristol Open 1,Devon Ultimate,10,15
+729,Regionals (South),2019-08-04,Ka-Pow!,Brighton Open,14,15
+730,Regionals (South),2019-08-04,Camden Ultimate,Horsham Ultimate Open,11,9
+731,Regionals (South),2019-08-04,Reading Open 1,SCU 1,15,2
+732,Regionals (South),2019-08-04,Clapham Ultimate,Brighton Open,15,5
+733,Regionals (South),2019-08-04,BLU,Devon Ultimate,9,15
+734,Regionals (South),2019-08-04,Fire of London,Bristol Open 1,10,11
+735,Regionals (South),2019-08-04,Ka-Pow!,Flump,11,10
+736,Regionals (South),2019-08-04,Reading Open 1,Camden Ultimate,15,5
+737,Regionals (South),2019-08-04,Horsham Ultimate Open,SCU 1,15,6
+738,Regionals (South),2019-08-04,Clapham Ultimate,Devon Ultimate,15,0
+739,Regionals (South),2019-08-04,BLU,Brighton Open,1,4
+740,Regionals (South),2019-08-04,Flump,Fire of London,9,11
+741,Regionals (South),2019-08-04,Bristol Open 1,Ka-Pow!,8,10
+742,Nationals,2019-08-24,Clapham Ultimate,BAF,15,4
+743,Nationals,2019-08-24,Devon Ultimate,Fire of London,15,4
+744,Nationals,2019-08-24,EMO 1,Rebel Ultimate,11,15
+745,Nationals,2019-08-24,Ranelagh,XVI,15,12
+746,Nationals,2019-08-24,Manchester Ultimate,Alba,5,15
+747,Nationals,2019-08-24,YOpen,Chevron Action Flash,3,15
+748,Nationals,2019-08-24,Brighton Open,Ka-Pow!,14,15
+749,Nationals,2019-08-24,Bristol Open 1,PELT Ultimate,3,15
+750,Nationals,2019-08-24,BAF,EMO 1,7,15
+751,Nationals,2019-08-24,Manchester Ultimate,YOpen,13,14
+752,Nationals,2019-08-24,Fire of London,Brighton Open,11,12
+753,Nationals,2019-08-24,XVI,Bristol Open 1,15,6
+754,Nationals,2019-08-24,Devon Ultimate,Ka-Pow!,15,9
+755,Nationals,2019-08-24,Alba,Chevron Action Flash,12,13
+756,Nationals,2019-08-24,Ranelagh,PELT Ultimate,12,9
+757,Nationals,2019-08-24,Clapham Ultimate,Rebel Ultimate,15,6
+758,Nationals,2019-08-24,Bristol Open 1,BAF,11,15
+759,Nationals,2019-08-24,Fire of London,Manchester Ultimate,15,12
+760,Nationals,2019-08-24,Alba,EMO 1,15,5
+761,Nationals,2019-08-24,Rebel Ultimate,YOpen,15,5
+762,Nationals,2019-08-24,Ka-Pow!,XVI,8,15
+763,Nationals,2019-08-24,PELT Ultimate,Brighton Open,15,8
+764,Nationals,2019-08-24,Clapham Ultimate,Ranelagh,15,4
+765,Nationals,2019-08-24,Devon Ultimate,Chevron Action Flash,6,15
+766,Nationals,2019-08-25,EMO 1,Ka-Pow!,15,13
+767,Nationals,2019-08-25,YOpen,Brighton Open,10,15
+768,Nationals,2019-08-25,Alba,XVI,15,13
+769,Nationals,2019-08-25,PELT Ultimate,Rebel Ultimate,14,15
+770,Nationals,2019-08-25,Bristol Open 1,Fire of London,14,15
+771,Nationals,2019-08-25,Manchester Ultimate,BAF,15,10
+772,Nationals,2019-08-25,Devon Ultimate,Ranelagh,7,15
+773,Nationals,2019-08-25,Alba,Rebel Ultimate,15,13
+774,Nationals,2019-08-25,Clapham Ultimate,Chevron Action Flash,15,10
+775,Nationals,2019-08-25,EMO 1,Brighton Open,13,9
+776,Nationals,2019-08-25,YOpen,Ka-Pow!,1,15
+777,Nationals,2019-08-25,XVI,PELT Ultimate,13,14
+778,Nationals,2019-08-25,Bristol Open 1,Manchester Ultimate,13,15
+779,Nationals,2019-08-25,Fire of London,BAF,15,8
+780,Nationals,2019-08-25,Devon Ultimate,Alba,10,15
+781,Open Beach,2019-05-03,Cultimaters,Hardfisch,6,11
+782,Open Beach,2019-05-03,Berliner Plauze,Disckick,4,13
+783,Open Beach,2019-05-03,Disckick,Hardfisch,9,4
+784,Open Beach,2019-05-03,Berliner Plauze,Cultimaters,7,9
+785,Open Beach,2019-05-03,Disckick,Cultimaters,13,5
+786,Open Beach,2019-05-03,Hardfisch,Berliner Plauze,13,7
+787,Open Beach,2019-05-03,Ars Ludendi,Drehst'n Deckel,5,11
+788,Open Beach,2019-05-03,Hucks Ultimate Berlin,Goldfingers,9,8
+789,Open Beach,2019-05-03,Ars Ludendi,Hucks Ultimate Berlin,7,8
+790,Open Beach,2019-05-03,Drehst'n Deckel,Goldfingers,6,13
+791,Open Beach,2019-05-03,Drehst'n Deckel,Hucks Ultimate Berlin,13,6
+792,Open Beach,2019-05-03,Goldfingers,Ars Ludendi,13,6
+793,Open Beach,2019-05-03,Disckick,Drehst'n Deckel,13,5
+794,Open Beach,2019-05-03,Goldfingers,Hardfisch,9,11
+795,Open Beach,2019-05-03,Disckick,Hardfisch,12,10
+796,Open Beach,2019-05-03,Drehst'n Deckel,Goldfingers,9,11
+797,Open Beach,2019-05-03,Cultimaters,Ars Ludendi,11,13
+798,Open Beach,2019-05-03,Hucks Ultimate Berlin,Berliner Plauze,13,10
+799,Open Beach,2019-05-03,Cultimaters,Hucks Ultimate Berlin,7,9
+800,Open Beach,2019-05-03,Berliner Plauze,Ars Ludendi,9,7
+801,Open 1. Liga,2019-06-06,Kiel2,Frank N,11,15
+802,Open 1. Liga,2019-06-06,Frizzly Bears,Heidees,13,15
+803,Open 1. Liga,2019-06-06,Bad Skid,BORA,15,9
+804,Open 1. Liga,2019-06-06,Hässliche Erdferkel,Hucks Ultimate Berlin,15,11
+805,Open 1. Liga,2019-06-06,Frank N,Frizzly Bears,14,15
+806,Open 1. Liga,2019-06-06,Heidees,Kiel2,15,13
+807,Open 1. Liga,2019-06-06,Hucks Ultimate Berlin,Bad Skid,7,15
+808,Open 1. Liga,2019-06-06,BORA,Hässliche Erdferkel,13,15
+809,Open 1. Liga,2019-06-06,Frank N,Heidees,11,15
+810,Open 1. Liga,2019-06-06,Frizzly Bears,Kiel2,15,11
+811,Open 1. Liga,2019-06-06,Bad Skid,Hässliche Erdferkel,15,11
+812,Open 1. Liga,2019-06-06,BORA,Hucks Ultimate Berlin,15,10
+813,Open 1. Liga,2019-06-06,Frank N,Hucks Ultimate Berlin,15,9
+814,Open 1. Liga,2019-06-06,Hässliche Erdferkel,Frizzly Bears,10,15
+815,Open 1. Liga,2019-06-06,Bad Skid,Kiel2,15,10
+816,Open 1. Liga,2019-06-06,Heidees,BORA,15,11
+817,Open 1. Liga,2019-06-06,Hässliche Erdferkel,Frank N,12,15
+818,Open 1. Liga,2019-06-06,Hucks Ultimate Berlin,Frizzly Bears,6,15
+819,Open 1. Liga,2019-06-06,Heidees,Bad Skid,8,15
+820,Open 1. Liga,2019-06-06,Kiel2,BORA,8,15
+821,Open 1. Liga,2019-06-06,Hucks Ultimate Berlin,Heidees,14,15
+822,Open 1. Liga,2019-06-06,Kiel2,Hässliche Erdferkel,11,15
+823,Open 1. Liga,2019-06-06,Frizzly Bears,Bad Skid,2,15
+824,Open 1. Liga,2019-06-06,BORA,Frank N,15,9
+825,Open 1. Liga,2019-06-06,Heidees,Hässliche Erdferkel,9,15
+826,Open 1. Liga,2019-06-06,Hucks Ultimate Berlin,Kiel2,15,14
+827,Open 1. Liga,2019-06-06,Bad Skid,Frank N,15,8
+828,Open 1. Liga,2019-06-06,Frizzly Bears,BORA,14,15
+829,Open 1. Liga,2019-06-06,Funatics,Family Ultimate,11,15
+830,Open 1. Liga,2019-06-06,Hardfisch,7Schwaben,13,15
+831,Open 1. Liga,2019-06-06,M.U.C.,GeRey,15,10
+832,Open 1. Liga,2019-06-06,Wall City,Ars Ludendi,15,12
+833,Open 1. Liga,2019-06-06,Family Ultimate,Hardfisch,15,11
+834,Open 1. Liga,2019-06-06,7Schwaben,Funatics,15,5
+835,Open 1. Liga,2019-06-06,Ars Ludendi,M.U.C.,14,15
+836,Open 1. Liga,2019-06-06,GeRey,Wall City,14,15
+837,Open 1. Liga,2019-06-06,Family Ultimate,7Schwaben,10,15
+838,Open 1. Liga,2019-06-06,Hardfisch,Funatics,15,11
+839,Open 1. Liga,2019-06-06,M.U.C.,Wall City,13,15
+840,Open 1. Liga,2019-06-06,GeRey,Ars Ludendi,13,15
+841,Open 1. Liga,2019-06-06,Family Ultimate,Ars Ludendi,11,15
+842,Open 1. Liga,2019-06-06,Wall City,Hardfisch,15,13
+843,Open 1. Liga,2019-06-06,M.U.C.,Funatics,15,7
+844,Open 1. Liga,2019-06-06,7Schwaben,GeRey,15,8
+845,Open 1. Liga,2019-06-06,Wall City,Family Ultimate,15,10
+846,Open 1. Liga,2019-06-06,Ars Ludendi,Hardfisch,15,11
+847,Open 1. Liga,2019-06-06,7Schwaben,M.U.C.,15,12
+848,Open 1. Liga,2019-06-06,Funatics,GeRey,10,15
+849,Open 1. Liga,2019-06-06,Ars Ludendi,7Schwaben,8,15
+850,Open 1. Liga,2019-06-06,Funatics,Wall City,4,15
+851,Open 1. Liga,2019-06-06,Hardfisch,M.U.C.,9,15
+852,Open 1. Liga,2019-06-06,GeRey,Family Ultimate,15,9
+853,Open 1. Liga,2019-06-06,7Schwaben,Wall City,13,15
+854,Open 1. Liga,2019-06-06,Ars Ludendi,Funatics,15,10
+855,Open 1. Liga,2019-06-06,M.U.C.,Family Ultimate,15,12
+856,Open 1. Liga,2019-06-06,Hardfisch,GeRey,15,8
+857,Open 1. Liga,2019-06-06,Bad Skid,Ars Ludendi,15,8
+858,Open 1. Liga,2019-06-06,7Schwaben,Frizzly Bears,15,9
+859,Open 1. Liga,2019-06-06,Wall City,BORA,15,14
+860,Open 1. Liga,2019-06-06,Heidees,M.U.C.,11,15
+861,Open 1. Liga,2019-06-06,Bad Skid,7Schwaben,15,9
+862,Open 1. Liga,2019-06-06,Wall City,M.U.C.,10,15
+863,Open 1. Liga,2019-06-06,Ars Ludendi,Frizzly Bears,15,14
+864,Open 1. Liga,2019-06-06,BORA,Heidees,9,15
+865,Open 1. Liga,2019-06-06,7Schwaben,Wall City,15,14
+866,Open 1. Liga,2019-06-06,Ars Ludendi,Heidees,14,15
+867,Open 1. Liga,2019-06-06,Frizzly Bears,BORA,15,7
+868,Open 1. Liga,2019-06-06,Bad Skid,M.U.C.,15,8
+869,Open 1. Liga,2019-06-06,Hässliche Erdferkel,Funatics,15,12
+870,Open 1. Liga,2019-06-06,Hucks Ultimate Berlin,GeRey,9,15
+871,Open 1. Liga,2019-06-06,GeRey,Hässliche Erdferkel,9,15
+872,Open 1. Liga,2019-06-06,Hucks Ultimate Berlin,Funatics,12,14
+873,Open 1. Liga,2019-06-06,Hardfisch,Kiel2,15,7
+874,Open 1. Liga,2019-06-06,Family Ultimate,Frank N,8,15
+875,Open 1. Liga,2019-06-06,Frank N,Hardfisch,10,15
+876,Open 1. Liga,2019-06-06,Family Ultimate,Kiel2,14,15
+877,Open 1. Liga,2019-06-06,Hässliche Erdferkel,Hardfisch,12,15
+878,Open 1. Liga,2019-06-06,Frank N,Funatics,15,3
+879,Open 1. Liga,2019-06-06,GeRey,Kiel2,15,13
+880,Open 1. Liga,2019-06-06,Hucks Ultimate Berlin,Family Ultimate,15,0
+881,Open 2. Liga Nord,2019-06-06,"Frühsport 0,2",Caracals,8,14
+882,Open 2. Liga Nord,2019-06-06,Drehst'n Deckel,Disckick,15,6
+883,Open 2. Liga Nord,2019-06-06,Deine Mudder Bremen,TeKielas,15,12
+884,Open 2. Liga Nord,2019-06-06,Goldfingers,Hard2Fisch,14,9
+885,Open 2. Liga Nord,2019-06-06,Disckick,"Frühsport 0,2",6,12
+886,Open 2. Liga Nord,2019-06-06,Caracals,Drehst'n Deckel,11,15
+887,Open 2. Liga Nord,2019-06-06,Hard2Fisch,Deine Mudder Bremen,13,15
+888,Open 2. Liga Nord,2019-06-06,TeKielas,Goldfingers,8,15
+889,Open 2. Liga Nord,2019-06-06,"Frühsport 0,2",Drehst'n Deckel,3,15
+890,Open 2. Liga Nord,2019-06-06,Caracals,Disckick,15,11
+891,Open 2. Liga Nord,2019-06-06,Deine Mudder Bremen,Goldfingers,12,11
+892,Open 2. Liga Nord,2019-06-06,TeKielas,Hard2Fisch,6,15
+893,Open 2. Liga Nord,2019-06-06,Deine Mudder Bremen,Disckick,15,7
+894,Open 2. Liga Nord,2019-06-06,Drehst'n Deckel,TeKielas,15,9
+895,Open 2. Liga Nord,2019-06-06,"Frühsport 0,2",Hard2Fisch,8,15
+896,Open 2. Liga Nord,2019-06-06,Goldfingers,Caracals,15,13
+897,Open 2. Liga Nord,2019-06-06,Drehst'n Deckel,Deine Mudder Bremen,13,15
+898,Open 2. Liga Nord,2019-06-06,Disckick,TeKielas,9,15
+899,Open 2. Liga Nord,2019-06-06,Goldfingers,"Frühsport 0,2",15,10
+900,Open 2. Liga Nord,2019-06-06,Hard2Fisch,Caracals,15,12
+901,Open 2. Liga Nord,2019-06-06,Disckick,Goldfingers,7,15
+902,Open 2. Liga Nord,2019-06-06,Hard2Fisch,Drehst'n Deckel,13,15
+903,Open 2. Liga Nord,2019-06-06,TeKielas,"Frühsport 0,2",14,15
+904,Open 2. Liga Nord,2019-06-06,Caracals,Deine Mudder Bremen,9,15
+905,Open 2. Liga Nord,2019-06-06,Goldfingers,Drehst'n Deckel,15,7
+906,Open 2. Liga Nord,2019-06-06,Disckick,Hard2Fisch,8,15
+907,Open 2. Liga Nord,2019-06-06,"Frühsport 0,2",Deine Mudder Bremen,7,15
+908,Open 2. Liga Nord,2019-06-06,TeKielas,Caracals,10,15
+909,Open 2. Liga Nord,2019-06-06,Deine Mudder Bremen,Hard2Fisch,15,7
+910,Open 2. Liga Nord,2019-06-06,Goldfingers,Drehst'n Deckel,15,14
+911,Open 2. Liga Nord,2019-06-06,Hard2Fisch,Goldfingers,14,15
+912,Open 2. Liga Nord,2019-06-06,Drehst'n Deckel,Deine Mudder Bremen,11,15
+913,Open 2. Liga Nord,2019-06-06,Drehst'n Deckel,Hard2Fisch,11,13
+914,Open 2. Liga Nord,2019-06-06,Deine Mudder Bremen,Goldfingers,13,15
+915,Open 2. Liga Nord,2019-06-06,"Frühsport 0,2",TeKielas,15,8
+916,Open 2. Liga Nord,2019-06-06,Caracals,Disckick,12,15
+917,Open 2. Liga Nord,2019-06-06,Disckick,"Frühsport 0,2",12,15
+918,Open 2. Liga Nord,2019-06-06,TeKielas,Caracals,3,15
+919,Open 2. Liga Nord,2019-06-06,Caracals,"Frühsport 0,2",14,15
+920,Open 2. Liga Nord,2019-06-06,TeKielas,Disckick,15,12
+921,Open 2. Liga Süd,2019-06-06,Gummibärchen,2M.U.C.L,15,4
+922,Open 2. Liga Süd,2019-06-06,Wolpertinger,7Schwaben II,14,15
+923,Open 2. Liga Süd,2019-06-06,Feldrenner,Force Middle,7,15
+924,Open 2. Liga Süd,2019-06-06,Bad Raps,THW,15,11
+925,Open 2. Liga Süd,2019-06-06,7Schwaben II,Gummibärchen,5,15
+926,Open 2. Liga Süd,2019-06-06,2M.U.C.L,Wolpertinger,9,15
+927,Open 2. Liga Süd,2019-06-06,THW,Feldrenner,15,9
+928,Open 2. Liga Süd,2019-06-06,Force Middle,Bad Raps,9,15
+929,Open 2. Liga Süd,2019-06-06,Gummibärchen,Wolpertinger,15,12
+930,Open 2. Liga Süd,2019-06-06,2M.U.C.L,7Schwaben II,15,10
+931,Open 2. Liga Süd,2019-06-06,Feldrenner,Bad Raps,6,15
+932,Open 2. Liga Süd,2019-06-06,Force Middle,THW,15,10
+933,Open 2. Liga Süd,2019-06-06,Feldrenner,7Schwaben II,15,10
+934,Open 2. Liga Süd,2019-06-06,Wolpertinger,Force Middle,15,10
+935,Open 2. Liga Süd,2019-06-06,Gummibärchen,THW,15,8
+936,Open 2. Liga Süd,2019-06-06,Bad Raps,2M.U.C.L,15,14
+937,Open 2. Liga Süd,2019-06-06,Wolpertinger,Feldrenner,15,5
+938,Open 2. Liga Süd,2019-06-06,7Schwaben II,Force Middle,14,15
+939,Open 2. Liga Süd,2019-06-06,Bad Raps,Gummibärchen,15,9
+940,Open 2. Liga Süd,2019-06-06,THW,2M.U.C.L,13,11
+941,Open 2. Liga Süd,2019-06-06,7Schwaben II,Bad Raps,8,15
+942,Open 2. Liga Süd,2019-06-06,THW,Wolpertinger,8,15
+943,Open 2. Liga Süd,2019-06-06,Force Middle,Gummibärchen,9,15
+944,Open 2. Liga Süd,2019-06-06,2M.U.C.L,Feldrenner,13,15
+945,Open 2. Liga Süd,2019-06-06,Bad Raps,Wolpertinger,15,14
+946,Open 2. Liga Süd,2019-06-06,7Schwaben II,THW,7,15
+947,Open 2. Liga Süd,2019-06-06,Gummibärchen,Feldrenner,15,7
+948,Open 2. Liga Süd,2019-06-06,Force Middle,2M.U.C.L,12,13
+949,Open 2. Liga Süd,2019-06-06,Bad Raps,Force Middle,15,13
+950,Open 2. Liga Süd,2019-06-06,Gummibärchen,Wolpertinger,15,8
+951,Open 2. Liga Süd,2019-06-06,Force Middle,Gummibärchen,10,15
+952,Open 2. Liga Süd,2019-06-06,Wolpertinger,Bad Raps,11,15
+953,Open 2. Liga Süd,2019-06-06,Wolpertinger,Force Middle,15,14
+954,Open 2. Liga Süd,2019-06-06,Bad Raps,Gummibärchen,15,12
+955,Open 2. Liga Süd,2019-06-06,Feldrenner,2M.U.C.L,14,15
+956,Open 2. Liga Süd,2019-06-06,THW,7Schwaben II,15,5
+957,Open 2. Liga Süd,2019-06-06,7Schwaben II,Feldrenner,9,15
+958,Open 2. Liga Süd,2019-06-06,2M.U.C.L,THW,11,13
+959,Open 2. Liga Süd,2019-06-06,THW,Feldrenner,15,12
+960,Open 2. Liga Süd,2019-06-06,2M.U.C.L,7Schwaben II,15,5
+961,Open 3. Liga NW,2019-06-06,DU bist Frisbee,Bonnsai,11,15
+962,Open 3. Liga NW,2019-06-06,Frisbielefeld,Bonobos,1,15
+963,Open 3. Liga NW,2019-06-06,Die 7 Todsünden,Bonnsai,1,15
+964,Open 3. Liga NW,2019-06-06,Bonobos,DU bist Frisbee,13,14
+965,Open 3. Liga NW,2019-06-06,Die 7 Todsünden,Frisbielefeld,15,8
+966,Open 3. Liga NW,2019-06-06,Bonnsai,Bonobos,15,13
+967,Open 3. Liga NW,2019-06-06,Frisbielefeld,DU bist Frisbee,8,15
+968,Open 3. Liga NW,2019-06-06,Bonobos,Die 7 Todsünden,15,3
+969,Open 3. Liga NW,2019-06-06,Bonnsai,Frisbielefeld,15,3
+970,Open 3. Liga NW,2019-06-06,DU bist Frisbee,Die 7 Todsünden,15,4
+971,Open 3. Liga NW,2019-06-06,Bonnsai,DU bist Frisbee,15,9
+972,Open 3. Liga NO,2019-06-06,DJ Dahlem,MULe,15,9
+973,Open 3. Liga NO,2019-06-06,Mad Squid,EazyEastKoast,14,8
+974,Open 3. Liga NO,2019-06-06,Schleudertrauma,Mitteldeutscher Rundflug,0,15
+975,Open 3. Liga NO,2019-06-06,EazyEastKoast,Schleudertrauma,15,0
+976,Open 3. Liga NO,2019-06-06,Mitteldeutscher Rundflug,DJ Dahlem,10,15
+977,Open 3. Liga NO,2019-06-06,Mad Squid,MULe,15,7
+978,Open 3. Liga NO,2019-06-06,DJ Dahlem,EazyEastKoast,11,15
+979,Open 3. Liga NO,2019-06-06,Mitteldeutscher Rundflug,Mad Squid,9,15
+980,Open 3. Liga NO,2019-06-06,MULe,Schleudertrauma,15,0
+981,Open 3. Liga NO,2019-06-06,DJ Dahlem,Mad Squid,10,15
+982,Open 3. Liga NO,2019-06-06,EazyEastKoast,MULe,15,9
+983,Open 3. Liga NO,2019-06-06,Schleudertrauma,DJ Dahlem,0,15
+984,Open 3. Liga NO,2019-06-06,MULe,Mitteldeutscher Rundflug,12,15
+985,Open 3. Liga NO,2019-06-06,Mad Squid,Schleudertrauma,15,0
+986,Open 3. Liga NO,2019-06-06,Mitteldeutscher Rundflug,EazyEastKoast,9,15
+987,Open 3. Liga NO,2019-06-06,DJ Dahlem,Schleudertrauma,15,0
+988,Open 3. Liga NO,2019-06-06,Mad Squid,Mitteldeutscher Rundflug,15,6
+989,Open 3. Liga NO,2019-06-06,EazyEastKoast,MULe,15,10
+990,Open 3. Liga NO,2019-06-06,Mitteldeutscher Rundflug,EazyEastKoast,10,15
+991,Open 3. Liga NO,2019-06-06,MULe,DJ Dahlem,15,7
+992,Open 3. Liga NO,2019-06-06,Mad Squid,Schleudertrauma,15,0
+993,Open 3. Liga NO,2019-06-06,DJ Dahlem,Mitteldeutscher Rundflug,8,15
+994,Open 3. Liga NO,2019-06-06,MULe,Mad Squid,3,15
+995,Open 3. Liga NO,2019-06-06,Schleudertrauma,EazyEastKoast,0,15
+996,Open 3. Liga NO,2019-06-06,DJ Dahlem,Mad Squid,2,15
+997,Open 3. Liga NO,2019-06-06,Mitteldeutscher Rundflug,Schleudertrauma,15,0
+998,Open 3. Liga NO,2019-06-06,EazyEastKoast,DJ Dahlem,15,6
+999,Open 3. Liga NO,2019-06-06,Schleudertrauma,MULe,0,15
+1000,Open 3. Liga NO,2019-06-06,Mad Squid,EazyEastKoast,15,12
+1001,Open 3. Liga NO,2019-06-06,MULe,Mitteldeutscher Rundflug,15,10
+1002,Open 3. Liga Süd,2019-06-06,FrankPauli,Spice Boyz,11,15
+1003,Open 3. Liga Süd,2019-06-06,Sturm und Drang,Wer(f)wölfle,15,6
+1004,Open 3. Liga Süd,2019-06-06,Schwabing Frisbee Buam e.V.,Paradisco,7,15
+1005,Open 3. Liga Süd,2019-06-06,Wer(f)wölfle,Schwabing Frisbee Buam e.V.,13,15
+1006,Open 3. Liga Süd,2019-06-06,Paradisco,FrankPauli,15,5
+1007,Open 3. Liga Süd,2019-06-06,Sturm und Drang,Spice Boyz,15,3
+1008,Open 3. Liga Süd,2019-06-06,FrankPauli,Wer(f)wölfle,12,15
+1009,Open 3. Liga Süd,2019-06-06,Paradisco,Sturm und Drang,15,13
+1010,Open 3. Liga Süd,2019-06-06,Spice Boyz,Schwabing Frisbee Buam e.V.,7,15
+1011,Open 3. Liga Süd,2019-06-06,FrankPauli,Sturm und Drang,10,15
+1012,Open 3. Liga Süd,2019-06-06,Wer(f)wölfle,Spice Boyz,10,15
+1013,Open 3. Liga Süd,2019-06-06,Schwabing Frisbee Buam e.V.,FrankPauli,15,10
+1014,Open 3. Liga Süd,2019-06-06,Spice Boyz,Paradisco,4,15
+1015,Open 3. Liga Süd,2019-06-06,Sturm und Drang,Schwabing Frisbee Buam e.V.,15,8
+1016,Open 3. Liga Süd,2019-06-06,Paradisco,Wer(f)wölfle,15,5
+1017,Open 3. Liga Süd,2019-06-06,Schwabing Frisbee Buam e.V.,Spice Boyz,12,15
+1018,Open 3. Liga Süd,2019-06-06,Paradisco,FrankPauli,15,9
+1019,Open 3. Liga Süd,2019-06-06,Sturm und Drang,Wer(f)wölfle,15,9
+1020,Open 3. Liga Süd,2019-06-06,FrankPauli,Sturm und Drang,5,15
+1021,Open 3. Liga Süd,2019-06-06,Wer(f)wölfle,Schwabing Frisbee Buam e.V.,15,12
+1022,Open 3. Liga Süd,2019-06-06,Paradisco,Spice Boyz,15,9
+1023,Open 3. Liga Süd,2019-06-06,Schwabing Frisbee Buam e.V.,FrankPauli,15,11
+1024,Open 3. Liga Süd,2019-06-06,Wer(f)wölfle,Paradisco,15,13
+1025,Open 3. Liga Süd,2019-06-06,Spice Boyz,Sturm und Drang,5,15
+1026,Open 3. Liga Süd,2019-06-06,Schwabing Frisbee Buam e.V.,Paradisco,11,15
+1027,Open 3. Liga Süd,2019-06-06,FrankPauli,Spice Boyz,15,9
+1028,Open 3. Liga Süd,2019-06-06,Sturm und Drang,Schwabing Frisbee Buam e.V.,15,0
+1029,Open 3. Liga Süd,2019-06-06,Spice Boyz,Wer(f)wölfle,5,15
+1030,Open 3. Liga Süd,2019-06-06,Paradisco,Sturm und Drang,11,13
+1031,Open 3. Liga Süd,2019-06-06,Wer(f)wölfle,FrankPauli,13,9
+1032,Open Masters,2019-06-06,Heidees,Family Ultimate,15,12
+1033,Open Masters,2019-06-06,Goldfingers,"Frühsport 0,2",15,8
+1034,Open Masters,2019-06-06,Family Ultimate,Goldfingers,5,15
+1035,Open Masters,2019-06-06,Heidees,Sugar Daddies,15,8
+1036,Open Masters,2019-06-06,"Frühsport 0,2",Sugar Daddies,11,15
+1037,Open Masters,2019-06-06,Goldfingers,Heidees,15,10
+1038,Open Masters,2019-06-06,Family Ultimate,"Frühsport 0,2",15,14
+1039,Open Masters,2019-06-06,Sugar Daddies,Goldfingers,7,15
+1040,Open Masters,2019-06-06,Sugar Daddies,Family Ultimate,15,6
+1041,Open Masters,2019-06-06,"Frühsport 0,2",Heidees,12,15
+1042,Open Masters,2019-06-06,Goldfingers,Heidees,15,11
+1043,Open Grandmasters,2019-06-06,TeKielas,Wolpertinger GM,7,15
+1044,Open Grandmasters,2019-06-06,Feldrentner,NextGen Nürnberg,15,10
+1045,Open Grandmasters,2019-06-06,Wegwerfgesellschaft,Wolpertinger GM,6,15
+1046,Open Grandmasters,2019-06-06,NextGen Nürnberg,TeKielas,15,7
+1047,Open Grandmasters,2019-06-06,Wolpertinger GM,NextGen Nürnberg,15,14
+1048,Open Grandmasters,2019-06-06,Wegwerfgesellschaft,Feldrentner,10,15
+1049,Open Grandmasters,2019-06-06,NextGen Nürnberg,Wegwerfgesellschaft,15,10
+1050,Open Grandmasters,2019-06-06,Feldrentner,TeKielas,15,8
+1051,Open Grandmasters,2019-06-06,Wolpertinger GM,Feldrentner,7,15
+1052,Open Grandmasters,2019-06-06,TeKielas,Wegwerfgesellschaft,15,14
+1053,Open Grandmasters,2019-06-06,Feldrentner,Wolpertinger GM,15,7
+1054,DFV-Pokal Open,2019-08-15,M.U.C.,Hässliche Erdferkel,15,7
+1055,DFV-Pokal Open,2019-08-15,Frank N,7Schwaben,15,13
+1056,DFV-Pokal Open,2019-08-15,Frizzly Bears,2M.U.C.L,15,9
+1057,DFV-Pokal Open,2019-08-15,Hucks Ultimate Berlin,Kiel2,15,12
+1058,DFV-Pokal Open,2019-08-15,Bad Skid,Wall City,15,5
+1059,DFV-Pokal Open,2019-08-15,Family Ultimate,Heidees,13,15
+1060,DFV-Pokal Open,2019-08-15,Hardfisch,Disckick,15,8
+1061,DFV-Pokal Open,2019-08-15,Ars Ludendi,Funatics,15,8
+1062,DFV-Pokal Open,2019-08-15,M.U.C.,Frank N,15,10
+1063,DFV-Pokal Open,2019-08-15,7Schwaben,Hucks Ultimate Berlin,15,5
+1064,DFV-Pokal Open,2019-08-15,Frizzly Bears,Hässliche Erdferkel,15,13
+1065,DFV-Pokal Open,2019-08-15,2M.U.C.L,Kiel2,12,15
+1066,DFV-Pokal Open,2019-08-15,Bad Skid,Heidees,15,8
+1067,DFV-Pokal Open,2019-08-15,Family Ultimate,Ars Ludendi,15,10
+1068,DFV-Pokal Open,2019-08-15,Hardfisch,Wall City,15,14
+1069,DFV-Pokal Open,2019-08-15,Disckick,Funatics,15,9
+1070,DFV-Pokal Open,2019-08-15,Bad Skid,Frizzly Bears,15,4
+1071,DFV-Pokal Open,2019-08-15,Frank N,Family Ultimate,13,15
+1072,DFV-Pokal Open,2019-08-15,M.U.C.,Hardfisch,15,14
+1073,DFV-Pokal Open,2019-08-15,Heidees,7Schwaben,9,15
+1074,DFV-Pokal Open,2019-08-15,Bad Skid,Family Ultimate,15,8
+1075,DFV-Pokal Open,2019-08-15,M.U.C.,7Schwaben,15,14
+1076,DFV-Pokal Open,2019-08-15,Frizzly Bears,Frank N,10,15
+1077,DFV-Pokal Open,2019-08-15,Hardfisch,Heidees,14,15
+1078,DFV-Pokal Open,2019-08-15,Family Ultimate,7Schwaben,9,15
+1079,DFV-Pokal Open,2019-08-15,Frank N,Heidees,10,15
+1080,DFV-Pokal Open,2019-08-15,Frizzly Bears,Hardfisch,8,15
+1081,DFV-Pokal Open,2019-08-15,Bad Skid,M.U.C.,15,8
+1082,DFV-Pokal Open,2019-08-15,Hässliche Erdferkel,Funatics,15,14
+1083,DFV-Pokal Open,2019-08-15,Ars Ludendi,Kiel2,15,8
+1084,DFV-Pokal Open,2019-08-15,Wall City,2M.U.C.L,15,7
+1085,DFV-Pokal Open,2019-08-15,Hucks Ultimate Berlin,Disckick,10,15
+1086,DFV-Pokal Open,2019-08-15,Hässliche Erdferkel,Ars Ludendi,12,15
+1087,DFV-Pokal Open,2019-08-15,Wall City,Disckick,15,12
+1088,DFV-Pokal Open,2019-08-15,Funatics,Kiel2,11,15
+1089,DFV-Pokal Open,2019-08-15,2M.U.C.L,Hucks Ultimate Berlin,8,15
+1090,DFV-Pokal Open,2019-08-15,Ars Ludendi,Wall City,6,15
+1091,DFV-Pokal Open,2019-08-15,Hässliche Erdferkel,Disckick,9,15
+1092,DFV-Pokal Open,2019-08-15,Kiel2,Hucks Ultimate Berlin,13,15
+1093,DFV-Pokal Open,2019-08-15,Funatics,2M.U.C.L,10,15
+1094,Tom's Tourney 2019,2019-05-05,Mooncatchers,Mosquitos,9,11
+1095,Tom's Tourney 2019,2019-05-05,Solebang,Ars Ludendi,10,8
+1096,Tom's Tourney 2019,2019-05-05,Ah Ouh Puc,Glory Owls,10,7
+1097,Tom's Tourney 2019,2019-05-05,Frizzly Bears,Boys R Us,11,10
+1098,Tom's Tourney 2019,2019-05-05,Germany U20 Open,Frizstyle,9,10
+1099,Tom's Tourney 2019,2019-05-05,Belgium U20,Cota Viet,6,10
+1100,Tom's Tourney 2019,2019-05-05,GOLD,Uproar,14,5
+1101,Tom's Tourney 2019,2019-05-05,Panthers Bern,Goldfingers,10,9
+1102,Tom's Tourney 2019,2019-05-05,Chevron Action Flash,Cotarica Grandes,11,8
+1103,Tom's Tourney 2019,2019-05-05,Craic Dealers 2.0,New Age,10,9
+1104,Tom's Tourney 2019,2019-05-05,CUSB La Fotta51,Heidees,11,6
+1105,Tom's Tourney 2019,2019-05-05,Iznogood,Flump,15,4
+1106,Tom's Tourney 2019,2019-05-05,GB U24 Men,Amsterdam U.C. Open,9,8
+1107,Tom's Tourney 2019,2019-05-05,Cusb Red Bulls,Raging Bananas,13,6
+1108,Tom's Tourney 2019,2019-05-05,Tchac,Fire of London,12,6
+1109,Tom's Tourney 2019,2019-05-05,Belgium Open,Ka-Pow!,15,9
+1110,Tom's Tourney 2019,2019-05-05,Belgium U24 Open,Alba,13,7
+1111,Tom's Tourney 2019,2019-05-05,Ragnarok,Friselis,10,9
+1112,Tom's Tourney 2019,2019-05-05,Freespeed,Rebel Ultimate,14,10
+1113,Tom's Tourney 2019,2019-05-05,Devon Ultimate,Wall City,12,11
+1114,Tom's Tourney 2019,2019-05-05,Germany U20 Open,Blue Arse Flies,12,8
+1115,Tom's Tourney 2019,2019-05-05,Belgium U20,Frizstyle,6,11
+1116,Tom's Tourney 2019,2019-05-05,GOLD,AtomSwift,10,9
+1117,Tom's Tourney 2019,2019-05-05,Panthers Bern,Uproar,13,5
+1118,Tom's Tourney 2019,2019-05-05,Mooncatchers,SUN,10,11
+1119,Tom's Tourney 2019,2019-05-05,Solebang,Mosquitos,13,10
+1120,Tom's Tourney 2019,2019-05-05,Ah Ouh Puc,Hardfisch,12,11
+1121,Tom's Tourney 2019,2019-05-05,Frizzly Bears,Glory Owls,12,7
+1122,Tom's Tourney 2019,2019-05-05,Chevron Action Flash,New Age,10,7
+1123,Tom's Tourney 2019,2019-05-05,Craic Dealers 2.0,Cotarica Grandes,9,11
+1124,Tom's Tourney 2019,2019-05-05,CUSB La Fotta51,Flump,10,8
+1125,Tom's Tourney 2019,2019-05-05,Iznogood,Heidees,13,8
+1126,Tom's Tourney 2019,2019-05-05,Tchac,Ka-Pow!,9,10
+1127,Tom's Tourney 2019,2019-05-05,Belgium Open,Fire of London,13,6
+1128,Tom's Tourney 2019,2019-05-05,GB U24 Men,Raging Bananas,10,9
+1129,Tom's Tourney 2019,2019-05-05,Cusb Red Bulls,Amsterdam U.C. Open,11,8
+1130,Tom's Tourney 2019,2019-05-05,Freespeed,Wall City,10,9
+1131,Tom's Tourney 2019,2019-05-05,Devon Ultimate,Rebel Ultimate,8,11
+1132,Tom's Tourney 2019,2019-05-05,Belgium U24 Open,Friselis,12,7
+1133,Tom's Tourney 2019,2019-05-05,Ragnarok,Alba,6,12
+1134,Tom's Tourney 2019,2019-05-05,Mooncatchers,Ars Ludendi,7,9
+1135,Tom's Tourney 2019,2019-05-05,SUN,Mosquitos,13,11
+1136,Tom's Tourney 2019,2019-05-05,Ah Ouh Puc,Boys R Us,12,10
+1137,Tom's Tourney 2019,2019-05-05,Hardfisch,Glory Owls,14,8
+1138,Tom's Tourney 2019,2019-05-05,GOLD,Goldfingers,10,9
+1139,Tom's Tourney 2019,2019-05-05,AtomSwift,Uproar,9,8
+1140,Tom's Tourney 2019,2019-05-05,Germany U20 Open,Cota Viet,12,10
+1141,Tom's Tourney 2019,2019-05-05,Blue Arse Flies,Frizstyle,7,12
+1142,Tom's Tourney 2019,2019-05-05,Chevron Action Flash,Craic Dealers 2.0,10,9
+1143,Tom's Tourney 2019,2019-05-05,Cotarica Grandes,New Age,11,10
+1144,Tom's Tourney 2019,2019-05-05,Belgium U24 Open,Ragnarok,11,12
+1145,Tom's Tourney 2019,2019-05-05,Alba,Friselis,13,8
+1146,Tom's Tourney 2019,2019-05-05,CUSB La Fotta51,Iznogood,10,5
+1147,Tom's Tourney 2019,2019-05-05,Heidees,Flump,10,9
+1148,Tom's Tourney 2019,2019-05-05,Freespeed,Devon Ultimate,10,11
+1149,Tom's Tourney 2019,2019-05-05,Rebel Ultimate,Wall City,9,10
+1150,Tom's Tourney 2019,2019-05-05,GB U24 Men,Cusb Red Bulls,9,11
+1151,Tom's Tourney 2019,2019-05-05,Amsterdam U.C. Open,Raging Bananas,15,6
+1152,Tom's Tourney 2019,2019-05-05,Tchac,Belgium Open,12,11
+1153,Tom's Tourney 2019,2019-05-05,Fire of London,Ka-Pow!,5,10
+1154,Tom's Tourney 2019,2019-05-05,Belgium U20,Blue Arse Flies,14,5
+1155,Tom's Tourney 2019,2019-05-05,Cota Viet,Frizstyle,11,9
+1156,Tom's Tourney 2019,2019-05-05,Solebang,SUN,11,9
+1157,Tom's Tourney 2019,2019-05-05,Ars Ludendi,Mosquitos,15,5
+1158,Tom's Tourney 2019,2019-05-05,Frizzly Bears,Hardfisch,13,12
+1159,Tom's Tourney 2019,2019-05-05,Boys R Us,Glory Owls,10,8
+1160,Tom's Tourney 2019,2019-05-05,Panthers Bern,AtomSwift,9,11
+1161,Tom's Tourney 2019,2019-05-05,Goldfingers,Uproar,11,10
+1162,Tom's Tourney 2019,2019-05-05,Chevron Action Flash,GB U24 Men,8,7
+1163,Tom's Tourney 2019,2019-05-05,Tchac,Wall City,8,9
+1164,Tom's Tourney 2019,2019-05-05,CUSB La Fotta51,Freespeed,7,8
+1165,Tom's Tourney 2019,2019-05-05,Alba,Amsterdam U.C. Open,12,7
+1166,Tom's Tourney 2019,2019-05-05,Devon Ultimate,Iznogood,8,9
+1167,Tom's Tourney 2019,2019-05-05,Belgium U24 Open,Ka-Pow!,10,7
+1168,Tom's Tourney 2019,2019-05-05,Cusb Red Bulls,Cotarica Grandes,10,8
+1169,Tom's Tourney 2019,2019-05-05,Belgium Open,Ragnarok,10,7
+1170,Tom's Tourney 2019,2019-05-05,Craic Dealers 2.0,Rebel Ultimate,8,13
+1171,Tom's Tourney 2019,2019-05-05,Friselis,Flump,13,5
+1172,Tom's Tourney 2019,2019-05-05,Heidees,Raging Bananas,7,9
+1173,Tom's Tourney 2019,2019-05-05,Fire of London,New Age,6,12
+1174,Tom's Tourney 2019,2019-05-05,Germany U20 Open,Belgium U20,9,8
+1175,Tom's Tourney 2019,2019-05-05,SUN,Ars Ludendi,6,11
+1176,Tom's Tourney 2019,2019-05-05,Ah Ouh Puc,Frizzly Bears,8,5
+1177,Tom's Tourney 2019,2019-05-05,Hardfisch,Boys R Us,9,6
+1178,Tom's Tourney 2019,2019-05-05,Mooncatchers,Solebang,7,10
+1179,Tom's Tourney 2019,2019-05-05,Blue Arse Flies,Cota Viet,4,12
+1180,Tom's Tourney 2019,2019-05-05,GOLD,Panthers Bern,5,8
+1181,Tom's Tourney 2019,2019-05-05,AtomSwift,Goldfingers,5,12
+1182,Tom's Tourney 2019,2019-05-05,CUSB La Fotta51,Amsterdam U.C. Open,11,6
+1183,Tom's Tourney 2019,2019-05-05,Alba,Freespeed,5,7
+1184,Tom's Tourney 2019,2019-05-05,Chevron Action Flash,Wall City,11,7
+1185,Tom's Tourney 2019,2019-05-05,Tchac,GB U24 Men,12,8
+1186,Tom's Tourney 2019,2019-05-05,Devon Ultimate,Ka-Pow!,8,7
+1187,Tom's Tourney 2019,2019-05-05,Belgium U24 Open,Iznogood,8,7
+1188,Tom's Tourney 2019,2019-05-05,Cusb Red Bulls,Ragnarok,12,6
+1189,Tom's Tourney 2019,2019-05-05,Belgium Open,Cotarica Grandes,9,10
+1190,Tom's Tourney 2019,2019-05-05,Solebang,GOLD,6,7
+1191,Tom's Tourney 2019,2019-05-05,Panthers Bern,Ars Ludendi,8,9
+1192,Tom's Tourney 2019,2019-05-05,Craic Dealers 2.0,Flump,11,9
+1193,Tom's Tourney 2019,2019-05-05,Friselis,Rebel Ultimate,8,9
+1194,Tom's Tourney 2019,2019-05-05,Heidees,New Age,2,13
+1195,Tom's Tourney 2019,2019-05-05,Fire of London,Raging Bananas,6,10
+1196,Tom's Tourney 2019,2019-05-05,Ah Ouh Puc,Cota Viet,5,7
+1197,Tom's Tourney 2019,2019-05-05,Germany U20 Open,Frizzly Bears,4,5
+1198,Tom's Tourney 2019,2019-05-05,SUN,AtomSwift,14,4
+1199,Tom's Tourney 2019,2019-05-05,Goldfingers,Mosquitos,10,4
+1200,Tom's Tourney 2019,2019-05-05,Hardfisch,Belgium U20,7,6
+1201,Tom's Tourney 2019,2019-05-05,Frizstyle,Boys R Us,8,4
+1202,Tom's Tourney 2019,2019-05-05,Uproar,Mooncatchers,8,10
+1203,Tom's Tourney 2019,2019-05-05,Blue Arse Flies,Glory Owls,9,8
+1204,Tom's Tourney 2019,2019-05-05,Cusb Red Bulls,Belgium Open,9,7
+1205,Tom's Tourney 2019,2019-05-05,Cotarica Grandes,Ragnarok,9,6
+1206,Tom's Tourney 2019,2019-05-05,Chevron Action Flash,Tchac,10,9
+1207,Tom's Tourney 2019,2019-05-05,GB U24 Men,Wall City,5,9
+1208,Tom's Tourney 2019,2019-05-05,CUSB La Fotta51,Alba,9,7
+1209,Tom's Tourney 2019,2019-05-05,Freespeed,Amsterdam U.C. Open,9,8
+1210,Tom's Tourney 2019,2019-05-05,Devon Ultimate,Belgium U24 Open,9,10
+1211,Tom's Tourney 2019,2019-05-05,Iznogood,Ka-Pow!,11,7
+1212,Tom's Tourney 2019,2019-05-05,Craic Dealers 2.0,Friselis,7,8
+1213,Tom's Tourney 2019,2019-05-05,Rebel Ultimate,Flump,10,3
+1214,Tom's Tourney 2019,2019-05-05,Heidees,Fire of London,3,6
+1215,Tom's Tourney 2019,2019-05-05,Raging Bananas,New Age,4,13
+1216,Tom's Tourney 2019,2019-05-05,Solebang,Panthers Bern,7,8
+1217,Tom's Tourney 2019,2019-05-05,GOLD,Ars Ludendi,9,8
+1218,Tom's Tourney 2019,2019-05-05,Ah Ouh Puc,Germany U20 Open,6,5
+1219,Tom's Tourney 2019,2019-05-05,Cota Viet,Frizzly Bears,7,6
+1220,Tom's Tourney 2019,2019-05-05,SUN,Goldfingers,6,7
+1221,Tom's Tourney 2019,2019-05-05,AtomSwift,Mosquitos,4,7
+1222,Tom's Tourney 2019,2019-05-05,Hardfisch,Frizstyle,12,7
+1223,Tom's Tourney 2019,2019-05-05,Belgium U20,Boys R Us,11,5
+1224,Tom's Tourney 2019,2019-05-05,Uproar,Glory Owls,11,9
+1225,Tom's Tourney 2019,2019-05-05,Blue Arse Flies,Mooncatchers,3,10
+1226,Tom's Tourney 2019,2019-05-05,Chevron Action Flash,CUSB La Fotta51,10,9
+1227,Tom's Tourney 2019,2019-05-05,Freespeed,Wall City,8,6
+1228,Tom's Tourney 2019,2019-05-05,Cusb Red Bulls,Iznogood,4,6
+1229,Tom's Tourney 2019,2019-05-05,Belgium U24 Open,Cotarica Grandes,11,5
+1230,Tom's Tourney 2019,2019-05-05,Tchac,Amsterdam U.C. Open,8,7
+1231,Tom's Tourney 2019,2019-05-05,Alba,GB U24 Men,8,7
+1232,Tom's Tourney 2019,2019-05-05,Belgium Open,Ka-Pow!,10,6
+1233,Tom's Tourney 2019,2019-05-05,Devon Ultimate,Ragnarok,9,5
+1234,Tom's Tourney 2019,2019-05-05,Rebel Ultimate,Heidees,10,9
+1235,Tom's Tourney 2019,2019-05-05,New Age,Flump,11,7
+1236,Tom's Tourney 2019,2019-05-05,Raging Bananas,Craic Dealers 2.0,4,10
+1237,Tom's Tourney 2019,2019-05-05,Friselis,Fire of London,6,4
+1238,Tom's Tourney 2019,2019-05-05,Uproar,Blue Arse Flies,10,8
+1239,Tom's Tourney 2019,2019-05-05,Glory Owls,Mooncatchers,10,6
+1240,Tom's Tourney 2019,2019-05-05,Panthers Bern,Germany U20 Open,10,6
+1241,Tom's Tourney 2019,2019-05-05,GOLD,Frizzly Bears,7,8
+1242,Tom's Tourney 2019,2019-05-05,Solebang,Ah Ouh Puc,0,7
+1243,Tom's Tourney 2019,2019-05-05,Ars Ludendi,Cota Viet,7,8
+1244,Tom's Tourney 2019,2019-05-05,Goldfingers,Boys R Us,10,8
+1245,Tom's Tourney 2019,2019-05-05,SUN,Belgium U20,6,8
+1246,Tom's Tourney 2019,2019-05-05,Mosquitos,Frizstyle,5,9
+1247,Tom's Tourney 2019,2019-05-05,AtomSwift,Hardfisch,5,6
+1248,Tom's Tourney 2019,2019-05-05,Boys R Us,Mosquitos,6,12
+1249,Tom's Tourney 2019,2019-05-05,SUN,AtomSwift,8,11
+1250,Tom's Tourney 2019,2019-05-05,Mooncatchers,Glory Owls,10,5
+1251,Tom's Tourney 2019,2019-05-05,Uproar,Blue Arse Flies,4,11
+1252,Tom's Tourney 2019,2019-05-05,Freespeed,Belgium U24 Open,10,8
+1253,Tom's Tourney 2019,2019-05-05,Panthers Bern,Ah Ouh Puc,4,9
+1254,Tom's Tourney 2019,2019-05-05,Frizzly Bears,Cota Viet,9,11
+1255,Tom's Tourney 2019,2019-05-05,Germany U20 Open,Solebang,10,4
+1256,Tom's Tourney 2019,2019-05-05,GOLD,Ars Ludendi,11,7
+1257,Tom's Tourney 2019,2019-05-05,Goldfingers,Frizstyle,10,8
+1258,Tom's Tourney 2019,2019-05-05,Belgium U20,Hardfisch,10,9
+1259,Tom's Tourney 2019,2019-05-05,GB U24 Men,Ragnarok,7,8
+1260,Tom's Tourney 2019,2019-05-05,Rebel Ultimate,Craic Dealers 2.0,11,10
+1261,Tom's Tourney 2019,2019-05-05,New Age,Friselis,10,5
+1262,Tom's Tourney 2019,2019-05-05,Heidees,Raging Bananas,3,7
+1263,Tom's Tourney 2019,2019-05-05,Flump,Fire of London,5,10
+1264,Tom's Tourney 2019,2019-05-05,Chevron Action Flash,Iznogood,9,6
+1265,Tom's Tourney 2019,2019-05-05,CUSB La Fotta51,Cusb Red Bulls,8,5
+1266,Tom's Tourney 2019,2019-05-05,Wall City,Cotarica Grandes,8,5
+1267,Tom's Tourney 2019,2019-05-05,Tchac,Belgium Open,9,10
+1268,Tom's Tourney 2019,2019-05-05,Alba,Devon Ultimate,9,7
+1269,Tom's Tourney 2019,2019-05-05,Amsterdam U.C. Open,Ka-Pow!,7,9
+1270,Tom's Tourney 2019,2019-05-05,Mooncatchers,Blue Arse Flies,6,3
+1271,Tom's Tourney 2019,2019-05-05,Glory Owls,Uproar,7,8
+1272,Tom's Tourney 2019,2019-05-05,Panthers Bern,Frizzly Bears,10,7
+1273,Tom's Tourney 2019,2019-05-05,Germany U20 Open,GOLD,10,9
+1274,Tom's Tourney 2019,2019-05-05,Solebang,Ars Ludendi,6,8
+1275,Tom's Tourney 2019,2019-05-05,Goldfingers,Belgium U20,7,9
+1276,Tom's Tourney 2019,2019-05-05,Frizstyle,Hardfisch,10,9
+1277,Tom's Tourney 2019,2019-05-05,Mosquitos,AtomSwift,8,4
+1278,Tom's Tourney 2019,2019-05-05,Boys R Us,SUN,4,6
+1279,Tom's Tourney 2019,2019-05-05,Heidees,Flump,9,7
+1280,Tom's Tourney 2019,2019-05-05,Ah Ouh Puc,Cota Viet,11,10
+1281,Tom's Tourney 2019,2019-05-05,Iznogood,Belgium U24 Open,4,8
+1282,Tom's Tourney 2019,2019-05-05,CUSB La Fotta51,Wall City,10,5
+1283,Tom's Tourney 2019,2019-05-05,Cusb Red Bulls,Cotarica Grandes,1,0
+1284,Tom's Tourney 2019,2019-05-05,Belgium Open,Alba,7,10
+1285,Tom's Tourney 2019,2019-05-05,Tchac,Devon Ultimate,8,10
+1286,Tom's Tourney 2019,2019-05-05,Ka-Pow!,Ragnarok,5,9
+1287,Tom's Tourney 2019,2019-05-05,Amsterdam U.C. Open,GB U24 Men,7,8
+1288,Tom's Tourney 2019,2019-05-05,Rebel Ultimate,New Age,7,12
+1289,Tom's Tourney 2019,2019-05-05,Craic Dealers 2.0,Friselis,10,7
+1290,Tom's Tourney 2019,2019-05-05,Raging Bananas,Fire of London,9,8
+1291,Tom's Tourney 2019,2019-05-05,Chevron Action Flash,Freespeed,15,8
+1292,Tom's Tourney 2019,2019-05-05,Solebang,Ars Ludendi,10,8
+1293,Tom's Tourney 2019,2019-05-05,Panthers Bern,GOLD,8,5
+1294,Tom's Tourney 2019,2019-05-05,Ah Ouh Puc,Frizzly Bears,8,5
+1295,Tom's Tourney 2019,2019-05-05,Germany U20 Open,Cota Viet,12,10
+1296,Tom's Tourney 2019,2019-05-05,SUN,Mosquitos,13,11
+1297,Tom's Tourney 2019,2019-05-05,Goldfingers,AtomSwift,12,5
+1298,Tom's Tourney 2019,2019-05-05,Hardfisch,Boys R Us,8,6
+1299,Tom's Tourney 2019,2019-05-05,Frizstyle,Belgium U20,11,6
+1300,Vienna Spring Break 2019,2019-05-14,Yellow Block open,INNsiders Open,12,9
+1301,Vienna Spring Break 2019,2019-05-14,Cusb Red Bulls,Brighton Open,2,15
+1302,Vienna Spring Break 2019,2019-05-14,FUJ,Ka-Pow!,14,8
+1303,Vienna Spring Break 2019,2019-05-14,FWD>>,Hardfisch,15,11
+1304,Vienna Spring Break 2019,2019-05-14,M.U.C.,Catchup Graz,14,12
+1305,Vienna Spring Break 2019,2019-05-14,Prague Devils,LOL,15,8
+1306,Vienna Spring Break 2019,2019-05-14,Flying Angels Bern,thebigEZ,13,4
+1307,Vienna Spring Break 2019,2019-05-14,7Schwaben,Cosmo Men,15,11
+1308,Vienna Spring Break 2019,2019-05-14,Yellow Block open,Cusb Red Bulls,15,1
+1309,Vienna Spring Break 2019,2019-05-14,INNsiders Open,Brighton Open,8,10
+1310,Vienna Spring Break 2019,2019-05-14,FUJ,FWD>>,13,10
+1311,Vienna Spring Break 2019,2019-05-14,Ka-Pow!,Hardfisch,13,9
+1312,Vienna Spring Break 2019,2019-05-14,M.U.C.,Prague Devils,9,10
+1313,Vienna Spring Break 2019,2019-05-14,Catchup Graz,LOL,15,9
+1314,Vienna Spring Break 2019,2019-05-14,Flying Angels Bern,7Schwaben,8,12
+1315,Vienna Spring Break 2019,2019-05-14,thebigEZ,Cosmo Men,7,11
+1316,Vienna Spring Break 2019,2019-05-14,Yellow Block open,Brighton Open,8,9
+1317,Vienna Spring Break 2019,2019-05-14,CUSB Red Bulls,INNsiders Open,4,15
+1318,Vienna Spring Break 2019,2019-05-14,FUJ,Hardfisch,15,6
+1319,Vienna Spring Break 2019,2019-05-14,FWD>>,Ka-Pow!,15,8
+1320,Vienna Spring Break 2019,2019-05-14,M.U.C.,LOL,15,8
+1321,Vienna Spring Break 2019,2019-05-14,Prague Devils,Catchup Graz,11,10
+1322,Vienna Spring Break 2019,2019-05-14,Flying Angels Bern,Cosmo Men,14,8
+1323,Vienna Spring Break 2019,2019-05-14,7Schwaben,thebigEZ,14,8
+1324,Vienna Spring Break 2019,2019-05-14,Brighton Open,FWD>>,13,12
+1325,Vienna Spring Break 2019,2019-05-14,FUJ,Yellow Block open,15,8
+1326,Vienna Spring Break 2019,2019-05-14,Prague Devils,Flying Angels Bern,10,15
+1327,Vienna Spring Break 2019,2019-05-14,7Schwaben,M.U.C.,10,15
+1328,Vienna Spring Break 2019,2019-05-14,INNsiders Open,Hardfisch,15,9
+1329,Vienna Spring Break 2019,2019-05-14,Ka-Pow!,CUSB Red Bulls,15,5
+1330,Vienna Spring Break 2019,2019-05-14,Catchup Graz,thebigEZ,14,12
+1331,Vienna Spring Break 2019,2019-05-14,Cosmo Men,LOL,15,10
+1332,Vienna Spring Break 2019,2019-05-14,Brighton Open,M.U.C.,6,14
+1333,Vienna Spring Break 2019,2019-05-14,FUJ,Flying Angels Bern,11,15
+1334,Vienna Spring Break 2019,2019-05-14,FWD>>,7Schwaben,12,13
+1335,Vienna Spring Break 2019,2019-05-14,Yellow Block open,Prague Devils,13,10
+1336,Vienna Spring Break 2019,2019-05-14,INNsiders Open,Cosmo Men,15,6
+1337,Vienna Spring Break 2019,2019-05-14,Ka-Pow!,Catchup Graz,14,15
+1338,Vienna Spring Break 2019,2019-05-14,Hardfisch,LOL,15,10
+1339,Vienna Spring Break 2019,2019-05-14,CUSB Red Bulls,thebigEZ,1,15
+1340,Vienna Spring Break 2019,2019-05-14,Brighton Open,FUJ,9,15
+1341,Vienna Spring Break 2019,2019-05-14,7Schwaben,Yellow Block open,15,13
+1342,Vienna Spring Break 2019,2019-05-14,FWD>>,Prague Devils,15,9
+1343,Vienna Spring Break 2019,2019-05-14,INNsiders Open,Catchup Graz,12,15
+1344,Vienna Spring Break 2019,2019-05-14,Cosmo Men,Ka-Pow!,12,15
+1345,Vienna Spring Break 2019,2019-05-14,Hardfisch,thebigEZ,11,15
+1346,Vienna Spring Break 2019,2019-05-14,LOL,CUSB Red Bulls,15,3
+1347,Vienna Spring Break 2019,2019-05-14,M.U.C.,Flying Angels Bern,14,11
+1348,French Champ Open 1,2019-06-08,Tchac,Raging Bananas,15,10
+1349,French Champ Open 1,2019-06-08,Tchac,Freezgo Uno,15,5
+1350,French Champ Open 1,2019-06-08,Tchac,Magic Disc,15,9
+1351,French Champ Open 1,2019-06-08,Tchac,33 Tours,15,12
+1352,French Champ Open 1,2019-06-08,Tchac,BTRex,15,9
+1353,French Champ Open 1,2019-06-08,Raging Bananas,Freezgo Uno,15,7
+1354,French Champ Open 1,2019-06-08,Raging Bananas,Magic Disc,12,11
+1355,French Champ Open 1,2019-06-08,Raging Bananas,33 Tours,14,15
+1356,French Champ Open 1,2019-06-08,Raging Bananas,BTRex,15,9
+1357,French Champ Open 1,2019-06-08,Freezgo Uno,Magic Disc,4,15
+1358,French Champ Open 1,2019-06-08,Freezgo Uno,33 Tours,10,15
+1359,French Champ Open 1,2019-06-08,Freezgo Uno,BTRex,8,15
+1360,French Champ Open 1,2019-06-08,Magic Disc,33 Tours,12,15
+1361,French Champ Open 1,2019-06-08,Magic Disc,BTRex,15,9
+1362,French Champ Open 1,2019-06-08,33 Tours,BTRex,15,10
+1363,French Champ Open 1,2019-06-08,Iznogood,Discobols,15,8
+1364,French Champ Open 1,2019-06-08,Iznogood,Friselis,15,8
+1365,French Champ Open 1,2019-06-08,Iznogood,Ah Ouh Puc,15,12
+1366,French Champ Open 1,2019-06-08,Iznogood,Tourne-Disc,15,9
+1367,French Champ Open 1,2019-06-08,Iznogood,Sun,15,9
+1368,French Champ Open 1,2019-06-08,Discobols,Friselis,9,15
+1369,French Champ Open 1,2019-06-08,Discobols,Ah Ouh Puc,13,15
+1370,French Champ Open 1,2019-06-08,Discobols,Tourne-Disc,8,15
+1371,French Champ Open 1,2019-06-08,Discobols,Sun,15,9
+1372,French Champ Open 1,2019-06-08,Friselis,Ah Ouh Puc,15,3
+1373,French Champ Open 1,2019-06-08,Friselis,Tourne-Disc,14,11
+1374,French Champ Open 1,2019-06-08,Friselis,Sun,15,9
+1375,French Champ Open 1,2019-06-08,Ah Ouh Puc,Tourne-Disc,15,8
+1376,French Champ Open 1,2019-06-08,Ah Ouh Puc,Sun,15,12
+1377,French Champ Open 1,2019-06-08,Tourne-Disc,Sun,12,15
+1378,French Champ Open 1,2019-06-08,Tchac,Iznogood,15,11
+1379,French Champ Open 1,2019-06-08,Tchac,33 Tours,15,5
+1380,French Champ Open 1,2019-06-08,Tchac,Friselis,15,10
+1381,French Champ Open 1,2019-06-08,Tchac,Raging Bananas,15,10
+1382,French Champ Open 1,2019-06-08,Tchac,Ah Ouh Puc,15,10
+1383,French Champ Open 1,2019-06-08,Iznogood,33 Tours,15,13
+1384,French Champ Open 1,2019-06-08,Iznogood,Friselis,15,7
+1385,French Champ Open 1,2019-06-08,Iznogood,Raging Bananas,15,9
+1386,French Champ Open 1,2019-06-08,Iznogood,Ah Ouh Puc,15,9
+1387,French Champ Open 1,2019-06-08,33 Tours,Friselis,11,15
+1388,French Champ Open 1,2019-06-08,34 Tours,Raging Bananas,11,15
+1389,French Champ Open 1,2019-06-08,35 Tours,Ah Ouh Puc,14,15
+1390,French Champ Open 1,2019-06-08,Friselis,Raging Bananas,15,10
+1391,French Champ Open 1,2019-06-08,Friselis,Ah Ouh Puc,15,7
+1392,French Champ Open 1,2019-06-08,Raging Bananas,Ah Ouh Puc,11,15
+1393,French Champ Open 1,2019-06-08,Magic Disc,Tourne-Disc,15,8
+1394,French Champ Open 1,2019-06-08,Magic Disc,BTRex,15,9
+1395,French Champ Open 1,2019-06-08,Magic Disc,Discobols,11,15
+1396,French Champ Open 1,2019-06-08,Magic Disc,Freezgo Uno,12,15
+1397,French Champ Open 1,2019-06-08,Magic Disc,Sun,15,14
+1398,French Champ Open 1,2019-06-08,Tourne-Disc,BTRex,15,13
+1399,French Champ Open 1,2019-06-08,Tourne-Disc,Discobols,5,15
+1400,French Champ Open 1,2019-06-08,Tourne-Disc,Freezgo Uno,10,13
+1401,French Champ Open 1,2019-06-08,Tourne-Disc,Sun,8,15
+1402,French Champ Open 1,2019-06-08,BTRex,Discobols,14,15
+1403,French Champ Open 1,2019-06-08,BTRex,Freezgo Uno,12,15
+1404,French Champ Open 1,2019-06-08,BTRex,Sun,15,9
+1405,French Champ Open 1,2019-06-08,Discobols,Freezgo Uno,8,15
+1406,French Champ Open 1,2019-06-08,Discobols,Sun,15,12
+1407,French Champ Open 1,2019-06-08,Freezgo Uno,Sun,13,15
+1408,French Champ Open 1,2019-06-08,Tchac,Ah Ouh Puc,15,6
+1409,French Champ Open 1,2019-06-08,Iznogood,Friselis,13,9
+1410,French Champ Open 1,2019-06-08,Raging Bananas,Discobols,15,3
+1411,French Champ Open 1,2019-06-08,33 Tours,Freezgo Uno,15,9
+1412,French Champ Open 1,2019-06-08,Magic Disc,Tourne-Disc,15,8
+1413,French Champ Open 1,2019-06-08,Sun,BTRex,14,15
+1414,French Champ Open 1,2019-06-08,Tchac,Iznogood,9,15
+1415,French Champ Open 1,2019-06-08,Ah Ouh Puc,Friselis,15,11
+1416,French Champ Open 1,2019-06-08,Raging Bananas,33 Tours,15,14
+1417,French Champ Open 1,2019-06-08,Discobols,Freezgo Uno,11,15
+1418,French Champ Open 1,2019-06-08,Magic Disc,BTRex,15,9
+1419,French Champ Open 1,2019-06-08,Tourne-Disc,Sun,11,15

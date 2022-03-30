@@ -7,7 +7,10 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.offline import plot
 import plotly.express as px
+import os
+from pathlib import Path
 
+ROOT_DIR = Path(__file__).parent.parent
 
 # ----------
 
@@ -83,3 +86,26 @@ def plot_bar_race_chart(dict_summary, c_plot_list, fl, name):
                       plot_bgcolor='rgb(255, 255, 255)')
     fig.update_xaxes(visible=False)
     plot(fig, filename=fl)
+
+
+# ----------
+
+def plot_bar_race_fig(dataset, c_plot_list, filename=None, include_weekly=False):
+    """
+    Export to experimental visualization of the dataset progress (top 20 teams).
+    -----
+    Input:
+        c_plot_list - columns to plot (max 5-6)
+                      will be sorted by the first element
+        filename - filename to save, None -> will be saved in figures folder (make sure to create it)
+        include_weekly - whether to include also weekly summary
+    Output:
+        saved html figure
+    Examples:
+        dataset.plot_bar_race_fig(['W_Ratio', 'Games', 'W_Ratio', 'Opponent_W_Ratio'], include_weekly=True)
+    """
+    sfx = '-weekly' if include_weekly else ''
+    fl = os.path.join(ROOT_DIR, 'figures', 'fig-{}{}.html'.format(
+        dataset.name.lower().replace(' ', '-').replace('_', '-'), sfx)) if filename is None else filename
+    dict_plot = dataset.weekly_summary if include_weekly else {'All Games': dataset.summary}
+    plot_bar_race_chart(dict_plot, c_plot_list, fl, dataset.name)
