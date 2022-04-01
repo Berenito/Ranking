@@ -10,7 +10,7 @@ import scipy.optimize as optimize
 
 # -----
 
-def get_sigmoid_ratings(df_games):
+def get_sigmoid_ratings(df_games, max_score=15):
     """
     Sigmoid rating function.
     """
@@ -31,7 +31,7 @@ def get_sigmoid_ratings(df_games):
 
     def err(x):
         def sigmoid_function(x):
-            return 30*np.exp(-np.logaddexp(0, -x/100))-15
+            return (2*max_score)*np.exp(-np.logaddexp(0, -x/100))-max_score
 
         # Compute error as square diff between predicted score and actual score
         df_games['Error'] =  df_games.apply(lambda r: (sigmoid_function(x[r['Team_1_index']] - x[r['Team_2_index']]) - (r['Score_1'] - r['Score_2']) )**2, axis=1)
@@ -43,6 +43,6 @@ def get_sigmoid_ratings(df_games):
     rating = pd.Series(list(optimize.minimize(err, np.zeros(teams.size), method='Powell', tol=0.3).x), teamlist).sort_values(ascending=False)
 
     # pd.set_option('display.max_rows', None)
-    # print(rating)
+    print(rating)
 
     return rating
