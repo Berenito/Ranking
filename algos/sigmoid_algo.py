@@ -10,39 +10,39 @@ import scipy.optimize as optimize
 
 # -----
 
-def get_sigmoid_ratings(df_games, max_score=15):
+
+def sigmoid_function(x, max_score):
+    return (2*max_score)*np.exp(-np.logaddexp(0, -x/100))-max_score
+
+
+def obj_func(x, fcn, score_1, score_2, idx_1, idx_2, **kwargs):
+    """
+    Now you can just change fcn(x, **kwargs) to anything you define
+    """
+    resid = fcn(x[idx_1] - x[idx_2], **kwargs) - (score_1 - score_2)
+    rmse = np.sqrt(np.mean(resid**2))
+    print("  RMSE: {}".format(rmse))
+
+    return rmse
+
+
+def get_sigmoid_ratings(df_games, max_score=15, rating_start=0):
     """
     Sigmoid rating function.
     """
 
     # Preprocess team and game data
     teams = hf_d.get_teams_in_dataset(df_games)
-    teamlist =list(teams)
+    ind_teams = pd.Series(range(len(teams)), index=teams)
 
-    df_games = df_games.copy()
-
-    team_to_index = {}
-    index_to_team = {}
-    for i in range(teams.size):
-        team_to_index[teams.iloc[i]] = i
-        index_to_team[i] = teams.iloc[i]
-    df_games['Team_1_index'] = df_games['Team_1'].apply(lambda t: team_to_index[t])
-    df_games['Team_2_index'] = df_games['Team_2'].apply(lambda t: team_to_index[t])
-
-    def err(x):
-        def sigmoid_function(x):
-            return (2*max_score)*np.exp(-np.logaddexp(0, -x/100))-max_score
-
-        # Compute error as square diff between predicted score and actual score
-        df_games['Error'] =  df_games.apply(lambda r: (sigmoid_function(x[r['Team_1_index']] - x[r['Team_2_index']]) - (r['Score_1'] - r['Score_2']) )**2, axis=1)
-        total_error = sum(df_games['Error'])
-        print("  Total error: {}".format(total_error))
-        return total_error
+    score_1 = df_games["Score_1"].values
+    score_2 = df_games["Score_2"].values
+    team_1_index = ind_teams.reindex(df_games["Team_1"]).values
+    team_2_index = ind_teams.reindex(df_games["Team_2"]).values
 
     # Find team ratings that minimize the total error
-    rating = pd.Series(list(optimize.minimize(err, np.zeros(teams.size), method='Powell', tol=0.3).x), teamlist).sort_values(ascending=False)
+    fcn = lambda x: obj_func(x, sigmoid_function, score_1, score_2, team_1_index, team_2_index, max_score=max_score)
+    ratings_np = optimize.minimize(fcn, np.zeros(teams.size), method='Powell', tol=1e-3).x
+    ratings = pd.Series(ratings_np, index=teams).sort_values(ascending=False)
 
-    # pd.set_option('display.max_rows', None)
-    print(rating)
-
-    return rating
+    return ratings

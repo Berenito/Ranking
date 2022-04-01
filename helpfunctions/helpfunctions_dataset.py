@@ -68,7 +68,7 @@ def get_teams_in_dataset(df_games, date=None):
     if date is not None:
         df_games = df_games.loc[df_games['Date'] <= date]
     df_games_dupl = duplicate_games(df_games)
-    teams = pd.Series(df_games_dupl['Team_1'].unique()).rename('Team').sort_values()
+    teams = pd.Series(df_games_dupl['Team_1'].unique()).rename('Team').sort_values().reset_index(drop=True)
 
     return teams
 
