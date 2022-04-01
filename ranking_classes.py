@@ -2,12 +2,9 @@
 Definitions of classes used for EUF ranking system development.
 """
 
-import os
 import pandas as pd
 import numpy as np
 import helpfunctions.helpfunctions_dataset as hf_d
-import helpfunctions.helpfunctions_plotly as hf_p
-#import helpfunctions.helpfunctions_excel as hf_e
 import algos.rank_diff_functions as rdf
 import algos.game_weight_functions as gwf
 import algos.rank_fit_functions as rff
