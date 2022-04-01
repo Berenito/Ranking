@@ -13,6 +13,9 @@ division = 'Men'
 dataset_name = 'USAU_2021_{}'.format(division)
 dataset_path = 'data/games_usau_cody_2021_{}.csv'.format(division.lower())
 
+#dataset_path = 'data/test_data.csv'
+#dataset_name = 'Test_Data'
+
 usau_dataset = GamesDataset(dataset_path, dataset_name)
 
 # Apply Sigmoid Algo
