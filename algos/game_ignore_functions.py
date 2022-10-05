@@ -27,6 +27,8 @@ def get_ignored_games(opt, df_games, ratings, **kwargs):
         is_ignored = no_game_ignore_function(df_games)
     elif opt in ['usau', 'blowout', blowout_game_ignore_function]:
         is_ignored = blowout_game_ignore_function(df_games, ratings, **kwargs)
+    else:
+        raise ValueError("Unknown game-ignore option, see algos/game_ignore_functions.py for more info.")
 
     return is_ignored
 

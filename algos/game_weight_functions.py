@@ -27,6 +27,10 @@ def get_game_weight(opt, rw, **kwargs):
         # Use Monday as part of the previous week to resolve the issue of tournaments with some games played on Monday
         w_num = (datetime.datetime.strptime(rw['Date'], '%Y-%m-%d') - datetime.timedelta(days=1)).isocalendar()[1]
         game_wght = usau_game_weight_function(rw['Score_1'], rw['Score_2'], w_num, **kwargs)
+    elif opt in ['usau_no_date', usau_no_date_game_weight_function]:
+        game_wght = usau_no_date_game_weight_function(rw['Score_1'], rw['Score_2'])
+    else:
+        raise ValueError("Unknown game-weight option, see algos/game_weight_functions.py for more info.")
 
     return game_wght
 
@@ -56,5 +60,17 @@ def usau_game_weight_function(score_w, score_l, w_num, w0=0.5, w_first=24, w_las
     else:
         date_wght = w0 * ((1 / w0) ** (1 / (w_last - w_first))) ** (w_num - w_first)
     game_wght = score_wght * date_wght
+
+    return game_wght
+
+
+# ----------
+
+def usau_no_date_game_weight_function(score_w, score_l):
+    """
+    USAU game-weight function, source https://play.usaultimate.org/teams/events/rankings/.
+    Without date-weight component.
+    """
+    game_wght = np.min([1, np.sqrt((score_w + np.max([score_l, np.floor(0.5 * (score_w - 1))])) / 19)])
 
     return game_wght
