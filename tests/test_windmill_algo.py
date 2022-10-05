@@ -87,3 +87,5 @@ for tournament_name, tournament_id in tournament_id_dict.items():
                                      'RMSE_Windmill_Algo_Iter': rmse_windmill_algo_iter,
                                      'Diff_Max_Orig': diff_max_orig, 'Diff_Max_Iter': diff_max_iter}))
 df_check = pd.concat(check_list, axis=1).T
+assert df_check.loc[df_check["Round"] != 2, ["Diff_Max_Orig", "Diff_Max_Iter"]].max().max() == 0
+assert df_check.loc[df_check["Round"] == 2, ["Diff_Max_Orig", "Diff_Max_Iter"]].max().max() < 0.011
