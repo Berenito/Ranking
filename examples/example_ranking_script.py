@@ -2,7 +2,7 @@
 Example to show the intended usage of the implemented GamesDataset and RankingAlgorithm classes.
 """
 
-from ranking_classes import GamesDataset, RankingAlgorithm
+from ranking_classes import GamesDataset, RankingAlgorithm, ROOT_DIR
 from algos.usau_algo import get_usau_ratings
 from algos.example_algo import get_example_ratings
 
@@ -12,7 +12,7 @@ weekly_ratings = False
 
 # Prepare dataset
 dataset_name = 'USAU_2021_{}'.format(division)
-dataset_path = '../data/games_usau_cody_2021_{}.csv'.format(division.lower())
+dataset_path = '{}/data/games_usau_cody_2021_{}.csv'.format(ROOT_DIR, division.lower())
 usau_dataset = GamesDataset(dataset_path, dataset_name)
 
 # Define algos
@@ -21,14 +21,14 @@ usau_algo = RankingAlgorithm(get_usau_ratings, 'USAU_Algo', rating_start=1000, w
 c_plot_list = ['Rating_USAU_Algo', 'Rating_Example_Algo', 'Games', 'W_Ratio', 'Opponent_W_Ratio', 'Avg_Point_Diff']
 
 # Apply algos & export
+usau_dataset.get_ratings(example_algo)
+usau_dataset.get_ratings(usau_algo)
 if weekly_ratings:
     usau_dataset.get_weekly_ratings(example_algo)
     usau_dataset.get_weekly_ratings(usau_algo, verbose=True)  # this takes some time
     usau_dataset.export_to_excel(include_weekly=True)
     usau_dataset.plot_bar_race_fig(c_plot_list, include_weekly=True)
 else:
-    usau_dataset.get_ratings(example_algo)
-    usau_dataset.get_ratings(usau_algo)
     usau_dataset.export_to_excel()
     usau_dataset.plot_bar_race_fig(c_plot_list)
 
