@@ -45,9 +45,6 @@ for tournament_name, tournament_id in tournament_id_dict.items():
         df['Round'] = 8 - i
         df_summary_list.append(df[['Round', 'Team', 'Rank', 'Rating', 'W', 'L', 'Avg_Goal_Diff', 'Avg_Opponent_Rating']])
     df_summary = pd.concat(df_summary_list).reset_index(drop=True)
-    # #
-    # df_games.to_csv('data/{}_games.csv'.format(tournament_name.replace('-', '_')))
-    # df_summary.to_csv('data/{}_summary.csv'.format(tournament_name.replace('-', '_')))
 
     # ------------------------------
     # Check Regression
