@@ -3,12 +3,6 @@ Helpfunctions regarding writing to Excel.
 """
 
 import win32com.client
-import os
-from pathlib import Path
-
-ROOT_DIR = Path(__file__).parent.parent
-
-# -------------------------------
 
 
 def get_excel_range(*args):
@@ -16,16 +10,13 @@ def get_excel_range(*args):
     Get excel range given row and column or two tuples of (row, column).
     -----
     (1, 1) -> 'A1'
-    ((1, 1), (3, 4)) -> 'A1:C4' 
+    ((1, 1), (3, 4)) -> 'A1:C4'
     """
     if isinstance(args[0], (tuple, list)):
         return ':'.join([''.join([convert_decimal_to_letter(args[0][1]), str(args[0][0])]),
                          ''.join([convert_decimal_to_letter(args[1][1]), str(args[1][0])])])
     else:
         return ''.join([convert_decimal_to_letter(args[1]), str(args[0])])
-
-
-# -----------
 
 
 def convert_decimal_to_letter(num_in):
@@ -45,9 +36,6 @@ def convert_decimal_to_letter(num_in):
     return ''.join(let_out[::-1])
 
 
-# ------------
-
-
 def to_excel_color(rgb):
     """
     Convert color to excel format.
@@ -56,9 +44,6 @@ def to_excel_color(rgb):
     """
     c_out = rgb[0] + 256 * rgb[1] + 256 ** 2 * rgb[2]
     return c_out
-
-
-# ------------
 
 
 def get_correct_number_of_sheets(wrbk, num_wanted):
@@ -70,8 +55,6 @@ def get_correct_number_of_sheets(wrbk, num_wanted):
         [wrbk.Sheets.Add() for i in range(num_wanted - sh_cnt)]
     elif sh_cnt > num_wanted:
         [wrbk.Sheets.Item(1).Delete() for i in range(sh_cnt - num_wanted)]
-
-    # ------------
 
 
 def get_number_format(col_name):
@@ -86,9 +69,6 @@ def get_number_format(col_name):
         nf = None
 
     return nf
-
-
-# ------------
 
 
 def print_df(df, xl_app, sheet, top_left=(1, 1)):
@@ -121,14 +101,17 @@ def print_df(df, xl_app, sheet, top_left=(1, 1)):
     sheet.Select()
     xl_app.ActiveWorkbook.ActiveSheet.Columns('{}:{}'.format(convert_decimal_to_letter(c),
                                                              convert_decimal_to_letter(c + n_cols))).AutoFilter(1)
-    # conditional formatting (zebra stripes)
+    # conditional formatting (zebra stripes) - not working on some excel versions
     # sheet.Range(get_excel_range((2, 1), (n_rows + 1, c + n_cols))).FormatConditions.Add(
     #     win32com.client.constants.xlExpression, '',
     #     '=IF(MOD(SUBTOTAL(103,$A$2:$A2),2)=0,"TRUE","FALSE")')
-    sheet.Range(get_excel_range((2, 1), (r + n_rows, c + n_cols))).FormatConditions.Add(
-        win32com.client.constants.xlExpression, '', '=IF(MOD(ROW(),2)=1,"TRUE","FALSE")')
-    sheet.Range(get_excel_range((2, 1), (r + n_rows, c + n_cols))).FormatConditions(1).Interior.Color = to_excel_color(
-        (243, 243, 243))
+    try:
+        sheet.Range(get_excel_range((2, 1), (r + n_rows, c + n_cols))).FormatConditions.Add(
+            win32com.client.constants.xlExpression, '', '=IF(MOD(ROW(),2)=1,"TRUE","FALSE")')
+        sheet.Range(get_excel_range((2, 1), (r + n_rows, c + n_cols))).FormatConditions(1).Interior.Color = to_excel_color(
+            (243, 243, 243))
+    except Exception as e:
+        pass
     # freeze panes
     sheet.Range(get_excel_range(2, 1)).Select()
     xl_app.ActiveWindow.FreezePanes = True
@@ -136,13 +119,10 @@ def print_df(df, xl_app, sheet, top_left=(1, 1)):
     sheet.Range(get_excel_range((r, c), (r + n_rows, c + n_cols))).Columns.AutoFit()
 
 
-# ----------
-
-
 def create_excel_file_from_df_list(filename, df_list, sheet_names=None):
     """
-    Print list of DataFrames to Excel file, one per sheet. Sheet names can be 
-    optionally also provided. 
+    Print list of DataFrames to Excel file, one per sheet. Sheet names can be
+    optionally also provided.
     """
     xl_app = win32com.client.gencache.EnsureDispatch('Excel.Application')
     xl_app.DisplayAlerts = False
@@ -158,38 +138,3 @@ def create_excel_file_from_df_list(filename, df_list, sheet_names=None):
     wrbk.SaveAs(filename, 51)
     wrbk.Close()
     xl_app.Quit()
-
-
-# ----------
-
-
-def export_to_excel(dataset, filename=None, include_weekly=False):
-    """
-    Export dataset information to excel (make sure all the information are calculated).
-    At the moment will return 4 sheets anytime:
-        Games (with possible ranking-procedure information included),
-        Summary (with possible ratings included)
-        Tournaments
-        Calendar
-    + optionally sheet for every week's summary (with possible ratings included).
-    -----
-    Input:
-        filename - filename to save, None -> will be saved in reports folder (make sure to create it)
-                   (unfortunately, it does not work properly with relative paths)
-        include_weekly - whether to include also weekly summary
-    Output:
-        saved xlsx file
-    Examples:
-        dataset.export_to_excel(filename_to_save)
-        dataset.export_to_excel(include_weekly=True)
-    """
-    sfx = '_weekly' if include_weekly else ''
-    fl = os.path.join(ROOT_DIR, 'reports', 'data_{}{}.xlsx'.format(dataset.name.lower().replace(' ', '_'),
-                                                                      sfx)) if filename is None else filename
-    df_list = [dataset.games.set_index('Tournament'), dataset.summary, dataset.tournaments,
-               dataset.calendar.reset_index().set_index('Year')]
-    sheet_names = ['{} {}'.format(k, dataset.name) for k in ['Games', 'Summary', 'Tournaments', 'Calendar']]
-    if include_weekly:
-        df_list.extend([s for _, s in dataset.weekly_summary.items()])
-        sheet_names.extend(['Summary {}'.format(dt) for dt, _ in dataset.weekly_summary.items()])
-    create_excel_file_from_df_list(fl, df_list, sheet_names=sheet_names)
