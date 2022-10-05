@@ -46,8 +46,6 @@ def win_lose_rank_diff_function(score_w, score_l):
     return r_diff
 
 
-# ----------
-
 def score_diff_rank_diff_function(score_w, score_l):
     """
     Basic score difference, used in Windmill algo.
@@ -56,8 +54,6 @@ def score_diff_rank_diff_function(score_w, score_l):
 
     return r_diff
 
-
-# ----------
 
 def usau_rank_diff_function(score_w, score_l):
     """

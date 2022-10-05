@@ -71,8 +71,6 @@ def regression_rank_fit_function(teams, df_games, df_components, mean_rating=0, 
     return df_coeff
 
 
-# ----------
-
 def iteration_rank_fit_function(teams, df_games, game_ignore_func, game_ignore_kwargs,
                                 n_iter=1000, dist_tol=1e-8, rating_start=1000, verbose=True, n_round=10):
     """

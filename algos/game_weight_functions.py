@@ -48,8 +48,6 @@ def uniform_game_weight_function():
     return game_wght
 
 
-# ----------
-
 def usau_game_weight_function(score_w, score_l, w_num, w0=0.5, w_first=24, w_last=42):
     """
     USAU game-weight function, source https://play.usaultimate.org/teams/events/rankings/.
@@ -63,8 +61,6 @@ def usau_game_weight_function(score_w, score_l, w_num, w0=0.5, w_first=24, w_las
 
     return game_wght
 
-
-# ----------
 
 def usau_no_date_game_weight_function(score_w, score_l):
     """
