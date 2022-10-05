@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Possible easy example of ranking algo usage.
 """

@@ -3,8 +3,6 @@ USAU Ranking Algo, source https://play.usaultimate.org/teams/events/rankings/.
 With (hopefully) better iteration procedure, more robust to smaller components.
 This is a version, which can be called from standard RankingAlgorithm class, there is also
 block-based implementation, which can be called from BlockRankingAlgorithm class.
------
-Last Update: 2022-01-31
 """
 
 import numpy as np
@@ -12,8 +10,6 @@ import pandas as pd
 import datetime
 import helpfunctions.helpfunctions_dataset as hf_d
 
-
-# -------------------
 
 def get_ranking_diff_and_game_weight(score_w, score_l):
     """
@@ -30,9 +26,6 @@ def get_ranking_diff_and_game_weight(score_w, score_l):
     return r_diff, g_wght
 
 
-# -----
-
-
 def get_date_weight(w_num, w0=0.5, w_first=24, w_last=42):
     """
     Exponential interpolation between 0.5 (first week of the season) and 1 (last week of the season).
@@ -44,8 +37,6 @@ def get_date_weight(w_num, w0=0.5, w_first=24, w_last=42):
         date_wght = w0 * ((1 / w0) ** (1 / (w_last - w_first))) ** (w_num - w_first)
     return date_wght
 
-
-# -----
 
 def get_ignored_games(df_games, ratings):
     """
@@ -72,8 +63,6 @@ def get_ignored_games(df_games, ratings):
     return df_games['Is_Ignored']
 
 
-# -----
-
 def safe_wma(vals, wghts):
     """
     Weighted moving average, which does not throw error when applied on the empty list and does not take Nans
@@ -83,8 +72,6 @@ def safe_wma(vals, wghts):
         return np.nan
     else:
         return np.average(vals[~np.isnan(vals)], weights=wghts[~np.isnan(vals)])
-
-# -----
 
 
 def run_ranking_iteration(ratings_start, df_games, n_round=2):
@@ -106,8 +93,6 @@ def run_ranking_iteration(ratings_start, df_games, n_round=2):
 
     return ratings_new
 
-
-# -----
 
 def get_usau_ratings(df_games, rating_start, w0, w_first, w_last):
     """
