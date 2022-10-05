@@ -5,9 +5,7 @@ During the ranking procedure, get_ignored_games wrapper function is called and i
 Other, specific game-ignore functions use input df_games, ratings and potentially function-specific **kwargs.
 """
 
-import numpy as np
 import pandas as pd
-from sklearn.linear_model import LinearRegression
 
 
 # ---------------------------------
@@ -27,6 +25,8 @@ def get_ignored_games(opt, df_games, ratings, **kwargs):
         is_ignored = no_game_ignore_function(df_games)
     elif opt in ['usau', 'blowout', blowout_game_ignore_function]:
         is_ignored = blowout_game_ignore_function(df_games, ratings, **kwargs)
+    else:
+        raise ValueError("Unknown game-ignore option, see algos/game_ignore_functions.py for more info.")
 
     return is_ignored
 
@@ -43,8 +43,6 @@ def no_game_ignore_function(df_games):
 
     return is_ignored
 
-
-# ----------
 
 def blowout_game_ignore_function(df_games, ratings, min_rank_diff=600, min_valid=5,
                                  blowout_fcn=lambda x: x['Score_1'] > 2 * x['Score_2'] + 1):

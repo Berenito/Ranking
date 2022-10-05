@@ -34,6 +34,8 @@ def get_rank_fit(opt, game_ignore_func, teams, df_games, df_components,
         ratings = regression_rank_fit_function(teams, df_games, df_components, **kwargs)
     elif opt in ['iteration', iteration_rank_fit_function]:
         ratings = iteration_rank_fit_function(teams, df_games, game_ignore_func, game_ignore_kwargs, **kwargs)
+    else:
+        raise ValueError("Unknown rank-fit option, see algos/rank_fit_functions.py for more info.")
     #
     df_games['Team_1_Rank'] = ratings.reindex(df_games['Team_1']).values
     df_games['Team_2_Rank'] = ratings.reindex(df_games['Team_2']).values
@@ -68,8 +70,6 @@ def regression_rank_fit_function(teams, df_games, df_components, mean_rating=0, 
 
     return df_coeff
 
-
-# ----------
 
 def iteration_rank_fit_function(teams, df_games, game_ignore_func, game_ignore_kwargs,
                                 n_iter=1000, dist_tol=1e-8, rating_start=1000, verbose=True, n_round=10):

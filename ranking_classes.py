@@ -2,17 +2,23 @@
 Definitions of classes used for EUF ranking system development.
 """
 
+import os
+from pathlib import Path
 import pandas as pd
 import numpy as np
 import helpfunctions.helpfunctions_dataset as hf_d
+import helpfunctions.helpfunctions_plotly as hf_p
+import helpfunctions.helpfunctions_excel as hf_e
 import algos.rank_diff_functions as rdf
 import algos.game_weight_functions as gwf
 import algos.rank_fit_functions as rff
 
+ROOT_DIR = Path(__file__).parent
 
 # --------------------------------------------
 # CLASS FOR WORKING WITH DATASET WITH GAMES
 # --------------------------------------------
+
 
 class GamesDataset:
     """
@@ -103,7 +109,8 @@ class GamesDataset:
                 df_summary['Component'].nunique() + self.n_teams - \
                 self.calendar.loc[self.calendar['Date_End'] == dt, 'N_Teams_Cum']
         self.calendar[['N_Components', 'N_Components_All', 'Max_Component_Size']] = \
-            self.calendar[['N_Components', 'N_Components_All', 'Max_Component_Size']].fillna(method='ffill')
+            self.calendar[['N_Components', 'N_Components_All', 'Max_Component_Size']].fillna(
+                method='ffill').astype('int')
 
     # -----
 
@@ -177,6 +184,66 @@ class GamesDataset:
                     by='Rating_{}'.format(ranking_algo.name),
                     ascending=False)
 
+    # ----------
+
+    def export_to_excel(self, filename=None, include_weekly=False):
+        """
+        Export dataset information to excel (make sure all the information are calculated).
+        At the moment will return 4 sheets anytime:
+            Games (with possible ranking-procedure information included),
+            Summary (with possible ratings included)
+            Tournaments
+            Calendar
+        + optionally sheet for every week's summary (with possible ratings included).
+        -----
+        Input:
+            filename - filename to save, None -> will be saved in reports folder (make sure to create it)
+                       (unfortunately, it does not work properly with relative paths)
+            include_weekly - whether to include also weekly summary
+        Output:
+            saved xlsx file
+        Examples:
+            dataset.export_to_excel(filename_to_save)
+            dataset.export_to_excel(include_weekly=True)
+        """
+        sfx = '_weekly' if include_weekly else ''
+        fl = os.path.join(
+            ROOT_DIR, 'reports', 'data_{}{}.xlsx'.format(self.name.lower().replace(' ', '_'), sfx)
+        ) if filename is None else filename
+        df_list = [
+            self.games.set_index('Tournament'),
+            self.summary,
+            self.tournaments,
+            self.calendar.reset_index().set_index('Year'),
+        ]
+        sheet_names = ['{} {}'.format(k, self.name) for k in ['Games', 'Summary', 'Tournaments', 'Calendar']]
+        if include_weekly:
+            df_list.extend([s for _, s in self.weekly_summary.items()])
+            sheet_names.extend(['Summary {}'.format(dt) for dt, _ in self.weekly_summary.items()])
+        hf_e.create_excel_file_from_df_list(fl, df_list, sheet_names=sheet_names)
+
+    # ----------
+
+    def plot_bar_race_fig(self, c_plot_list, filename=None, include_weekly=False):
+        """
+        Export to experimental visualization of the dataset progress (top 20 teams).
+        -----
+        Input:
+            c_plot_list - columns to plot (max 5-6)
+                          will be sorted by the first element
+            filename - filename to save, None -> will be saved in figures folder (make sure to create it)
+            include_weekly - whether to include also weekly summary
+        Output:
+            saved html figure
+        Examples:
+            dataset.plot_bar_race_fig(['W_Ratio', 'Games', 'W_Ratio', 'Opponent_W_Ratio'], include_weekly=True)
+        """
+        sfx = '-weekly' if include_weekly else ''
+        fl = os.path.join(ROOT_DIR, 'figures', 'fig-{}{}.html'.format(
+            self.name.lower().replace(' ', '-').replace('_', '-'), sfx)) if filename is None else filename
+        dict_plot = self.weekly_summary if include_weekly else {'All Games': self.summary}
+        hf_p.plot_bar_race_chart(dict_plot, c_plot_list, fl, self.name)
+
 
 # ---------------------------------------------------
 # CLASS FOR WORKING WITH RANKING ALGORITHM
@@ -196,7 +263,7 @@ class RankingAlgorithm:
             algo_name - used for naming exported stuff
             kwargs - additional inputs to rating_func
         Output:
-            initialized RankingAlgorithm object 
+            initialized RankingAlgorithm object
         Examples:
             example_algo = RankingAlgorithm(example_func, algo_name='Example_Algo', p1=100, p2=200)
             usau_algo = RankingAlgorithm(get_usau_ratings, algo_name='USAU_Algo')
@@ -213,7 +280,7 @@ class RankingAlgorithm:
         -----
         Input:
             dataset - GamesDataset object or df_games
-            date - only games up to date will be included, None -> include all 
+            date - only games up to date will be included, None -> include all
         Output:
             ratings - series with the calculated ratings
         Examples:

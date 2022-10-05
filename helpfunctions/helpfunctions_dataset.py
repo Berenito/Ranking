@@ -9,8 +9,6 @@ import networkx as nx
 import functools
 
 
-# ----------------------------------------
-
 def process_dataset(df_games, remove_draws=False):
     """
     Check if there are some issues with the dataset.
@@ -43,8 +41,6 @@ def process_dataset(df_games, remove_draws=False):
     return df_games
 
 
-# ----------
-
 def duplicate_games(df_games):
     """
     Add duplicates of the games with Team_1 <-> Team_2 and Score_1 <-> Score_2,
@@ -57,8 +53,6 @@ def duplicate_games(df_games):
 
     return df_games_dupl
 
-
-# ----------
 
 def get_teams_in_dataset(df_games, date=None):
     """
@@ -73,8 +67,6 @@ def get_teams_in_dataset(df_games, date=None):
     return teams
 
 
-# ----------
-
 def get_opponents_for_team(df_games, team, date=None):
     """
     Get all the opponents for the given team present in the games dataset.
@@ -87,8 +79,6 @@ def get_opponents_for_team(df_games, team, date=None):
 
     return opponents
 
-
-# ----------
 
 def get_games_for_teams(df_games, teams_list, how='any', date=None):
     """
@@ -112,8 +102,6 @@ def get_games_for_teams(df_games, teams_list, how='any', date=None):
 
     return df_for_teams
 
-
-# ----------
 
 def get_summary_of_games(df_games, date=None):
     """
@@ -145,8 +133,6 @@ def get_summary_of_games(df_games, date=None):
     return df_summary
 
 
-# ----------
-
 def get_summary_of_tournaments(df_games, date=None):
     """
     Calculate summary statistics for the tournaments occurring in the games dataset.
@@ -166,8 +152,6 @@ def get_summary_of_tournaments(df_games, date=None):
 
     return df_tournaments
 
-
-# ----------
 
 def get_calendar_summary(df_games):
     """
@@ -206,8 +190,6 @@ def get_calendar_summary(df_games):
     return df_calendar
 
 
-# ----------
-
 def get_games_graph(df_games, date=None):
     """
     Get graph representation of the dataset using networkx library.
@@ -225,8 +207,6 @@ def get_games_graph(df_games, date=None):
     return g
 
 
-# -----------
-
 def get_graph_components(g, teams):
     """
     Return the graph component label for each team in the dataset. Numbering is ordered based on the number
@@ -241,8 +221,6 @@ def get_graph_components(g, teams):
 
     return df_components
 
-
-# ----------
 
 def get_shortest_paths(g, teams, return_all=False):
     """

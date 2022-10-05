@@ -27,6 +27,8 @@ def get_rank_diff(opt, rw, **kwargs):
         r_diff = score_diff_rank_diff_function(score_w, score_l)
     elif opt in ['usau', usau_rank_diff_function]:
         r_diff = usau_rank_diff_function(score_w, score_l)
+    else:
+        raise ValueError("Unknown rank-diff option, see algos/rank_diff_functions.py for more info.")
 
     return r_diff
 
@@ -44,8 +46,6 @@ def win_lose_rank_diff_function(score_w, score_l):
     return r_diff
 
 
-# ----------
-
 def score_diff_rank_diff_function(score_w, score_l):
     """
     Basic score difference, used in Windmill algo.
@@ -54,8 +54,6 @@ def score_diff_rank_diff_function(score_w, score_l):
 
     return r_diff
 
-
-# ----------
 
 def usau_rank_diff_function(score_w, score_l):
     """
