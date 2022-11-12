@@ -9,13 +9,13 @@ from algos.sigmoid_algo import get_sigmoid_ratings
 
 # ------------------------------
 
-division = 'Men'
+division = 'open'
 
 # Prepare dataset
-dataset_name = 'USAU_2021_{}'.format(division)
-dataset_path = 'data/games_usau_cody_2021_{}.csv'.format(division.lower())
+dataset_name = 'games_euf_2022_{}'.format(division)
+dataset_path = 'data/games_euf_2022_{}.csv'.format(division.lower())
 
-usau_dataset = GamesDataset(dataset_path, dataset_name)
+euf_dataset = GamesDataset(dataset_path, dataset_name)
 
 # # Apply USAU Algo
 # usau_algo = RankingAlgorithm(get_usau_ratings, 'USAU_Algo',
@@ -24,8 +24,8 @@ usau_dataset = GamesDataset(dataset_path, dataset_name)
 
 # Apply Sigmoid Algo
 sigmoid_algo = RankingAlgorithm(get_sigmoid_ratings, 'Sigmoid_Algo')
-usau_dataset.get_ratings(sigmoid_algo)
+euf_dataset.get_ratings(sigmoid_algo)
 
 #
-# export_to_excel(usau_dataset)
-usau_dataset.summary.to_csv("temp_report_sigmoid.csv")
+# export_to_excel(euf_dataset)
+euf_dataset.summary.to_csv("temp_report_sigmoid.csv")
