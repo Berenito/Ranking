@@ -2,7 +2,7 @@
 Possible easy example of ranking algo usage.
 """
 
-import helpfunctions.helpfunctions_dataset as hf_d
+import utils.dataset as hf_d
 
 
 def get_example_ratings(df_games, lb, ub):

@@ -8,7 +8,7 @@ block-based implementation, which can be called from BlockRankingAlgorithm class
 import numpy as np
 import pandas as pd
 import datetime
-import helpfunctions.helpfunctions_dataset as hf_d
+import utils.dataset as hf_d
 
 
 def get_ranking_diff_and_game_weight(score_w, score_l):
