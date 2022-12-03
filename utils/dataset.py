@@ -27,6 +27,7 @@ def process_games(
     :param remove_draws: Whether to remove the rows with draws
     :return: Processed Games Table
     """
+    logger = logging.getLogger("ranking.process_games")
     df_games = df_games.astype(
         {"Tournament": str, "Date": str, "Team_1": str, "Team_2": str, "Score_1": int, "Score_2": int}
     )
@@ -38,17 +39,17 @@ def process_games(
     idx_nan = df_games.isna().any(axis=1)
     if idx_nan.any():
         df_games = df_games.loc[~idx_nan]
-        logging.info(f"{idx_nan.sum()} invalid rows removed from the dataset.")
+        logger.info(f"{idx_nan.sum()} invalid rows removed from the dataset.")
     # Remove draws
     if remove_draws:
         idx_draws = df_games["Score_1"] == df_games["Score_2"]
         if idx_draws.any():
-            logging.info(f"{idx_draws.sum()} draws removed from the dataset.")
+            logger.info(f"{idx_draws.sum()} draws removed from the dataset.")
             df_games = df_games.loc[~idx_draws]
     # Reorder such that Team_1 is the winner
     idx_bad_w_l = df_games["Score_1"] < df_games["Score_2"]
     if idx_bad_w_l.any():
-        logging.info(f"{idx_bad_w_l.sum()} matches' W-L reordered in the dataset!")
+        logger.info(f"{idx_bad_w_l.sum()} matches' W-L reordered in the dataset!")
         df_games.loc[idx_bad_w_l, ["Team_1", "Team_2", "Score_1", "Score_2"]] = df_games.loc[
             idx_bad_w_l, ["Team_2", "Team_1", "Score_2", "Score_1"]
         ].values
