@@ -2,10 +2,10 @@
 Help-functions for dataset processing.
 Games Table is a DataFrame with columns Tournament, Date, Team_1, Team_2, Score_1, Score_2.
 """
-import datetime
 import functools
 import logging
 import typing as t
+from datetime import datetime
 
 import networkx as nx
 import pandas as pd
@@ -53,7 +53,11 @@ def process_games(
         df_games.loc[idx_bad_w_l, ["Team_1", "Team_2", "Score_1", "Score_2"]] = df_games.loc[
             idx_bad_w_l, ["Team_2", "Team_1", "Score_2", "Score_1"]
         ].values
-    # TODO: Convert to correct date format (YYYY-MM-DD)
+    # Find dates in DD.MM.YYYY format and convert them to YYYY-MM-DD
+    dates_bad_format = df_games["Date"].str[2] == "."
+    df_games.loc[dates_bad_format, "Date"] = df_games.loc[dates_bad_format, "Date"].apply(
+        lambda x: datetime.strptime(x, "%d.%m.%Y").strftime("%Y-%m-%d")
+    )
     return df_games.sort_values(by=["Date", "Tournament", "Team_1", "Team_2"]).reset_index(drop=True)
 
 
@@ -201,7 +205,7 @@ def get_calendar_summary(df_games: pd.DataFrame) -> pd.DataFrame:
         "%Y-%m-%d")
     df_calendar["Year"] = df_calendar["Date_Start"].str[:4]
     df_calendar["Calendar_Week"] = df_calendar["Date_End"].apply(
-        lambda x: datetime.datetime.strptime(x, "%Y-%m-%d").isocalendar()[1])
+        lambda x: datetime.strptime(x, "%Y-%m-%d").isocalendar()[1])
     df_calendar["N_Tournaments"] = df_calendar.apply(
         lambda x: df_games.loc[df_games["Date"].between(x["Date_Start"], x["Date_End"])]["Tournament"].nunique(), axis=1
     )

@@ -13,11 +13,11 @@ from utils.logging import setup_logger
 
 def main():
     # TODO: use argparse
-    input_path = Path("C:/Users/micha/Desktop/Python/euf_ranking/data_2019")
+    input_path = Path("C:/Users/micha/Desktop/Python/euf_ranking/data_2022")
     division = "Open"
-    season = 2019
-    teams_file = Path("C:/Users/micha/Desktop/Python/euf_ranking/teams_2019/open.txt")
-    output_path = Path("C:/Users/micha/Desktop/Python/euf_ranking/output_2019")
+    season = 2022
+    teams_file = Path("C:/Users/micha/Desktop/Python/euf_ranking/teams_2022/open.txt")
+    output_path = Path("C:/Users/micha/Desktop/Python/euf_ranking/output_2022")
 
     setup_logger()
     logger = logging.getLogger("ranking.data_preparation")
@@ -33,6 +33,14 @@ def main():
         df_list.append(df_tournament)
     df_games_raw = pd.concat(df_list)
     logger.info(f"{df_games_raw.shape[0]} raw games found for the {division} division.")
+
+    # Change the aliases of the teams to the original team name and remove them from the teams list
+    for i, team in enumerate(teams):
+        if ", " in team:  # There are aliases defined for the team name
+            aliases = team.split(", ")[1:]
+            teams[i] = team.split(", ")[0]
+            df_games_raw["Team_1"].apply(lambda x: team if x in aliases else x)
+            df_games_raw["Team_2"].apply(lambda x: team if x in aliases else x)
 
     teams_missing = set(get_teams_in_games(df_games_raw)).difference(teams)
     logger.info(f"{len(teams_missing)} teams from the CSVs are missing in the file: {teams_missing}.")
