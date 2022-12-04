@@ -6,6 +6,7 @@ import typing as t
 import numpy as np
 import pandas as pd
 
+from definitions import MIN_TOURNAMENTS, MIN_GAMES, MAX_COMPONENT_REQUIRED
 from utils import dataset
 
 
@@ -64,7 +65,12 @@ class GamesDataset:
             df_summary["Component"] = dataset.get_graph_components(self.graph, self.teams)
         else:
             df_summary["Component"] = dataset.get_graph_components(self.weekly_graph.get(date), self.teams)
-        # TODO: Add if the requirements are fulfilled
+        # Add ranking eligibility
+        df_summary["Eligible"] = 1*(
+            (df_summary["Tournaments"] >= MIN_TOURNAMENTS)
+            & (df_summary["Games"] >= MIN_GAMES)
+            & ((df_summary["Component"] == 1) if MAX_COMPONENT_REQUIRED else True)
+        )
         return df_summary
 
     def add_components_to_calendar(self):
