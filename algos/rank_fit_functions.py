@@ -16,7 +16,7 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 
 from algos.game_ignore_functions import get_ignored_games
-from utils.general import safe_wma
+from utils.dataset import safe_wma
 
 _logger = logging.getLogger("ranking.algos.rank_fit")
 

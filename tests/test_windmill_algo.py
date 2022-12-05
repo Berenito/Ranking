@@ -13,6 +13,7 @@ import pandas as pd
 
 from classes.block_ranking_algorithm import BlockRankingAlgorithm
 from classes.games_dataset import GamesDataset
+from utils.dataset import get_ranking_metrics
 from utils.logging import setup_logger
 
 _logger = logging.getLogger("ranking.tests.windmill")
@@ -24,7 +25,7 @@ def main():
     tournament_id_dict = {"windmill-2018-mixed": "20661", "windmill-2018-women": "20662", "windmill-2018-open": "20659"}
     check_list = []
     for tournament_name, tournament_id in tournament_id_dict.items():
-        _logger.info(f"Tournament: {tournament_name}.")
+        _logger.info(f"Downloading data for tournament: {tournament_name}.")
         df_games_list_raw = pd.read_html(
             f"https://www.leaguevine.com/tournaments/{tournament_id}/{tournament_name}/swiss/games/",
             header=0,
@@ -32,7 +33,6 @@ def main():
         )
         df_games_list = []
         for i, df in enumerate(df_games_list_raw):
-            _logger.info(f"Round: {8 - i}.")
             m, d = df.columns[0].split(" ")[1].split("/")
             df = df.iloc[:, 1:-1].rename(columns={"Team": "Team_1", "Team.1": "Team_2"})
             df[["Score_1", "Score_2"]] = df[["Result"]].apply(
@@ -69,6 +69,7 @@ def main():
 
         # Check Regression
         for n_rounds in range(1, 6):
+            _logger.info(f"Rounds: {n_rounds}.")
             df_games_round = df_games.loc[df_games["Round"] <= n_rounds]
             df_summary_round = df_summary.loc[df_summary["Round"] == n_rounds].set_index("Team")
             windmill_dataset = GamesDataset(df_games_round, name="Windmill_Dataset", calculate_weekly=False)
@@ -120,6 +121,12 @@ def main():
                 "Diff_Max_Orig": diff_max_orig,
                 "Diff_Max_Iter": diff_max_iter
             }))
+
+            # Check if sum of residuals for each team is ~0
+            max_avg_resid_windmill_algo = get_ranking_metrics(g, algo_name="Windmill_Algo")[1]
+            max_avg_resid_windmill_algo_iter = get_ranking_metrics(g, algo_name="Windmill_Algo_Iter")[1]
+            assert max_avg_resid_windmill_algo < 0.011
+            assert max_avg_resid_windmill_algo_iter < 0.011
     df_check = pd.concat(check_list, axis=1).T
     assert df_check.loc[df_check["Round"] != 2, ["Diff_Max_Orig", "Diff_Max_Iter"]].max().max() == 0
     assert df_check.loc[df_check["Round"] == 2, ["Diff_Max_Orig", "Diff_Max_Iter"]].max().max() < 0.011

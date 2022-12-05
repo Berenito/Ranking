@@ -8,6 +8,7 @@ import typing as t
 from datetime import datetime
 
 import networkx as nx
+import numpy as np
 import pandas as pd
 
 
@@ -262,3 +263,43 @@ def get_graph_components(graph_connections: nx.Graph, teams: t.Union[list, pd.Se
     for team in teams:
         components[team] = [k for k, v in dict_components.items() if team in v][0]
     return components
+
+
+def get_ranking_metrics(df_games: pd.DataFrame, algo_name: str = "") -> t.Tuple[float, float]:
+    """
+    Get quality metrics for given ratings.
+
+    :param df_games: Table with games (Game_Rank_Diff_{algo_name} and Team_Rank_Diff_{algo_name} must be calculated)
+    :param algo_name: Algorithm name, for correct column finding
+    :return: RMSE; max avg of teams' residuals
+    """
+    df_games = df_games.copy()
+    if len(algo_name) > 0:
+        algo_name = f"_{algo_name}"
+    df_games["Resid_1"] = df_games[f"Game_Rank_Diff{algo_name}"] - df_games[f"Team_Rank_Diff{algo_name}"]
+    df_games["Resid_2"] = -df_games["Resid_1"]
+    rmse = np.sqrt(safe_wma(df_games["Resid_1"]**2, df_games[f"Game_Wght{algo_name}"]))
+    df_games_extended = pd.concat(
+        [
+            df_games.rename(columns={"Team_1": "Team", "Resid_1": "Resid"}),
+            df_games.rename(columns={"Team_2": "Team", "Resid_2": "Resid"})
+        ]
+    )
+    avg_resid_teams = df_games_extended.groupby("Team").apply(lambda x: safe_wma(x["Resid"], x[f"Game_Wght{algo_name}"]))
+    max_avg_resid_team = avg_resid_teams.abs().max()
+    return rmse, max_avg_resid_team
+
+
+def safe_wma(vals: np.ndarray, wghts: np.ndarray) -> float:
+    """
+    Weighted average, which does not throw error when applied on the empty list and does not take Nans
+    into account.
+
+    :param vals: Array
+    :param wghts: Weights of the array elements
+    :return: Weighted average
+    """
+    if vals.shape[0] == 0 or wghts.sum() == 0:
+        return np.nan
+    else:
+        return np.average(vals[~np.isnan(vals)], weights=wghts[~np.isnan(vals)])
