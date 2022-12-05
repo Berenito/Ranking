@@ -1,13 +1,18 @@
 """
 Define the GamesDataset class.
 """
+import logging
 import typing as t
 
 import numpy as np
 import pandas as pd
 
+from classes.block_ranking_algorithm import BlockRankingAlgorithm
+from classes.ranking_algorithm import RankingAlgorithm
 from definitions import MIN_TOURNAMENTS, MIN_GAMES, MAX_COMPONENT_REQUIRED
 from utils import dataset
+
+_logger = logging.getLogger("ranking.games_dataset")
 
 
 class GamesDataset:
@@ -111,4 +116,48 @@ class GamesDataset:
         elif tournament is not None:
             df_games = df_games.loc[df_games["Tournament"] == tournament]
         return df_games.reset_index(drop=True)
+
+    def add_ratings(
+        self,
+        ranking_algo: t.Union[RankingAlgorithm, BlockRankingAlgorithm],
+        sort: bool = True,
+        block_algo: bool = False,
+    ):
+        """
+        Add ratings to self.summary based on provided ranking algorithm. If block ranking algorithm is specified, also
+        self.games is updated.
+
+        :param ranking_algo: (Block)RankingAlgorithm object
+        :param sort: Whether to sort the output by the ratings
+        :param block_algo: Whether to use BlockRankingAlgorithm functionality
+        """
+        _logger.info(f"Calculating ratings by {ranking_algo.name}.")
+        if block_algo:
+            ratings, self.games = ranking_algo.get_ratings(self, return_games=True)
+        else:
+            ratings = ranking_algo.get_ratings(self)
+        self.summary = pd.concat([ratings, self.summary], axis=1)
+        if sort:
+            self.summary = self.summary.sort_values(by='Rating_{}'.format(ranking_algo.name), ascending=False)
+
+    def add_weekly_ratings(self, ranking_algo: t.Union[RankingAlgorithm, BlockRankingAlgorithm], sort: bool = True):
+        """
+        Calculate weekly ratings for every Sunday of the dataset span and update self.weekly_summary accordingly.
+
+        Does not support BlockRankingAlgorithm additional functionality yet (i.e., you can use BlockRankingAlgorithm to
+        obtain weekly ratings, but the ranking-procedure information for the individual games cannot be exported).
+
+        :param ranking_algo: RankingAlgorithm object
+        :param sort: Whether to sort the output by the ratings
+        """
+        weekly_ratings = {}
+        for date in self.week_ends:
+            _logger.info(f"Calculating ratings by {ranking_algo.name} for {date}.")
+            weekly_ratings[date] = ranking_algo.get_ratings(self, date=date)
+        for date in self.weekly_summary.keys():
+            self.weekly_summary[date] = pd.concat([weekly_ratings.get(date), self.weekly_summary.get(date)], axis=1)
+            if sort:
+                self.weekly_summary[date] = self.weekly_summary.get(date).sort_values(
+                    by='Rating_{}'.format(ranking_algo.name), scending=False
+                )
 
