@@ -13,8 +13,7 @@ import pandas as pd
 
 def get_game_weight(option: t.Optional[t.Union[str, t.Callable]], game_row: pd.Series, **kwargs):
     """
-    Wrapper function to apply specific game-weight function defined by "option" on the given "game row" from the
-    Games Table.
+    Apply specific game-weight function defined by "option" on the given "game row" from the Games Table.
 
     :param option: Identifier of the game-weight function
     :param game_row: Row from the Games Table
@@ -37,7 +36,7 @@ def get_game_weight(option: t.Optional[t.Union[str, t.Callable]], game_row: pd.S
 
 def uniform_game_weight_function() -> float:
     """
-    All games have weight 1.
+    Give weight 1 to every game.
     """
     return 1
 
@@ -46,7 +45,7 @@ def usau_game_weight_function(
     score_w: int, score_l: int, w_num: int, w0: float = 0.5, w_first: int = 24, w_last: int = 42
 ) -> float:
     """
-    USAU game-weight function, source https://play.usaultimate.org/teams/events/rankings/.
+    Return USAU game-weight function, source https://play.usaultimate.org/teams/events/rankings/.
 
     :param score_w: Winning score
     :param score_l: Losing score
@@ -66,7 +65,8 @@ def usau_game_weight_function(
 
 def usau_no_date_game_weight_function(score_w: int, score_l: int) -> float:
     """
-    USAU game-weight function, source https://play.usaultimate.org/teams/events/rankings/ without the date component.
+    Return USAU game-weight function, source https://play.usaultimate.org/teams/events/rankings/ without
+    the date component.
 
     :param score_w: Winning score
     :param score_l: Losing score
