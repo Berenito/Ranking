@@ -1,72 +1,75 @@
 """
 Functions used in the stage 2 of the BlockRankingAlgorithm class ranking procedure - obtaining game weight
-for each game in the dataset. (They are not intended to be called directly)
+for each game in the Games Dataset (they are not intended to be called directly).
 During the ranking procedure, get_game_weight wrapper function is called and it will call desired game-weight function.
 Other, specific game-weight functions should have format game_wght = game_weight_func(**kwargs).
 """
+import datetime
+import typing as t
 
 import numpy as np
-import datetime
+import pandas as pd
 
 
-# ---------------------------------
-# MAIN FUNCTION
-# ---------------------------------
-
-def get_game_weight(opt, rw, **kwargs):
+def get_game_weight(option: t.Optional[t.Union[str, t.Callable]], game_row: pd.Series, **kwargs):
     """
-    Wrapper function to apply specific game-weight function ('opt') on the given row ('rw') in the Games dataset.
-    Option 'opt' can be either string or function reference or basically any identifier that is defined here.
-    Scores are read from rw, theoretically also some other info can be obtained from rw.
-    **kwargs are specified in {GamesDataset}.game_weight_params
-    If new game-weight function is specified, it has to be also added here.
+    Wrapper function to apply specific game-weight function defined by "option" on the given "game row" from the
+    Games Table.
+
+    :param option: Identifier of the game-weight function
+    :param game_row: Row from the Games Table
+    :param kwargs: Additional arguments to the game-weight function (besides score_w and score_l)
+    :return: Rate difference for the given game
     """
-    if opt in ['uniform', None, uniform_game_weight_function]:
+    if option in ["uniform", None, uniform_game_weight_function]:
         game_wght = uniform_game_weight_function()
-    elif opt in ['usau', usau_game_weight_function]:
+    elif option in ["usau", usau_game_weight_function]:
         # Use Monday as part of the previous week to resolve the issue of tournaments with some games played on Monday
-        w_num = (datetime.datetime.strptime(rw['Date'], '%Y-%m-%d') - datetime.timedelta(days=1)).isocalendar()[1]
-        game_wght = usau_game_weight_function(rw['Score_1'], rw['Score_2'], w_num, **kwargs)
-    elif opt in ['usau_no_date', usau_no_date_game_weight_function]:
-        game_wght = usau_no_date_game_weight_function(rw['Score_1'], rw['Score_2'])
+        w_num = (datetime.datetime.strptime(game_row["Date"], "%Y-%m-%d") - datetime.timedelta(days=1)).isocalendar()[1]
+        game_wght = usau_game_weight_function(game_row["Score_1"], game_row["Score_2"], w_num, **kwargs)
+    elif option in ["usau_no_date", usau_no_date_game_weight_function]:
+        game_wght = usau_no_date_game_weight_function(game_row["Score_1"], game_row["Score_2"])
     else:
-        raise ValueError("Unknown game-weight option, see algos/game_weight_functions.py for more info.")
+        raise ValueError("Unknown game-weight option, make sure it is defined in algos/game_weight_functions.py.")
 
     return game_wght
 
 
-# ---------------------------------
-# INDIVIDUAL FUNCTIONS
-# ---------------------------------
-
-def uniform_game_weight_function():
+def uniform_game_weight_function() -> float:
     """
     All games have weight 1.
     """
-    game_wght = 1
-
-    return game_wght
+    return 1
 
 
-def usau_game_weight_function(score_w, score_l, w_num, w0=0.5, w_first=24, w_last=42):
+def usau_game_weight_function(
+    score_w: int, score_l: int, w_num: int, w0: float = 0.5, w_first: int = 24, w_last: int = 42
+) -> float:
     """
     USAU game-weight function, source https://play.usaultimate.org/teams/events/rankings/.
+
+    :param score_w: Winning score
+    :param score_l: Losing score
+    :param w_num: Calendar week
+    :param w0: Weight of the first week
+    :param w_first: First calendar week of the season
+    :param w_last: Last calendar week of the season
+    :return: Game weight
     """
     score_wght = np.min([1, np.sqrt((score_w + np.max([score_l, np.floor(0.5 * (score_w - 1))])) / 19)])
     if w_num >= w_last:
         date_wght = 1
     else:
         date_wght = w0 * ((1 / w0) ** (1 / (w_last - w_first))) ** (w_num - w_first)
-    game_wght = score_wght * date_wght
-
-    return game_wght
+    return score_wght * date_wght
 
 
-def usau_no_date_game_weight_function(score_w, score_l):
+def usau_no_date_game_weight_function(score_w: int, score_l: int) -> float:
     """
-    USAU game-weight function, source https://play.usaultimate.org/teams/events/rankings/.
-    Without date-weight component.
-    """
-    game_wght = np.min([1, np.sqrt((score_w + np.max([score_l, np.floor(0.5 * (score_w - 1))])) / 19)])
+    USAU game-weight function, source https://play.usaultimate.org/teams/events/rankings/ without the date component.
 
-    return game_wght
+    :param score_w: Winning score
+    :param score_l: Losing score
+    :return: Game weight
+    """
+    return np.min([1, np.sqrt((score_w + np.max([score_l, np.floor(0.5 * (score_w - 1))])) / 19)])
