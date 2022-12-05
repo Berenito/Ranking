@@ -5,8 +5,6 @@ import typing as t
 
 import pandas as pd
 
-from classes.games_dataset import GamesDataset
-
 
 class RankingAlgorithm:
     """
@@ -30,18 +28,15 @@ class RankingAlgorithm:
         self.rating_func = rating_func
         self.params = kwargs
 
-    def get_ratings(self, games_data: t.Union[pd.DataFrame, GamesDataset], date: t.Optional[str] = None) -> pd.Series:
+    def get_ratings(self, df_games: pd.DataFrame, date: t.Optional[str] = None) -> pd.Series:
         """
         Calculate the ratings of the provided dataset.
 
-        :param games_data: Games Dataset object or Games Table DataFrame
+        :param df_games: Games Table
         :param date: Date in YYYY-MM-DD format (only games up to it will be included)
         :return: Series with the calculated ratings
         """
-        if isinstance(games_data, pd.DataFrame):
-            df_games = games_data.copy()
-        elif isinstance(games_data, GamesDataset):
-            df_games = games_data.games.copy()
+        df_games = df_games.copy()
         if date is not None:
             df_games = df_games.loc[df_games["Date"] <= date]
         ratings = self.rating_func(df_games, **self.params)

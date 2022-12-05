@@ -10,7 +10,6 @@ import pandas as pd
 from algos.rank_diff_functions import get_rank_diff
 from algos.game_weight_functions import get_game_weight
 from algos.rank_fit_functions import get_rank_fit
-from classes.games_dataset import GamesDataset
 from utils import dataset
 
 
@@ -67,27 +66,22 @@ class BlockRankingAlgorithm:
         self.game_ignore_params = game_ignore_params
 
     def get_ratings(
-        self, games_data: t.Union[pd.DataFrame, GamesDataset], return_games: bool = False, date: t.Optional[str] = None
+        self, df_games: pd.DataFrame, return_games: bool = False, date: t.Optional[str] = None
     ) -> t.Union[pd.Series, t.Tuple[pd.Series, pd.DataFrame]]:
         """
         Calculate the ratings of the provided dataset.
 
-        :param games_data: Games Dataset object or Games Table DataFrame
+        :param df_games: Games Table
         :param date: Date in YYYY-MM-DD format (only games up to it will be included)
         :param return_games: Whether to return additional per-game information
         :return: Series with the calculated ratings; [Games Table with additional information if return_games]
         """
-        if isinstance(games_data, pd.DataFrame):
-            df_games = games_data.copy()
-            teams = dataset.get_teams_in_dataset(df_games)
-            components = dataset.get_graph_components(dataset.get_games_graph(df_games), teams)
-        elif isinstance(dataset, GamesDataset):
-            df_games = dataset.games.copy()
-            components = dataset.summary["Component"]
-            teams = dataset.teams
+        df_games = df_games.copy()
+        teams = dataset.get_teams_in_games(df_games)
+        components = dataset.get_graph_components(dataset.get_games_graph(df_games), teams)
         if date is not None:
             df_games = df_games.loc[df_games["Date"] <= date]
-            teams = dataset.get_teams_in_dataset(df_games)
+            teams = dataset.get_teams_in_games(df_games)
             components = dataset.get_graph_components(dataset.get_games_graph(df_games), teams)
         df_games["Game_Rank_Diff"] = df_games.apply(
             lambda rw: get_rank_diff(self.rank_diff_func, rw, **self.rank_diff_params), axis=1

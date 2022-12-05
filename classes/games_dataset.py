@@ -133,9 +133,9 @@ class GamesDataset:
         """
         _logger.info(f"Calculating ratings by {ranking_algo.name}.")
         if block_algo:
-            ratings, self.games = ranking_algo.get_ratings(self, return_games=True)
+            ratings, self.games = ranking_algo.get_ratings(self.games, return_games=True)
         else:
-            ratings = ranking_algo.get_ratings(self)
+            ratings = ranking_algo.get_ratings(self.games)
         self.summary = pd.concat([ratings, self.summary], axis=1)
         if sort:
             self.summary = self.summary.sort_values(by='Rating_{}'.format(ranking_algo.name), ascending=False)
