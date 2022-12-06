@@ -278,28 +278,33 @@ def get_ranking_metrics(df_games: pd.DataFrame, algo_name: str = "") -> t.Tuple[
         algo_name = f"_{algo_name}"
     df_games["Resid_1"] = df_games[f"Game_Rank_Diff{algo_name}"] - df_games[f"Team_Rank_Diff{algo_name}"]
     df_games["Resid_2"] = -df_games["Resid_1"]
-    rmse = np.sqrt(safe_wma(df_games["Resid_1"]**2, df_games[f"Game_Wght{algo_name}"]))
+    df_games.loc[df_games[f"Is_Ignored{algo_name}"] == 1, f"Game_Wght{algo_name}"] = 0
+    rmse = np.sqrt(safe_weighted_avg(df_games["Resid_1"]**2, df_games[f"Game_Wght{algo_name}"]))
     df_games_extended = pd.concat(
         [
             df_games.rename(columns={"Team_1": "Team", "Resid_1": "Resid"}),
             df_games.rename(columns={"Team_2": "Team", "Resid_2": "Resid"})
         ]
     )
-    avg_resid_teams = df_games_extended.groupby("Team").apply(lambda x: safe_wma(x["Resid"], x[f"Game_Wght{algo_name}"]))
-    max_avg_resid_team = avg_resid_teams.abs().max()
-    return rmse, max_avg_resid_team
+    sum_resid_teams = df_games_extended.groupby("Team").apply(
+        lambda x: safe_weighted_avg(x["Resid"], x[f"Game_Wght{algo_name}"], return_sum=True)
+    )
+    max_sum_resid_team = sum_resid_teams.abs().max()
+    return rmse, max_sum_resid_team
 
 
-def safe_wma(vals: np.ndarray, wghts: np.ndarray) -> float:
+def safe_weighted_avg(vals: np.ndarray, wghts: np.ndarray, return_sum: bool = False) -> float:
     """
     Weighted average, which does not throw error when applied on the empty list and does not take Nans
     into account.
 
     :param vals: Array
     :param wghts: Weights of the array elements
-    :return: Weighted average
+    :param return_sum: Whether to return the weighted sum (otherwise the weighted average)
+    :return: Weighted average (or sum)
     """
-    if vals.shape[0] == 0 or wghts.sum() == 0:
+    if vals.shape[0] == 0 or wghts[~np.isnan(vals)].sum() == 0:
         return np.nan
     else:
-        return np.average(vals[~np.isnan(vals)], weights=wghts[~np.isnan(vals)])
+        avg = np.average(vals[~np.isnan(vals)], weights=wghts[~np.isnan(vals)])
+        return avg * np.sum(~np.isnan(vals)) if return_sum else avg

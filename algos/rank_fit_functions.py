@@ -16,7 +16,7 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 
 from algos.game_ignore_functions import get_ignored_games
-from utils.dataset import safe_wma
+from utils.dataset import safe_weighted_avg
 
 _logger = logging.getLogger("ranking.algos.rank_fit")
 
@@ -138,7 +138,7 @@ def iteration_rank_fit_function(
                 df_games_iter.rename(columns={"Team_2": "Team", "Rank_2": "Rank"}),
             ]
         )
-        ratings_new = df_games_extended.groupby("Team").apply(lambda x: safe_wma(x["Rank"], x["Game_Wght"]))
+        ratings_new = df_games_extended.groupby("Team").apply(lambda x: safe_weighted_avg(x["Rank"], x["Game_Wght"]))
         df_ratings_iter[i + 1] = (ratings_iter + 0.5 * (ratings_new - ratings_iter)).round(n_round)
         rmse_change = np.sqrt(((df_ratings_iter[i + 1] - df_ratings_iter[i]) ** 2).mean())
         if verbose:

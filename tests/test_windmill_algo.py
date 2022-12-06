@@ -123,10 +123,10 @@ def main():
             }))
 
             # Check if sum of residuals for each team is ~0
-            max_avg_resid_windmill_algo = get_ranking_metrics(g, algo_name="Windmill_Algo")[1]
-            max_avg_resid_windmill_algo_iter = get_ranking_metrics(g, algo_name="Windmill_Algo_Iter")[1]
-            assert max_avg_resid_windmill_algo < 0.011
-            assert max_avg_resid_windmill_algo_iter < 0.011
+            max_sum_resid_windmill_algo = get_ranking_metrics(g, algo_name="Windmill_Algo")[1]
+            max_sum_resid_windmill_algo_iter = get_ranking_metrics(g, algo_name="Windmill_Algo_Iter")[1]
+            assert max_sum_resid_windmill_algo < 0.05
+            assert max_sum_resid_windmill_algo_iter < 0.05
     df_check = pd.concat(check_list, axis=1).T
     assert df_check.loc[df_check["Round"] != 2, ["Diff_Max_Orig", "Diff_Max_Iter"]].max().max() == 0
     assert df_check.loc[df_check["Round"] == 2, ["Diff_Max_Orig", "Diff_Max_Iter"]].max().max() < 0.011
