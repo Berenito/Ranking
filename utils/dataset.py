@@ -12,9 +12,7 @@ import numpy as np
 import pandas as pd
 
 
-def process_games(
-    df_games: pd.DataFrame, teams: t.Optional[t.Union[list, pd.Series]] = None, remove_draws: bool = False
-) -> pd.DataFrame:
+def process_games(df_games: pd.DataFrame, remove_draws: bool = False) -> pd.DataFrame:
     """
     Check and correct the potential issues in the Games Table.
 
@@ -24,7 +22,6 @@ def process_games(
     Try to convert all dates to YYYY-MM-DD format.
 
     :param df_games: Raw Games Table
-    :param teams: Both teams must be from this list; otherwise, do not consider the game (not applicable if equal to None)
     :param remove_draws: Whether to remove the rows with draws
     :return: Processed Games Table
     """
@@ -33,14 +30,11 @@ def process_games(
         {"Tournament": str, "Date": str, "Team_1": str, "Team_2": str, "Score_1": int, "Score_2": int}
     )
     df_games["Tournament"] = df_games["Tournament"].fillna("Unknown Tournament")
-    # Keep only games featuring given teams
-    if teams is not None:
-        df_games = get_games_for_teams(df_games, teams, how="only")
     # Drop NaNs
     idx_nan = df_games.isna().any(axis=1)
     if idx_nan.any():
         df_games = df_games.loc[~idx_nan]
-        logger.info(f"{idx_nan.sum()} invalid rows removed from the dataset.")
+        logger.warning(f"{idx_nan.sum()} invalid rows removed from the dataset.")
     # Remove draws
     if remove_draws:
         idx_draws = df_games["Score_1"] == df_games["Score_2"]
@@ -50,15 +44,17 @@ def process_games(
     # Reorder such that Team_1 is the winner
     idx_bad_w_l = df_games["Score_1"] < df_games["Score_2"]
     if idx_bad_w_l.any():
-        logger.info(f"{idx_bad_w_l.sum()} matches' W-L reordered in the dataset!")
+        logger.info(f"{idx_bad_w_l.sum()} matches' W-L reordered in the dataset.")
         df_games.loc[idx_bad_w_l, ["Team_1", "Team_2", "Score_1", "Score_2"]] = df_games.loc[
             idx_bad_w_l, ["Team_2", "Team_1", "Score_2", "Score_1"]
         ].values
     # Find dates in DD.MM.YYYY format and convert them to YYYY-MM-DD
-    dates_bad_format = df_games["Date"].str[2] == "."
-    df_games.loc[dates_bad_format, "Date"] = df_games.loc[dates_bad_format, "Date"].apply(
-        lambda x: datetime.strptime(x, "%d.%m.%Y").strftime("%Y-%m-%d")
-    )
+    idx_dates_bad_format = df_games["Date"].str[2] == "."
+    if idx_dates_bad_format.any():
+        logger.info(f"{idx_dates_bad_format.sum()} dates converted from DD.MM.YYYY to YYYY-MM-DD.")
+        df_games.loc[idx_dates_bad_format, "Date"] = df_games.loc[idx_dates_bad_format, "Date"].apply(
+            lambda x: datetime.strptime(x, "%d.%m.%Y").strftime("%Y-%m-%d")
+        )
     return df_games.sort_values(by=["Date", "Tournament", "Team_1", "Team_2"]).reset_index(drop=True)
 
 
