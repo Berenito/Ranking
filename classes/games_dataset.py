@@ -92,7 +92,7 @@ class GamesDataset:
             is_date = self.calendar["Date_End"] == date
             self.calendar.loc[is_date, "N_Components"] = df_summary["Component"].nunique()
             self.calendar.loc[is_date, "Max_Component_Size"] = df_summary["Component"].value_counts().max()
-        self.calendar["N_Components_All"] = self.calendar["N_Components"] + self.n_teams - self.calendar["N_Teams_Cum"]
+        self.calendar["N_Components_All"] = self.calendar["N_Components"] + self.n_teams - self.calendar["N_Teams_All_Cum"]
         self.calendar[["N_Components", "N_Components_All", "Max_Component_Size"]] = self.calendar[
             ["N_Components", "N_Components_All", "Max_Component_Size"]
         ].fillna(method="ffill").astype("int")
