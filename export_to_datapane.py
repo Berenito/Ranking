@@ -4,6 +4,8 @@ from pathlib import Path
 import datapane as dp
 import pandas as pd
 
+from classes.games_dataset import GamesDataset
+
 
 def main():
     """
@@ -16,18 +18,16 @@ def main():
     args = parser.parse_args()
 
     dp.login(token=args.token)
-    df_summary = pd.read_csv(args.input / f"EUF-{args.season}-{args.division.capitalize()}-summary.csv")
-    df_tournaments = pd.read_csv(args.input / f"EUF-{args.season}-{args.division.capitalize()}-tournaments.csv")
-    df_calendar = pd.read_csv(args.input / f"EUF-{args.season}-{args.division.capitalize()}-calendar.csv")
+    dataset = GamesDataset(args.input / f"EUF-{args.season}-{args.division.capitalize()}-games.csv")
     app = dp.App(
         "# EUF Ranking Test",
         dp.Select(
             blocks=[
-                dp.Group(get_summary_page(df_summary), label="Summary"),
-                dp.Group(get_games_per_team_page(), label="Games per Team"),
-                dp.Group(get_tournaments_page(df_tournaments), label="Tournaments"),
-                dp.Group(get_games_per_tournament_page(), label="Games per Tournament"),
-                dp.Group(get_calendar_page(df_calendar), label="Calendar"),
+                dp.Group(get_summary_page(dataset), label="Summary"),
+                dp.Group(get_games_per_team_page(dataset), label="Games per Team"),
+                dp.Group(get_tournaments_page(dataset), label="Tournaments"),
+                dp.Group(get_games_per_tournament_page(dataset), label="Games per Tournament"),
+                dp.Group(get_calendar_page(dataset), label="Calendar"),
             ],
             type=dp.SelectType.TABS,
         )
@@ -35,28 +35,51 @@ def main():
     app.upload(name="EUF New Test", description="Testing EUF Ranking", open=True)
 
 
-def get_summary_page(df_summary: pd.DataFrame):
-    page = dp.Group(dp.Table(df_summary))
+def get_summary_page(dataset: GamesDataset):
+    """
+    """
+    summary_show = dataset.summary.copy()
+    summary_show["Record"] = summary_show["Wins"].astype(str) + "-" + summary_show["Losses"].astype(str)
+    summary_show["Score"] = summary_show["Goals_For"].astype(str) + "-" + summary_show["Goals_Against"].astype(str)
+    summary_show = summary_show[["Tournaments", "Record", "W_Ratio", "Opponent_W_Ratio", "Score"]]
+    summary_show.index.name = "Team"
+    summary_styled = summary_show.style.applymap_index(
+        lambda v: "color:silver;" if "@" in v else "color:black;", axis=0
+    ).apply(
+        lambda v: ["color:silver;"] * summary_show.shape[1] if "@" in v.name else ["color:black;"] * summary_show.shape[1], axis=1
+    ).format(
+        {"W_Ratio": "{:.3f}", "Opponent_W_Ratio": "{:.3f}"}
+    )
+    page = dp.Group(
+        dp.Group(
+            dp.BigNumber(heading="EUF Teams", value=(~dataset.teams.str.contains("@")).sum()),
+            dp.BigNumber(heading="All Teams", value=dataset.n_teams),
+            dp.BigNumber(heading="Tournaments", value=dataset.n_tournaments),
+            dp.BigNumber(heading="Games", value=dataset.n_games),
+            columns=4,
+        ),
+        dp.Table(summary_styled)
+    )
     return page
 
 
-def get_games_per_team_page():
+def get_games_per_team_page(dataset: GamesDataset):
     page = dp.Group()
     return page
 
 
-def get_tournaments_page(df_tournaments: pd.DataFrame):
-    page = dp.Group(dp.Table(df_tournaments))
+def get_tournaments_page(dataset: GamesDataset):
+    page = dp.Group(dp.Table(dataset.tournaments))
     return page
 
 
-def get_games_per_tournament_page():
+def get_games_per_tournament_page(dataset: GamesDataset):
     page = dp.Group()
     return page
 
 
-def get_calendar_page(df_calendar: pd.DataFrame):
-    page = dp.Group(dp.Table(df_calendar))
+def get_calendar_page(dataset: GamesDataset):
+    page = dp.Group(dp.Table(dataset.calendar))
     return page
 
 

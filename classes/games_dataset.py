@@ -3,6 +3,7 @@ Define the GamesDataset class.
 """
 import logging
 import typing as t
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -20,7 +21,7 @@ class GamesDataset:
     Class to work with the Games Dataset - extension of the Games Table.
     """
 
-    def __init__(self, games: t.Union[pd.DataFrame, str], name: str = "Unknown_Dataset", calculate_weekly: bool = True):
+    def __init__(self, games: t.Union[pd.DataFrame, str, Path], name: str = "Unknown_Dataset", calculate_weekly: bool = True):
         """
         Initialize the dataset.
         
@@ -35,8 +36,8 @@ class GamesDataset:
         :return: Initialized GamesDataset object (all dataset-specific metrics are calculated automatically)
         """
         self.name = name
-        if isinstance(games, str):
-            df_games = pd.read_csv(games, index_col=0)
+        if isinstance(games, (str, Path)):
+            df_games = pd.read_csv(games)
         elif isinstance(games, pd.DataFrame):
             df_games = games
         self.games = dataset.process_games(df_games)

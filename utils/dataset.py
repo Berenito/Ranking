@@ -146,8 +146,8 @@ def get_summary_of_games(df_games: pd.DataFrame, date: t.Optional[str] = None) -
     df_games_dupl = duplicate_games(df_games)
     teams = get_teams_in_games(df_games)
     df_summary = pd.DataFrame(index=teams)
-    df_summary["Wins"] = df_games.groupby("Team_1")["Score_1"].count().reindex(teams).fillna(0).astype("int")
-    df_summary["Losses"] = df_games.groupby("Team_2")["Score_2"].count().reindex(teams).fillna(0).astype("int")
+    df_summary["Wins"] = df_games.groupby("Team_1")["Score_1"].count().reindex(teams).fillna(0).astype(int)
+    df_summary["Losses"] = df_games.groupby("Team_2")["Score_2"].count().reindex(teams).fillna(0).astype(int)
     df_summary["Games"] = df_summary["Wins"] + df_summary["Losses"]
     df_summary["Tournaments"] = df_games_dupl.groupby("Team_1")["Tournament"].nunique()
     df_summary["Goals_For"] = df_games_dupl.groupby("Team_1")["Score_1"].sum().reindex(teams).fillna(0)
