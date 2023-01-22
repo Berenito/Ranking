@@ -2,6 +2,7 @@ import argparse
 from pathlib import Path
 
 import datapane as dp
+import pandas as pd
 
 from classes.games_dataset import GamesDataset
 from utils.dataset import duplicate_games
@@ -9,6 +10,16 @@ from utils.dataset import duplicate_games
 
 def main():
     """
+    Export the Ranking data to the datapane report.
+
+    Prerequisites:
+    * TBA
+
+    Arguments:
+    * --input - path to the folder with all necessary files
+    * --division - women/mixed/open
+    * --season - current year
+    * --token - datapane token for logging in
     """
     parser = argparse.ArgumentParser(description="Parser for exporting to Datapane.")
     parser.add_argument("--input", required=True, type=Path, help="Input folder for the export")
@@ -20,18 +31,21 @@ def main():
     dp.login(token=args.token)
     dataset = GamesDataset(args.input / f"EUF-{args.season}-{args.division.capitalize()}-games.csv")
     app = dp.App(
-        # "# EUF Ranking Test",
         dp.Page(title="Summary", blocks=[get_summary_page(dataset)]),
         dp.Page(title="Games per Team", blocks=[get_games_per_team_page(dataset)]),
         dp.Page(title="Tournaments", blocks=[get_tournaments_page(dataset)]),
         dp.Page(title="Games per Tournament", blocks=[get_games_per_tournament_page(dataset)]),
         dp.Page(title="Calendar", blocks=[dp.Group(get_calendar_page(dataset), label="Calendar")]),
     )
-    app.upload(name="EUF New Test", description="Testing EUF Ranking", open=True)
+    app.upload(name=f"EUF {args.season} {args.division}", description="Testing EUF Ranking", open=True)
 
 
 def get_summary_page(dataset: GamesDataset):
     """
+    Create a page that shows the summary for all the teams.
+
+    :param dataset: Games Dataset
+    :return: Datapane page
     """
     summary_show = dataset.summary.copy()
     summary_show["Record"] = summary_show["Wins"].astype(str) + "-" + summary_show["Losses"].astype(str)
@@ -61,6 +75,12 @@ def get_summary_page(dataset: GamesDataset):
 
 
 def get_games_per_team_page(dataset: GamesDataset):
+    """
+    Create a page that shows the games for the selected team.
+
+    :param dataset: Games Dataset
+    :return: Datapane page
+    """
     page = dp.Group(
         dp.Select(
             blocks=[
@@ -73,6 +93,13 @@ def get_games_per_team_page(dataset: GamesDataset):
 
 
 def get_games_per_team_info(dataset: GamesDataset, team: str):
+    """
+    Helpfunction to get info for the selected team.
+
+    :param dataset: Games Dataset
+    :param team: Team name
+    :return: Datapane page
+    """
     games_show = dataset.filter_games(team=team)
     n_tournaments = games_show["Tournament"].nunique()
     n_games = games_show.shape[0]
@@ -101,7 +128,13 @@ def get_games_per_team_info(dataset: GamesDataset, team: str):
     return f"### Games for {team}", big_numbers, dp.Table(style_games_for_team(games_show))
 
 
-def style_games_for_team(games_show):
+def style_games_for_team(games_show: pd.DataFrame):
+    """
+    Style the games per team table.
+
+    :param games_show: Dataframe of the games for the selected team
+    :return: Styled dataframe
+    """
     games_show.index += 1
     games_styled = games_show.style.apply(
         lambda v: (
@@ -114,6 +147,12 @@ def style_games_for_team(games_show):
 
 
 def get_tournaments_page(dataset: GamesDataset):
+    """
+    Create a page that shows the summary of the played tournaments.
+
+    :param dataset: Games Dataset
+    :return: Datapane page
+    """
     tournaments_show = dataset.tournaments.copy()
     tournaments_show = tournaments_show[["Date_First", "Date_Last", "N_Teams_EUF", "N_Teams_All", "N_Games"]].rename(
         columns={"Date_First": "Date First", "Date_Last": "Date Last", "N_Teams_EUF": "Teams EUF", "N_Teams_All": "Teams All", "N_Games": "Games"}
@@ -123,6 +162,12 @@ def get_tournaments_page(dataset: GamesDataset):
 
 
 def get_games_per_tournament_page(dataset: GamesDataset):
+    """
+    Create a page that shows the games for the selected tournament.
+
+    :param dataset: Games Dataset
+    :return: Datapane page
+    """
     page = dp.Group(
         dp.Select(
             blocks=[
@@ -136,6 +181,13 @@ def get_games_per_tournament_page(dataset: GamesDataset):
 
 
 def get_games_per_tournament_info(dataset, tournament):
+    """
+    Helpfunction to get info for the selected tournament.
+
+    :param dataset: Games Dataset
+    :param tournament: Tournament name
+    :return: Datapane page
+    """
     games_show = dataset.filter_games(tournament=tournament)
     tournament_info = dataset.tournaments.loc[tournament]
     games_show["Result"] = games_show["Score_1"].astype(str) + "-" + games_show["Score_2"].astype(str)
@@ -155,6 +207,12 @@ def get_games_per_tournament_info(dataset, tournament):
 
 
 def get_calendar_page(dataset: GamesDataset):
+    """
+    Create a page that shows the summary per calendar weeks.
+
+    :param dataset: Games Dataset
+    :return: Datapane page
+    """
     calendar_show = dataset.calendar.copy().reset_index().astype(str)
     calendar_show["Calendar Week"] = calendar_show["Year"] + "/" + calendar_show["Calendar_Week"]
     calendar_show["Tournaments (Cum)"] = calendar_show["N_Tournaments"] + " (" + calendar_show["N_Tournaments_Cum"] + ")"
