@@ -20,24 +20,45 @@ def main():
     * --division - women/mixed/open
     * --season - current year
     * --token - datapane token for logging in
+    * --date - date of calculation
+    * --algorithm - algorithm name
     """
     parser = argparse.ArgumentParser(description="Parser for exporting to Datapane.")
     parser.add_argument("--input", required=True, type=Path, help="Input folder for the export")
     parser.add_argument("--token", required=True, help="Datapane token for logging in")
     parser.add_argument("--season", required=True, type=int, help="Current year (for naming purposes)")
     parser.add_argument("--division", required=True, choices=["women", "mixed", "open"], help="Division (women/mixed/open)")
+    parser.add_argument("--date", required=True, help="Date of calculation")
+    parser.add_argument("--algorithm", required=True, help="Algorithm name")
     args = parser.parse_args()
 
     dp.login(token=args.token)
     dataset = GamesDataset(args.input / f"EUF-{args.season}-{args.division.capitalize()}-games.csv")
     app = dp.App(
-        dp.Page(title="Summary", blocks=[get_summary_page(dataset)]),
-        dp.Page(title="Games per Team", blocks=[get_games_per_team_page(dataset)]),
-        dp.Page(title="Tournaments", blocks=[get_tournaments_page(dataset)]),
-        dp.Page(title="Games per Tournament", blocks=[get_games_per_tournament_page(dataset)]),
-        dp.Page(title="Calendar", blocks=[dp.Group(get_calendar_page(dataset), label="Calendar")]),
+        add_basic_info(args),
+        dp.Select(
+            blocks=[
+                dp.Group(get_summary_page(dataset), label="Summary"),
+                dp.Group(get_games_per_team_page(dataset), label="Games per Team"),
+                dp.Group(get_tournaments_page(dataset), label="Tournaments"),
+                dp.Group(get_games_per_tournament_page(dataset), label="Games per Tournament"),
+                dp.Group(get_calendar_page(dataset), label="Calendar"),
+            ],
+            type=dp.SelectType.TABS,
+        ),
     )
-    app.upload(name=f"EUF {args.season} {args.division}", description="Testing EUF Ranking", open=True)
+    app.upload(name=f"EUF {args.season} {args.division.capitalize()}", description="Testing EUF Ranking", open=True)
+
+
+def add_basic_info(args: argparse.Namespace):
+    basic_info = dp.Group(
+        dp.BigNumber(heading="EUF Season", value=args.season),
+        dp.BigNumber(heading="Division", value=args.division.capitalize()),
+        dp.BigNumber(heading="Date", value=args.date),
+        dp.BigNumber(heading="Algorithm", value=args.algorithm),
+        columns=4,
+    )
+    return basic_info
 
 
 def get_summary_page(dataset: GamesDataset):
@@ -102,12 +123,10 @@ def get_games_per_team_info(dataset: GamesDataset, team: str):
     """
     games_show = dataset.filter_games(team=team)
     n_tournaments = games_show["Tournament"].nunique()
-    n_games = games_show.shape[0]
     record = f"{dataset.summary.loc[team, 'Wins']}-{dataset.summary.loc[team, 'Losses']}"
     score = f"{dataset.summary.loc[team, 'Goals_For']}-{dataset.summary.loc[team, 'Goals_Against']}"
     big_numbers = dp.Group(
         dp.BigNumber(heading="Tournaments", value=n_tournaments),
-        dp.BigNumber(heading="Games", value=n_games),
         dp.BigNumber(heading="Record", value=record),
         dp.BigNumber(heading="Score", value=score),
         columns=4,
