@@ -91,7 +91,7 @@ def main():
     df_games = process_games(df_games)
     logger.info(f"{df_games.shape[0]} valid games found for the {args.division} division.")
 
-    dataset = GamesDataset(df_games, f"EUF-{args.season}-{args.division.capitalize()}")
+    dataset = GamesDataset(df_games, f"EUF-{args.season}-{args.division}")
     dataset.games.to_csv(args.output / f"{dataset.name}-games.csv", index=False)
     dataset.tournaments.to_csv(args.output / f"{dataset.name}-tournaments.csv")
     dataset.calendar.to_csv(args.output / f"{dataset.name}-calendar.csv")

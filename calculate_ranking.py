@@ -1,5 +1,6 @@
 import argparse
 import logging
+import pickle
 from pathlib import Path
 
 from classes.games_dataset import GamesDataset
@@ -22,9 +23,10 @@ def main():
     * --season - current year
     * --date - date of calculation
     * --algorithm - algorithm name
-    * --output - path to save the output CSVs
+    * --output - path to save the output files
 
     Outputs:
+    * CSV with Games, Summary; pickle with GamesDataset object
 
     """
     parser = argparse.ArgumentParser(description="Parser for ranking calculation.")
@@ -45,8 +47,8 @@ def main():
 
     algo = ALGORITHMS[args.algorithm.lower()]
     dataset = GamesDataset(
-        args.input / f"EUF-{args.season}-{args.division.capitalize()}-games.csv",
-        name=f"EUF-{args.division.capitalize()}-{args.season}",
+        args.input / f"EUF-{args.season}-{args.division}-games.csv",
+        name=f"EUF-{args.division}-{args.season}",
     )
     logger.info(f"Applying {args.algorithm} algorithm on the {dataset.name} dataset.")
     dataset.add_ratings(algo, block_algo=True)
@@ -54,6 +56,9 @@ def main():
     date_str = args.date.replace("-", "")
     dataset.games.to_csv(args.output / f"{dataset.name}-games-{args.algorithm}-{date_str}.csv", index=False)
     dataset.summary.to_csv(args.output / f"{dataset.name}-summary-{args.algorithm}-{date_str}.csv")
+    with open(args.output / f"{dataset.name}-{args.algorithm}-{date_str}.pkl", "wb") as f:
+        pickle.dump(dataset, f)
+    logger.info(f"Output files saved to {args.output}.")
 
 
 if __name__ == "__main__":
