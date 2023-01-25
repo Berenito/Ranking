@@ -72,7 +72,7 @@ class GamesDataset:
         else:
             df_summary["Component"] = dataset.get_graph_components(self.weekly_graph.get(date), self.teams)
         # Add ranking eligibility
-        df_summary["Eligible"] = 1*(
+        df_summary["Eligible"] = 1 * (
             (df_summary["Tournaments"] >= MIN_TOURNAMENTS)
             & (df_summary["Games"] >= MIN_GAMES)
             & ((df_summary["Component"] == 1) if MAX_COMPONENT_REQUIRED else True)
