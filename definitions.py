@@ -11,7 +11,7 @@ MAX_COMPONENT_REQUIRED = True
 
 # Algorithm definitions
 USAU_ALGO = BlockRankingAlgorithm(
-    algo_name="USAU_Block_Algo",
+    algo_name="USAU",
     rank_diff_func="usau",
     game_weight_func="usau_no_date",
     rank_fit_func="iteration",

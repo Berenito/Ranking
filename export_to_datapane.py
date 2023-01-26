@@ -79,17 +79,24 @@ def get_summary_page(dataset: GamesDataset):
     summary_show = dataset.summary.copy()
     summary_show["Record"] = summary_show["Wins"].astype(str) + "-" + summary_show["Losses"].astype(str)
     summary_show["Score"] = summary_show["Goals_For"].astype(str) + "-" + summary_show["Goals_Against"].astype(str)
-    summary_show = summary_show[["Tournaments", "Record", "W_Ratio", "Opponent_W_Ratio", "Score"]].rename(
+    summary_show = summary_show.rename(
+        columns={[c for c in summary_show.columns if c.startswith("Rating")][0]: "Rating"}
+    )
+    summary_show["Rank"] = "-"
+    summary_show.loc[summary_show["Eligible"] == 1, "Rank"] = summary_show.loc[
+        summary_show["Eligible"] == 1, "Rating"
+    ].rank(ascending=False).astype(int).astype(str)
+    summary_show.index.name = "Team"
+    summary_show = summary_show.reset_index()
+    summary_show = summary_show[["Rank", "Team", "Rating", "Tournaments", "Record", "W_Ratio", "Opponent_W_Ratio", "Score"]].rename(
         columns={"W_Ratio": "Win Ratio", "Opponent_W_Ratio": "Opponent Win Ratio"}
     )
-    summary_show.index.name = "Team"
-    summary_styled = summary_show.style.applymap_index(
-        lambda v: "color:silver;" if "@" in v else "color:black;", axis=0
-    ).apply(
-        lambda v: (["color:silver;"] if "@" in v.name else ["color:black;"]) * summary_show.shape[1], axis=1
+
+    summary_styled = summary_show.style.apply(
+        lambda v: (["color:silver;"] if v["Rank"] == "-" else ["color:black;"]) * summary_show.shape[1], axis=1
     ).format(
-        {"Win Ratio": "{:.3f}", "Opponent Win Ratio": "{:.3f}"}
-    )
+        {"Win Ratio": "{:.3f}", "Opponent Win Ratio": "{:.3f}", "Rating": "{:.2f}"}
+    ).hide(axis="index")
     page = dp.Group(
         dp.Group(
             dp.BigNumber(heading="EUF Teams", value=(~dataset.teams.str.contains("@")).sum()),
