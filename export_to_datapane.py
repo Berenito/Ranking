@@ -1,4 +1,6 @@
 import argparse
+import pickle
+import warnings
 from pathlib import Path
 
 import datapane as dp
@@ -23,17 +25,23 @@ def main():
     * --date - date of calculation
     * --algorithm - algorithm name
     """
+    warnings.filterwarnings("ignore", category=FutureWarning)
+
     parser = argparse.ArgumentParser(description="Parser for exporting to Datapane.")
     parser.add_argument("--input", required=True, type=Path, help="Input folder for the export")
     parser.add_argument("--token", required=True, help="Datapane token for logging in")
     parser.add_argument("--season", required=True, type=int, help="Current year (for naming purposes)")
-    parser.add_argument("--division", required=True, choices=["women", "mixed", "open"], help="Division (women/mixed/open)")
+    parser.add_argument(
+        "--division", required=True, choices=["women", "mixed", "open"], help="Division (women/mixed/open)"
+    )
     parser.add_argument("--date", required=True, help="Date of calculation")
     parser.add_argument("--algorithm", required=True, help="Algorithm name")
     args = parser.parse_args()
 
     dp.login(token=args.token)
-    dataset = GamesDataset(args.input / f"EUF-{args.season}-{args.division.capitalize()}-games.csv")
+    date_str = args.date.replace("-", "")
+    with open(args.input / f"EUF-{args.season}-{args.division}-{args.algorithm}-{date_str}.pkl", "rb") as f:
+        dataset = pickle.load(f)
     app = dp.App(
         add_basic_info(args),
         dp.Select(

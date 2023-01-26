@@ -48,7 +48,7 @@ def main():
     algo = ALGORITHMS[args.algorithm.lower()]
     dataset = GamesDataset(
         args.input / f"EUF-{args.season}-{args.division}-games.csv",
-        name=f"EUF-{args.division}-{args.season}",
+        name=f"EUF-{args.season}-{args.division}",
     )
     logger.info(f"Applying {args.algorithm} algorithm on the {dataset.name} dataset.")
     dataset.add_ratings(algo, block_algo=True)
