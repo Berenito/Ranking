@@ -72,7 +72,7 @@ def regression_rank_fit_function(
     :param n_round: Number of decimals for rounding
     :return: Series with the calculated ratings (LR coefficients)
     """
-    coefficients = pd.Series(index=teams)
+    coefficients = pd.Series(index=teams, dtype="float64")
     for i_comp, comp in components.reset_index().groupby("Component"):
         teams_comp = comp["Team"]
         df_comp = df_games.loc[df_games["Team_1"].isin(teams_comp) | df_games["Team_2"].isin(teams_comp)].reset_index()
