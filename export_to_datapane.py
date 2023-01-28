@@ -42,6 +42,22 @@ def main():
     date_str = args.date.replace("-", "")
     with open(args.input / f"EUF-{args.season}-{args.division}-{args.algorithm}-{date_str}.pkl", "rb") as f:
         dataset = pickle.load(f)
+
+    dataset.summary = dataset.summary.rename(columns={f"Rating_{args.algorithm.lower()}": "Rating"})
+    dataset.summary["Rank"] = "-"
+    dataset.summary.loc[dataset.summary["Eligible"] == 1, "Rank"] = dataset.summary.loc[
+        dataset.summary["Eligible"] == 1, "Rating"
+    ].rank(ascending=False).astype(int).astype(str)
+
+    dataset.games = dataset.games.rename(
+        columns={
+            f"Game_Rank_Diff_{args.algorithm.lower()}": "Game_Rank_Diff",
+            f"Team_Rank_Diff_{args.algorithm.lower()}": "Team_Rank_Diff",
+            f"Game_Wght_{args.algorithm.lower()}": "Game_Wght",
+            f"Is_Ignored_{args.algorithm.lower()}": "Is_Ignored",
+        }
+    )
+
     app = dp.App(
         add_basic_info(args),
         dp.Select(
@@ -79,13 +95,6 @@ def get_summary_page(dataset: GamesDataset):
     summary_show = dataset.summary.copy()
     summary_show["Record"] = summary_show["Wins"].astype(str) + "-" + summary_show["Losses"].astype(str)
     summary_show["Score"] = summary_show["Goals_For"].astype(str) + "-" + summary_show["Goals_Against"].astype(str)
-    summary_show = summary_show.rename(
-        columns={[c for c in summary_show.columns if c.startswith("Rating")][0]: "Rating"}
-    )
-    summary_show["Rank"] = "-"
-    summary_show.loc[summary_show["Eligible"] == 1, "Rank"] = summary_show.loc[
-        summary_show["Eligible"] == 1, "Rating"
-    ].rank(ascending=False).astype(int).astype(str)
     summary_show.index.name = "Team"
     summary_show = summary_show.reset_index()
     summary_show = summary_show[["Rank", "Team", "Rating", "Tournaments", "Record", "W_Ratio", "Opponent_W_Ratio", "Score"]].rename(
@@ -141,14 +150,22 @@ def get_games_per_team_info(dataset: GamesDataset, team: str):
     record = f"{dataset.summary.loc[team, 'Wins']}-{dataset.summary.loc[team, 'Losses']}"
     score = f"{dataset.summary.loc[team, 'Goals_For']}-{dataset.summary.loc[team, 'Goals_Against']}"
     big_numbers = dp.Group(
+        dp.BigNumber(heading="Team", value=team),
+        dp.BigNumber(heading="Rank", value=dataset.summary.loc[team, "Rank"]),
+        dp.BigNumber(heading="Rating", value=dataset.summary.loc[team, "Rating"]),
         dp.BigNumber(heading="Tournaments", value=n_tournaments),
         dp.BigNumber(heading="Record", value=record),
         dp.BigNumber(heading="Score", value=score),
-        columns=4,
+        columns=3,
     )
     games_show = duplicate_games(games_show)
     games_show = games_show.loc[games_show["Team_1"] == team]
     games_show = games_show.rename(columns={"Team_2": "Opponent"})
+    games_show["Game Weight"] = games_show["Game_Wght"] * (1 - games_show["Is_Ignored"])
+    games_show["Game Weight"] = 100 * games_show["Game Weight"] / games_show["Game Weight"].sum()
+    games_show["Game Rating"] = (
+            dataset.summary.loc[team, "Rating"] - games_show["Team_Rank_Diff"] + games_show["Game_Rank_Diff"]
+    )
 
     def get_result_abbr(x, y):
         return "W" if x > y else ("L " if x < y else "D ")
@@ -156,10 +173,10 @@ def get_games_per_team_info(dataset: GamesDataset, team: str):
     games_show["Result"] = games_show[["Score_1", "Score_2"]].apply(
         lambda x: f"{get_result_abbr(x['Score_1'], x['Score_2'])} {x['Score_1']}-{x['Score_2']}", axis=1
     )
-    games_show = games_show[["Opponent", "Date", "Tournament", "Result"]].sort_values(
+    games_show = games_show[["Opponent", "Date", "Tournament", "Result", "Game Weight", "Game Rating"]].sort_values(
         by=["Date", "Opponent"], ascending=[False, True]
     ).reset_index(drop=True)
-    return f"### Games for {team}", big_numbers, dp.Table(style_games_for_team(games_show))
+    return big_numbers, dp.Table(style_games_for_team(games_show))
 
 
 def style_games_for_team(games_show: pd.DataFrame):
@@ -176,7 +193,7 @@ def style_games_for_team(games_show: pd.DataFrame):
                       else (["background-color:seashell;"] if "L" in v["Result"] else ["background-color:white;"])
                   ) * games_show.shape[1],
         axis=1,
-    )
+    ).format({"Game Weight": "{:.1f}%", "Game Rating": "{:.2f}"})
     return games_styled
 
 

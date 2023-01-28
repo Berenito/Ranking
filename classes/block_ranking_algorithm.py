@@ -92,14 +92,14 @@ class BlockRankingAlgorithm:
         ratings, df_games["Is_Ignored"], df_games["Team_Rank_Diff"] = get_rank_fit(
             self.rank_fit_func, self.game_ignore_func, teams, df_games, components, self.game_ignore_params, **self.rank_fit_params
         )
-        ratings = ratings.rename("Rating_{}".format(self.name))
+        ratings = ratings.rename(f"Rating_{self.name}")
         if return_games:
             df_games = df_games.rename(
                 columns={
-                    "Game_Rank_Diff": "Game_Rank_Diff_{}".format(self.name),
-                    "Team_Rank_Diff": "Team_Rank_Diff_{}".format(self.name),
-                    "Game_Wght": "Game_Wght_{}".format(self.name),
-                    "Is_Ignored": "Is_Ignored_{}".format(self.name),
+                    "Game_Rank_Diff": f"Game_Rank_Diff_{self.name}",
+                    "Team_Rank_Diff": f"Team_Rank_Diff_{self.name}",
+                    "Game_Wght": f"Game_Wght_{self.name}",
+                    "Is_Ignored": f"Is_Ignored_{self.name}",
                 }
             )
             return ratings, df_games

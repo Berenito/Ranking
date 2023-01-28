@@ -139,7 +139,7 @@ class GamesDataset:
             ratings = ranking_algo.get_ratings(self.games)
         self.summary = pd.concat([ratings, self.summary], axis=1)
         if sort:
-            self.summary = self.summary.sort_values(by='Rating_{}'.format(ranking_algo.name), ascending=False)
+            self.summary = self.summary.sort_values(by=f"Rating_{ranking_algo.name}", ascending=False)
 
     def add_weekly_ratings(self, ranking_algo: t.Union[RankingAlgorithm, BlockRankingAlgorithm], sort: bool = True):
         """
@@ -159,6 +159,6 @@ class GamesDataset:
             self.weekly_summary[date] = pd.concat([weekly_ratings.get(date), self.weekly_summary.get(date)], axis=1)
             if sort:
                 self.weekly_summary[date] = self.weekly_summary.get(date).sort_values(
-                    by='Rating_{}'.format(ranking_algo.name), scending=False
+                    by=f"Rating_{ranking_algo.name}", ascending=False
                 )
 

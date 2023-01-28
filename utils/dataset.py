@@ -69,6 +69,8 @@ def duplicate_games(df_games: pd.DataFrame) -> pd.DataFrame:
     df_games_reversed = df_games.rename(
         columns={"Team_1": "Team_2", "Team_2": "Team_1", "Score_1": "Score_2", "Score_2": "Score_1"}
     )
+    # If Team_Rank_Diff_{...} or Game_Rank_Diff_{...} is present, change the sign in the reversed table
+    df_games_reversed.loc[:, df_games_reversed.columns.str.contains("Rank_Diff")] *= -1
     return pd.concat([df_games, df_games_reversed]).reset_index(drop=True)
 
 
