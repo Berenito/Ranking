@@ -4,11 +4,11 @@ import pickle
 from pathlib import Path
 
 from classes.games_dataset import GamesDataset
-from definitions import USAU_ALGO
+from definitions import USAU_ALGO, WINDMILL_ALGO
 from utils.dataset import get_ranking_metrics
 from utils.logging import setup_logger
 
-ALGORITHMS = {"usau": USAU_ALGO}
+ALGORITHMS = {"usau": USAU_ALGO, "windmill": WINDMILL_ALGO}
 
 
 def main():
@@ -16,7 +16,7 @@ def main():
     Calculate the rankings for the given division and algorithm.
 
     Prerequisites:
-    * Run prepare_data script
+    * Run prepare_data.py script (use its output path as input to this script)
 
     Arguments:
     * --input - path to the folder with all necessary files
@@ -27,8 +27,7 @@ def main():
     * --output - path to save the output files
 
     Outputs:
-    * CSV with Games, Summary; pickle with GamesDataset object
-
+    * CSV with Games, Summary (including ratings); pickle with GamesDataset object
     """
     parser = argparse.ArgumentParser(description="Parser for ranking calculation.")
     parser.add_argument(

@@ -15,7 +15,8 @@ def main():
     Export the Ranking data to the datapane report.
 
     Prerequisites:
-    * TBA
+    * Create the datapane account and get the token for app deployment
+    * Run calculate_rankings.py script (use its output path as input to this script)
 
     Arguments:
     * --input - path to the folder with all necessary files
@@ -24,6 +25,9 @@ def main():
     * --token - datapane token for logging in
     * --date - date of calculation
     * --algorithm - algorithm name
+
+    Outputs:
+    * Datapane webpage with deployed application
     """
     warnings.filterwarnings("ignore", category=FutureWarning)
 
