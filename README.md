@@ -1,36 +1,92 @@
 # Ranking (Development of EUF ranking system)
-Version: 2022-10-05
+
+Version: 2023-01-28
 
 The goal of this code is to provide a structure to the implementation of the ranking algorithms, 
 so they can be immediately applied to any available dataset. It also provides a possibility to gain 
 insights about the games datasets and the way to export the results to reasonable formats.
 
-#### Folder structure
-* `algos` - specific ranking algorithms scripts 
-* `data` - csv files with the games datasets
-* `figures` - place for exported figures
-* `reports` - place for exported excel files
-* `helpfunctions` - various utility functions
-* `examples` - scripts showing the intended use of the ranking code
-* `tests` - scripts validating the implemented algorithms 
+## Folder structure
 
-#### Dataset format
-Games dataset should be saved in a csv file with the following 6 columns:
-* `Tournament` - name of the event
-* `Date` - game date in YYYY-MM-DD format
-* `Team_1`, `Team_2` - participating teams
-* `Score_1`, `Score_2` - resulting scores
+* `algos` - specific ranking-algorithm functions 
+* `classes` - general concepts for implementing the algorithms
+* `utils` - various utility functions
+* `tests` - scripts validating the implemented algorithms
 
-#### Algo format
-* `RankingAlgorithm(algo_function, algo_name, **kwargs)`
-  * `algo_function(df_games, **kwargs) -> ratings`
-* `BlockRankingAlgorithm(rank_diff_func, game_weight_func, rank_fit_func, game_ignore_func, algo_name,
-rank_diff_params, game_weight_params, rank_fit_params, game_ignore_params)`
+## Runnable Scripts
 
-#### How to use it
-* clone the repo using `git clone https://github.com/Berenito/Ranking.git`
-* create python env, install packages to it using `pip install requirements.txt`
-* run the example script `example_ranking_script_euf.py`, possibly with new data (change the paths appropriately)
-* play with the algo settings
+To initialize the code, do the following:
+* Clone the repo using `git clone https://github.com/Berenito/Ranking.git`
+* Create python env, install packages to it using `pip install requirements.txt`
+
+All important constants and definitions are located in the `definitions.py` file.
+
+### `prepare_data.py`
+
+Take data from all the CSV files in the input folder and join them to create a big Game Table with the clean data;
+export some preliminary summary statistics (no rankings are calculated here).
+
+Prerequisites:
+* Prepare a folder with the tournament result data - CSV files with columns `Tournament, Date, Team_1, Team_2,
+  Score_1, Score_2, Division`
+* Add to the same folder a TXT file per division specifying the teams in the EUF system; multiple aliases can be
+  defined for each team in the same row, separated with commas (filename should be `teams-<division>.txt`)
+* Add to the same folder a TXT file with the pairs `<team>, <tournament>`; specifying that the given team has met the
+  EUF roster requirements for the particular tournament (filename should be `teams_at_tournaments-<division>.txt`)
+
+Arguments:
+* `--input <INPUT>` - path to the folder with all necessary files
+* `--division <DIVISION>` - women/mixed/open
+* `--season <SEASON>` - current year
+* `--output <OUTPUT>` - path to the folder to save the output CSVs
+
+Procedure:
+* Read the tournament results CSVs and take only the games for the given division
+* Read the list of EUF teams; replace aliases where applicable
+* Read teams at tournaments list; add suffix to all teams without EUF-sanctioned roster for the given tournament
+* Process the Game Table (check for invalid rows)
+* Calculate basic statistics for the season (without any rankings)
+* Save the output CSVs
+
+Outputs:
+* CSVs with Games, Tournaments, Calendar, and Summary (without any rankings)
+
+### `calculate_rankings.py`
+
+Calculate the rankings for the given division and algorithm.
+
+Prerequisites:
+* Run `prepare_data.py` script (use its output path as input to this script)
+
+Arguments:
+* `--input <INPUT>`- path to the folder with all necessary files
+* `--division <DIVISION>` - women/mixed/open
+* `--season <SEASON>` - current year
+* `--date <DATE>` - date of calculation (not working yet)
+* `--algorithm <ALGORITHM>` - algorithm name
+* `--output <OUTPUT>` - path to save the output files
+
+Outputs:
+* CSV with Games, Summary (including ratings); pickle with GamesDataset object
+
+### `export_to_datapane.py`
+
+Export the Ranking data to the datapane application.
+
+Prerequisites:
+* Create the datapane account and get the token for app deployment
+* Run `calculate_rankings.py` script (use its output path as input to this script)
+
+Arguments:
+* `--input <INPUT>`- path to the folder with all necessary files
+* `--division <DIVISION>` - women/mixed/open
+* `--season <SEASON>` - current year
+* `--token <TOKEN>` - datapane token for logging in
+* `--date <DATE>` - date of calculation (not working yet)
+* `--algorithm <ALGORITHM>` - algorithm name
+  
+Outputs:
+* Datapane webpage with deployed application
+  
 
 
