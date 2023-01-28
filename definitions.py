@@ -20,3 +20,11 @@ USAU_ALGO = BlockRankingAlgorithm(
     rank_fit_params={"rating_start": 0, "n_round": 2, "n_iter": 1000, "verbose": True},
     game_ignore_params={"min_valid": MIN_GAMES},
 )
+
+WINDMILL_ALGO = BlockRankingAlgorithm(
+    algo_name='windmill',
+    rank_diff_func='score_diff',
+    game_weight_func='uniform',
+    rank_fit_func='regression',
+    rank_fit_params={'n_round': 2}
+)
