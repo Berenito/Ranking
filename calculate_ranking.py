@@ -5,6 +5,7 @@ from pathlib import Path
 
 from classes.games_dataset import GamesDataset
 from definitions import USAU_ALGO
+from utils.dataset import get_ranking_metrics
 from utils.logging import setup_logger
 
 ALGORITHMS = {"usau": USAU_ALGO}
@@ -52,6 +53,9 @@ def main():
     )
     logger.info(f"Applying {args.algorithm} algorithm on the {dataset.name} dataset.")
     dataset.add_ratings(algo, block_algo=True)
+
+    rmse, max_sum_resid = get_ranking_metrics(dataset.games, algo.name)
+    logger.info(f"RMSE: {rmse:.2f}, Max Sum Resid: {max_sum_resid:.2f}")
 
     date_str = args.date.replace("-", "")
     dataset.games.to_csv(args.output / f"{dataset.name}-games-{args.algorithm}-{date_str}.csv", index=False)
