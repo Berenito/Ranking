@@ -48,7 +48,7 @@ def main():
     parser = argparse.ArgumentParser(description="EUF data preparation parser.")
     parser.add_argument("--input", required=True, type=Path, help="Path to the folder with all necessary files")
     parser.add_argument(
-        "--division", required=True, choices=["women", "mixed", "open", "all"], help="Division (women/mixed/open/all)"
+        "--division", default="all", choices=["women", "mixed", "open", "all"], help="Division (women/mixed/open/all)"
     )
     parser.add_argument("--season", required=True, type=int, help="Current year (for naming purposes)")
     parser.add_argument("--output", required=True, type=Path, help="Path to the folder to save the output CSVs")

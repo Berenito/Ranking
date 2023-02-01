@@ -21,7 +21,13 @@ class GamesDataset:
     Class to work with the Games Dataset - extension of the Games Table.
     """
 
-    def __init__(self, games: t.Union[pd.DataFrame, str, Path], name: str = "Unknown_Dataset", calculate_weekly: bool = True):
+    def __init__(
+        self,
+        games: t.Union[pd.DataFrame, str, Path],
+        name: str = "Unknown_Dataset",
+        date: t.Optional[str] = None,
+        calculate_weekly: bool = True,
+    ):
         """
         Initialize the dataset.
         
@@ -32,6 +38,7 @@ class GamesDataset:
         
         :param games: Games Table or a path to its CSV file.
         :param name: Dataset name (for exporting purposes)
+        :param date: Date until which to consider games (optional)
         :param calculate_weekly: Whether to calculate weekly statistics (set to False for single-tournament data)
         :return: Initialized GamesDataset object (all dataset-specific metrics are calculated automatically)
         """
@@ -40,6 +47,8 @@ class GamesDataset:
             df_games = pd.read_csv(games)
         elif isinstance(games, pd.DataFrame):
             df_games = games
+        if date is not None:
+            df_games = df_games.loc[df_games["Date"] <= date]
         self.games = dataset.process_games(df_games)
         self.teams = dataset.get_teams_in_games(self.games)
         self.tournaments = dataset.get_summary_of_tournaments(self.games)
