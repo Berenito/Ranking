@@ -59,10 +59,11 @@ def main():
     else:
         divisions = [args.division]
 
-    for division in divisions:
-        setup_logger(args.output / f"log-{args.season}-{division}.txt")
-        logger = logging.getLogger("ranking.data_preparation")
+    setup_logger(args.output / f"prepare_data-{args.season}-{args.division}.log")
+    logger = logging.getLogger("ranking.data_preparation")
 
+    for division in divisions:
+        logger.info(f"Preparing data for season {args.season}, {division} division.")
         with open(args.input / f"teams-{division}.txt", "r", encoding="utf-8") as f:
             teams_euf = f.read().split("\n")
         teams_euf = [t for t in teams_euf if len(t) > 0]  # Remove possible empty rows
