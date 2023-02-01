@@ -48,6 +48,11 @@ def process_games(df_games: pd.DataFrame, remove_draws: bool = False) -> pd.Data
         df_games.loc[idx_bad_w_l, ["Team_1", "Team_2", "Score_1", "Score_2"]] = df_games.loc[
             idx_bad_w_l, ["Team_2", "Team_1", "Score_2", "Score_1"]
         ].values
+    # Remove forfeit games (1-0)
+    idx_forfeit = (df_games["Score_1"] == 1) & (df_games["Score_2"] == 0)
+    for _, rw in df_games.loc[idx_forfeit].iterrows():
+        logger.info(f"Forfeit game removed: {rw['Team_1']} vs {rw['Team_2']} at {rw['Tournament']} on {rw['Date']}.")
+    df_games = df_games.loc[~idx_forfeit]
     # Find dates in DD.MM.YYYY format and convert them to YYYY-MM-DD
     idx_dates_bad_format = df_games["Date"].str[2] == "."
     if idx_dates_bad_format.any():
