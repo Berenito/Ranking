@@ -30,7 +30,7 @@ def main():
 
     Arguments:
     * --input - path to the folder with all necessary files
-    * --division - women/mixed/open
+    * --division - women/mixed/open/all
     * --season - current year
     * --output - path to the folder to save the output CSVs
 
@@ -47,12 +47,14 @@ def main():
     """
     parser = argparse.ArgumentParser(description="EUF data preparation parser.")
     parser.add_argument("--input", required=True, type=Path, help="Path to the folder with all necessary files")
-    parser.add_argument("--division", required=True, choices=["women", "mixed", "open"], help="Division (women/mixed/open)")
+    parser.add_argument(
+        "--division", required=True, choices=["women", "mixed", "open", "all"], help="Division (women/mixed/open/all)"
+    )
     parser.add_argument("--season", required=True, type=int, help="Current year (for naming purposes)")
     parser.add_argument("--output", required=True, type=Path, help="Path to the folder to save the output CSVs")
     args = parser.parse_args()
 
-    setup_logger()
+    setup_logger(args.output / f"log-{args.season}-{args.division}.txt")
     logger = logging.getLogger("ranking.data_preparation")
 
     with open(args.input / f"teams-{args.division}.txt", "r") as f:
@@ -81,7 +83,9 @@ def main():
         teams_at_tournaments = f.read().split("\n")
     teams_at_tournaments = [t.split(", ") for t in teams_at_tournaments if len(t) > 0]
     df_teams_at_tournaments = pd.DataFrame(teams_at_tournaments, columns=["Team", "Tournament"])
-    df_teams_at_tournaments = df_teams_at_tournaments.pivot_table(index="Team", columns="Tournament", aggfunc="size", fill_value=0)
+    df_teams_at_tournaments = df_teams_at_tournaments.pivot_table(
+        index="Team", columns="Tournament", aggfunc="size", fill_value=0
+    )
     for team_lbl in ["Team_1", "Team_2"]:
         df_games[team_lbl] = df_games.apply(
             lambda x: add_suffix_if_not_euf_team_with_roster(df_teams_at_tournaments, x[team_lbl], x["Tournament"]),
@@ -97,6 +101,11 @@ def main():
     dataset.calendar.to_csv(args.output / f"{dataset.name}-calendar.csv")
     dataset.summary.to_csv(args.output / f"{dataset.name}-summary.csv")
     logger.info(f"CSV files saved to {args.output}.")
+
+    # Print the list of non-EUF teams to check
+    logger.info(
+        "Teams not in the EUF season found in the data:\n" + "\n".join([t for t in sorted(dataset.teams) if "@" in t])
+    )
 
 
 def add_suffix_if_not_euf_team_with_roster(df_teams_at_tournaments: pd.DataFrame, team: str, tournament: str) -> str:
