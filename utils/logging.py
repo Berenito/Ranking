@@ -9,6 +9,7 @@ def setup_logger(path_save: Path):
     :param path_save: Path to save the log file
     """
     logger = logging.getLogger()
+    logger.handlers.clear()
     logger.setLevel(logging.INFO)
     formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
 

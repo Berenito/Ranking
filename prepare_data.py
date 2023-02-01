@@ -54,58 +54,64 @@ def main():
     parser.add_argument("--output", required=True, type=Path, help="Path to the folder to save the output CSVs")
     args = parser.parse_args()
 
-    setup_logger(args.output / f"log-{args.season}-{args.division}.txt")
-    logger = logging.getLogger("ranking.data_preparation")
+    if args.division == "all":
+        divisions = ["mixed", "open", "women"]  # Prepare data for all divisions at once
+    else:
+        divisions = [args.division]
 
-    with open(args.input / f"teams-{args.division}.txt", "r") as f:
-        teams_euf = f.read().split("\n")
-    teams_euf = [t for t in teams_euf if len(t) > 0]  # Remove possible empty rows
-    logger.info(f"{len(teams_euf)} teams defined for the {args.division} division.")
+    for division in divisions:
+        setup_logger(args.output / f"log-{args.season}-{division}.txt")
+        logger = logging.getLogger("ranking.data_preparation")
 
-    df_list = []
-    for filename in [f for f in args.input.iterdir() if f.suffix == ".csv"]:
-        df_tournament = pd.read_csv(filename)
-        df_tournament = df_tournament.loc[df_tournament["Division"].str.lower().isin(DIVISION_ALIASES[args.division])]
-        df_list.append(df_tournament.drop(columns="Division"))
-    df_games = pd.concat(df_list)
-    logger.info(f"{df_games.shape[0]} raw games found for the {args.division} division.")
+        with open(args.input / f"teams-{division}.txt", "r", encoding="utf-8") as f:
+            teams_euf = f.read().split("\n")
+        teams_euf = [t for t in teams_euf if len(t) > 0]  # Remove possible empty rows
+        logger.info(f"{len(teams_euf)} teams defined for the {division} division.")
 
-    # Change the aliases of the teams to the original team name and remove them from the teams list
-    for i, team in enumerate(teams_euf):
-        if ", " in team:  # There are aliases defined for the team name
-            aliases = team.split(", ")[1:]
-            teams_euf[i] = team.split(", ")[0]
-            df_games["Team_1"].apply(lambda x: team if x in aliases else x)
-            df_games["Team_2"].apply(lambda x: team if x in aliases else x)
+        df_list = []
+        for filename in [f for f in args.input.iterdir() if f.suffix == ".csv"]:
+            df_tournament = pd.read_csv(filename)
+            df_tournament = df_tournament.loc[df_tournament["Division"].str.lower().isin(DIVISION_ALIASES[division])]
+            df_list.append(df_tournament.drop(columns="Division"))
+        df_games = pd.concat(df_list)
+        logger.info(f"{df_games.shape[0]} raw games found for the {division} division.")
 
-    # Add suffix `@ <tournament>` to all teams without valid EUF roster for the given tournament
-    with open(args.input / f"teams_at_tournaments-{args.division}.txt", "r") as f:
-        teams_at_tournaments = f.read().split("\n")
-    teams_at_tournaments = [t.split(", ") for t in teams_at_tournaments if len(t) > 0]
-    df_teams_at_tournaments = pd.DataFrame(teams_at_tournaments, columns=["Team", "Tournament"])
-    df_teams_at_tournaments = df_teams_at_tournaments.pivot_table(
-        index="Team", columns="Tournament", aggfunc="size", fill_value=0
-    )
-    for team_lbl in ["Team_1", "Team_2"]:
-        df_games[team_lbl] = df_games.apply(
-            lambda x: add_suffix_if_not_euf_team_with_roster(df_teams_at_tournaments, x[team_lbl], x["Tournament"]),
-            axis=1,
+        # Change the aliases of the teams to the original team name and remove them from the teams list
+        for i, team in enumerate(teams_euf):
+            if ", " in team:  # There are aliases defined for the team name
+                aliases = team.split(", ")[1:]
+                teams_euf[i] = team.split(", ")[0]
+                df_games["Team_1"].apply(lambda x: team if x in aliases else x)
+                df_games["Team_2"].apply(lambda x: team if x in aliases else x)
+
+        # Add suffix `@ <tournament>` to all teams without valid EUF roster for the given tournament
+        with open(args.input / f"teams_at_tournaments-{division}.txt", "r", encoding="utf-8") as f:
+            teams_at_tournaments = f.read().split("\n")
+        teams_at_tournaments = [t.split(", ") for t in teams_at_tournaments if len(t) > 0]
+        df_teams_at_tournaments = pd.DataFrame(teams_at_tournaments, columns=["Team", "Tournament"])
+        df_teams_at_tournaments = df_teams_at_tournaments.pivot_table(
+            index="Team", columns="Tournament", aggfunc="size", fill_value=0
         )
+        for team_lbl in ["Team_1", "Team_2"]:
+            df_games[team_lbl] = df_games.apply(
+                lambda x: add_suffix_if_not_euf_team_with_roster(df_teams_at_tournaments, x[team_lbl], x["Tournament"]),
+                axis=1,
+            )
 
-    df_games = process_games(df_games)
-    logger.info(f"{df_games.shape[0]} valid games found for the {args.division} division.")
+        df_games = process_games(df_games)
+        logger.info(f"{df_games.shape[0]} valid games found for the {division} division.")
 
-    dataset = GamesDataset(df_games, f"EUF-{args.season}-{args.division}")
-    dataset.games.to_csv(args.output / f"{dataset.name}-games.csv", index=False)
-    dataset.tournaments.to_csv(args.output / f"{dataset.name}-tournaments.csv")
-    dataset.calendar.to_csv(args.output / f"{dataset.name}-calendar.csv")
-    dataset.summary.to_csv(args.output / f"{dataset.name}-summary.csv")
-    logger.info(f"CSV files saved to {args.output}.")
+        dataset = GamesDataset(df_games, f"EUF-{args.season}-{division}")
+        dataset.games.to_csv(args.output / f"{dataset.name}-games.csv", index=False)
+        dataset.tournaments.to_csv(args.output / f"{dataset.name}-tournaments.csv")
+        dataset.calendar.to_csv(args.output / f"{dataset.name}-calendar.csv")
+        dataset.summary.to_csv(args.output / f"{dataset.name}-summary.csv")
+        logger.info(f"CSV files saved to {args.output}.")
 
-    # Print the list of non-EUF teams to check
-    logger.info(
-        "Teams not in the EUF season found in the data:\n" + "\n".join([t for t in sorted(dataset.teams) if "@" in t])
-    )
+        # Print the list of non-EUF teams to check
+        logger.info(
+            "Teams not in the EUF season found in the data:\n" + "\n".join([t for t in sorted(dataset.teams) if "@" in t])
+        )
 
 
 def add_suffix_if_not_euf_team_with_roster(df_teams_at_tournaments: pd.DataFrame, team: str, tournament: str) -> str:
