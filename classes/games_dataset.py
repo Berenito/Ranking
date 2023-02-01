@@ -10,7 +10,7 @@ import pandas as pd
 
 from classes.block_ranking_algorithm import BlockRankingAlgorithm
 from classes.ranking_algorithm import RankingAlgorithm
-from definitions import MIN_TOURNAMENTS, MIN_GAMES, MAX_COMPONENT_REQUIRED
+from definitions import MIN_TOURNAMENTS, MIN_GAMES, MAX_COMPONENT_REQUIRED, MIN_INTERCONNECTIVITY
 from utils import dataset
 
 _logger = logging.getLogger("ranking.games_dataset")
@@ -69,13 +69,19 @@ class GamesDataset:
         # Add graph-component for each team
         if date is None:
             df_summary["Component"] = dataset.get_graph_components(self.graph, self.teams)
+            shortest_paths = dataset.get_shortest_paths(self.graph, self.teams)
         else:
             df_summary["Component"] = dataset.get_graph_components(self.weekly_graph.get(date), self.teams)
+            shortest_paths = dataset.get_shortest_paths(self.weekly_graph.get(date), self.teams)
+        # Add number of teams up to distance 2 -> Interconnectivity
+        df_summary["Interconnectivity"] = ((shortest_paths >= 1) & (shortest_paths <= 2)).sum()
+
         # Add ranking eligibility
         df_summary["Eligible"] = 1 * (
             (df_summary["Tournaments"] >= MIN_TOURNAMENTS)
             & (df_summary["Games"] >= MIN_GAMES)
             & ((df_summary["Component"] == 1) if MAX_COMPONENT_REQUIRED else True)
+            & (df_summary["Interconnectivity"] >= MIN_INTERCONNECTIVITY)
         )
         return df_summary
 

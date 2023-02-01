@@ -294,6 +294,20 @@ def get_graph_components(graph_connections: nx.Graph, teams: t.Union[list, pd.Se
     return components
 
 
+def get_shortest_paths(g: nx.Graph, teams: t.List[str]) -> pd.Series:
+    """
+    Get the information about the shortest paths between each pair of teams in the dataset (teams that played
+    a game together have distance 1, teams that share a common opponent have distance 2, etc.).
+    Setting return_all as True will return also more detailed information.
+    """
+    df_shortest_path_raw = pd.DataFrame(dict(nx.all_pairs_shortest_path(g)))
+    df_shortest_path_len = pd.concat([df_shortest_path_raw[c].apply(lambda x: len(x) if isinstance(x, list) else x)
+                                      for c in df_shortest_path_raw.columns], axis=1) - 1
+    df_shortest_path_len = df_shortest_path_len.reindex(teams).reindex(columns=teams)
+
+    return df_shortest_path_len
+
+
 def get_ranking_metrics(df_games: pd.DataFrame, algo_name: str = "") -> t.Tuple[float, float]:
     """
     Get quality metrics for given ratings.
