@@ -21,7 +21,6 @@ def main():
     * --division - women/mixed/open/all
     * --season - current year
     * --date - date of calculation
-    * --algorithm - algorithm name
     * --output - path to save the output files
 
     Outputs:

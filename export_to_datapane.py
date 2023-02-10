@@ -215,6 +215,13 @@ def get_games_per_team_info(dataset: GamesDataset, team: str, algo_names: t.List
             dp.BigNumber(heading="Tournaments", value=n_tournaments),
             dp.BigNumber(heading="Record", value=record),
             dp.BigNumber(heading="Score", value=score),
+            *[
+                dp.BigNumber(
+                    heading=f"Rating {algo_name}",
+                    value=f"{dataset.summary.loc[team, f'Rating_{algo_name}']} ({dataset.summary.loc[team, f'Rank_{algo_name}']})",
+                )
+                for algo_name in algo_names
+            ],
             columns=4,
         ),
         dp.Select(
