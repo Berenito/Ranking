@@ -36,11 +36,12 @@ Prerequisites:
 
 Arguments:
 * `--input <INPUT>` - path to the folder with all necessary files
-* `--division <DIVISION>` - women/mixed/open
 * `--season <SEASON>` - current year
 * `--output <OUTPUT>` - path to the folder to save the output CSVs
+* `[--division <DIVISION>]` - women/mixed/open/all (default "all")
 
 Procedure:
+* If division is "all", repeat the next steps for all three divisions
 * Read the tournament results CSVs and take only the games for the given division
 * Read the list of EUF teams; replace aliases where applicable
 * Read teams at tournaments list; add suffix to all teams without EUF-sanctioned roster for the given tournament
@@ -53,38 +54,36 @@ Outputs:
 
 ### `calculate_rankings.py`
 
-Calculate the rankings for the given division and algorithm.
+Calculate the rankings for all defined algorithms.
 
 Prerequisites:
 * Run `prepare_data.py` script (use its output path as input to this script)
+* Specify the algorithms in `definitions.py`
 
 Arguments:
 * `--input <INPUT>`- path to the folder with all necessary files
-* `--division <DIVISION>` - women/mixed/open
 * `--season <SEASON>` - current year
-* `--date <DATE>` - date of calculation (not working yet)
-* `--algorithm <ALGORITHM>` - algorithm name
+* `--date <DATE>` - date of calculation
 * `--output <OUTPUT>` - path to save the output files
+* `[--division <DIVISION>]` - women/mixed/open/all (default "all")
 
 Outputs:
 * CSV with Games, Summary (including ratings); pickle with GamesDataset object
 
 ### `export_to_datapane.py`
 
-Export the Ranking data to the datapane application.
+Export the Ranking data to the Datapane application (all divisions and all the algorithms together).
 
 Prerequisites:
 * Create the datapane account and get the token for app deployment
-* Run `calculate_rankings.py` script (use its output path as input to this script)
+* Run `calculate_rankings.py` script for the same date as specified here and all the divisions (use its output path as input to this script)
 
 Arguments:
 * `--input <INPUT>`- path to the folder with all necessary files
-* `--division <DIVISION>` - women/mixed/open
 * `--season <SEASON>` - current year
 * `--token <TOKEN>` - datapane token for logging in
-* `--date <DATE>` - date of calculation (not working yet)
-* `--algorithm <ALGORITHM>` - algorithm name
-  
+* `--date <DATE>` - date of calculation
+* 
 Outputs:
 * Datapane webpage with deployed application
   
