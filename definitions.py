@@ -12,7 +12,7 @@ MAX_COMPONENT_REQUIRED = True
 
 # Algorithm definitions
 USAU_ALGO = BlockRankingAlgorithm(
-    algo_name="usau",
+    algo_name="USAU",
     rank_diff_func="usau",
     game_weight_func="usau_no_date",
     rank_fit_func="iteration",
@@ -23,9 +23,12 @@ USAU_ALGO = BlockRankingAlgorithm(
 )
 
 WINDMILL_ALGO = BlockRankingAlgorithm(
-    algo_name='windmill',
+    algo_name='Windmill',
     rank_diff_func='score_diff',
     game_weight_func='uniform',
     rank_fit_func='regression',
     rank_fit_params={'n_round': 2}
 )
+
+DIVISIONS = ["mixed", "open", "women"]
+ALGORITHMS = [USAU_ALGO, WINDMILL_ALGO]

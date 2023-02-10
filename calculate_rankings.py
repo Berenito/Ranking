@@ -4,12 +4,9 @@ import pickle
 from pathlib import Path
 
 from classes.games_dataset import GamesDataset
-from definitions import USAU_ALGO, WINDMILL_ALGO
+from definitions import DIVISIONS, ALGORITHMS
 from utils.dataset import get_ranking_metrics
 from utils.logging import setup_logger
-
-DIVISIONS = ["mixed", "open", "women"]
-ALGORITHMS = [USAU_ALGO, WINDMILL_ALGO]
 
 
 def main():
