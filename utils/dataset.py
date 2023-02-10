@@ -48,6 +48,11 @@ def process_games(df_games: pd.DataFrame, remove_draws: bool = False) -> pd.Data
         df_games.loc[idx_bad_w_l, ["Team_1", "Team_2", "Score_1", "Score_2"]] = df_games.loc[
             idx_bad_w_l, ["Team_2", "Team_1", "Score_2", "Score_1"]
         ].values
+    # Remove forfeit games (1-0)
+    idx_forfeit = (df_games["Score_1"] == 1) & (df_games["Score_2"] == 0)
+    for _, rw in df_games.loc[idx_forfeit].iterrows():
+        logger.info(f"Forfeit game removed: {rw['Team_1']} vs {rw['Team_2']} at {rw['Tournament']} on {rw['Date']}.")
+    df_games = df_games.loc[~idx_forfeit]
     # Find dates in DD.MM.YYYY format and convert them to YYYY-MM-DD
     idx_dates_bad_format = df_games["Date"].str[2] == "."
     if idx_dates_bad_format.any():
@@ -287,6 +292,20 @@ def get_graph_components(graph_connections: nx.Graph, teams: t.Union[list, pd.Se
     for team in teams:
         components[team] = [k for k, v in dict_components.items() if team in v][0]
     return components
+
+
+def get_shortest_paths(g: nx.Graph, teams: t.List[str]) -> pd.Series:
+    """
+    Get the information about the shortest paths between each pair of teams in the dataset (teams that played
+    a game together have distance 1, teams that share a common opponent have distance 2, etc.).
+    Setting return_all as True will return also more detailed information.
+    """
+    df_shortest_path_raw = pd.DataFrame(dict(nx.all_pairs_shortest_path(g)))
+    df_shortest_path_len = pd.concat([df_shortest_path_raw[c].apply(lambda x: len(x) if isinstance(x, list) else x)
+                                      for c in df_shortest_path_raw.columns], axis=1) - 1
+    df_shortest_path_len = df_shortest_path_len.reindex(teams).reindex(columns=teams)
+
+    return df_shortest_path_len
 
 
 def get_ranking_metrics(df_games: pd.DataFrame, algo_name: str = "") -> t.Tuple[float, float]:
