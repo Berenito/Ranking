@@ -3,3 +3,4 @@ pandas==1.5.2
 scikit-learn==1.0.1
 networkx==2.6.3
 datapane==0.15.5
+scipy==1.10.0
