@@ -13,6 +13,7 @@ import typing as t
 
 import numpy as np
 import pandas as pd
+from scipy.optimize import minimize
 from sklearn.linear_model import LinearRegression
 
 from algos.game_ignore_functions import get_ignored_games
@@ -22,13 +23,13 @@ _logger = logging.getLogger("ranking.algos.rank_fit")
 
 
 def get_rank_fit(
-    option: t.Union[str, t.Callable], 
-    game_ignore_func: t.Optional[t.Union[str, t.Callable]], 
-    teams: pd.Series, 
-    df_games: pd.DataFrame, 
-    components: pd.Series,
-    game_ignore_kwargs: t.Dict, 
-    **kwargs,
+        option: t.Union[str, t.Callable],
+        game_ignore_func: t.Optional[t.Union[str, t.Callable]],
+        teams: pd.Series,
+        df_games: pd.DataFrame,
+        components: pd.Series,
+        game_ignore_kwargs: t.Dict,
+        **kwargs,
 ) -> t.Tuple[pd.Series, pd.Series, pd.Series]:
     """
     Apply specific rank-fit function given by "option" on the given Games Dataset.
@@ -47,6 +48,8 @@ def get_rank_fit(
         ratings = regression_rank_fit_function(teams, df_games, components, **kwargs)
     elif option in ["iteration", iteration_rank_fit_function]:
         ratings = iteration_rank_fit_function(teams, df_games, game_ignore_func, game_ignore_kwargs, **kwargs)
+    elif option in ["minimization", minimization_rank_fit_function]:
+        ratings = minimization_rank_fit_function(teams, df_games, components, **kwargs)
     else:
         raise ValueError("Unknown rank-fit option, make sure it is defined in algos/rank_fit_functions.py.")
 
@@ -59,11 +62,11 @@ def get_rank_fit(
 
 def regression_rank_fit_function(
     teams: pd.Series, df_games: pd.DataFrame, components: pd.Series, mean_rating: int = 0, n_round: int = 10
-):
+) -> pd.Series:
     """
     Fit the ratings with the standard (weighted) linear regression. Used in Windmill algorithm.
 
-    Does not support game_ignore_func at the moment.
+    Does not support game_ignore_func.
 
     :param teams: Series of teams
     :param df_games: Games Table
@@ -97,7 +100,7 @@ def iteration_rank_fit_function(
     rating_start: int = 1000,
     n_round: int = 10,
     verbose: bool = True,
-):
+) -> pd.Series:
     """
     Fit the ratings with the iteration procedure.
 
@@ -150,3 +153,35 @@ def iteration_rank_fit_function(
     return df_ratings_iter[n_iter]
 
 
+def minimization_rank_fit_function(
+    teams: pd.Series, df_games: pd.DataFrame, components: pd.Series, mean_rating: int = 0, n_round: int = 2
+) -> pd.Series:
+    """
+    Fit the ratings with the minimization process.
+
+  Does not support game_ignore_func.
+
+    :param teams: Series of teams
+    :param df_games: Games Table
+    :param components: Graph component of each team
+    :param mean_rating: Mean rating
+    :param n_round: Number of decimals for rounding
+    :return: Series with the calculated ratings
+    """
+    ratings = pd.Series(index=teams, dtype="float64")
+    for i_comp, comp in components.reset_index().groupby("Component"):
+        teams_comp = comp["Team"]
+        df_comp = df_games.loc[df_games["Team_1"].isin(teams_comp) | df_games["Team_2"].isin(teams_comp)].reset_index()
+        ind_teams = pd.Series(range(len(teams_comp)), index=teams_comp)
+        team_1_index = ind_teams.reindex(df_comp["Team_1"]).values
+        team_2_index = ind_teams.reindex(df_comp["Team_2"]).values
+        weights = df_comp["Game_Wght"].values
+        game_rank_diff = df_comp["Game_Rank_Diff"].values
+
+        def obj_func(x):
+            return np.sqrt((weights * (game_rank_diff + x[team_2_index] - x[team_1_index]) ** 2).sum())
+
+        ratings_comp_np = minimize(obj_func, np.zeros(len(teams_comp)), tol=1e-10).x
+        ratings_comp = pd.Series(ratings_comp_np, index=teams_comp, dtype="float64")
+        ratings[teams_comp] = ratings_comp - ratings_comp.mean() + mean_rating
+    return ratings.round(n_round)
