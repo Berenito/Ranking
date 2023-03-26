@@ -87,9 +87,17 @@ def main():
                 rank_fit_func="iteration",
                 rank_fit_params={"rating_start": 0, "n_round": 6, "tol": 1e-10, "verbose": False}
             )
+            windmill_algo_min = BlockRankingAlgorithm(
+                algo_name="Windmill_Algo_Min",
+                rank_diff_func="score_diff",
+                game_weight_func="uniform",
+                rank_fit_func="minimization",
+                rank_fit_params={"n_round": 2}
+            )
 
             windmill_dataset.add_ratings(windmill_algo, block_algo=True)
             windmill_dataset.add_ratings(windmill_algo_iter, block_algo=True)
+            windmill_dataset.add_ratings(windmill_algo_min, block_algo=True)
             g = windmill_dataset.games
             s = windmill_dataset.summary
             s["Rating_Windmill_Algo_Iter"] = s["Rating_Windmill_Algo_Iter"].round(2)
@@ -106,27 +114,37 @@ def main():
                 lambda x: s.loc[x["Team_1"], "Rating_Windmill_Algo_Iter"] - s.loc[x["Team_2"], "Rating_Windmill_Algo_Iter"],
                 axis=1,
             )
+            g["Resid_Windmill_Algo_Min"] = g["Game_Rank_Diff_Windmill_Algo_Min"] - g[["Team_1", "Team_2"]].apply(
+                lambda x: s.loc[x["Team_1"], "Rating_Windmill_Algo_Min"] - s.loc[x["Team_2"], "Rating_Windmill_Algo_Min"],
+                axis=1,
+            )
 
             rmse_orig = np.sqrt((g["Resid_Orig"]**2).mean())
             rmse_windmill_algo = np.sqrt((g["Resid_Windmill_Algo"]**2).mean())
             rmse_windmill_algo_iter = np.sqrt((g["Resid_Windmill_Algo_Iter"] ** 2).mean())
+            rmse_windmill_algo_min = np.sqrt((g["Resid_Windmill_Algo_Min"] ** 2).mean())
             diff_max_orig = (s["Rating_Windmill_Algo"] - df_summary_round["Rating"]).abs().max()
             diff_max_iter = (s["Rating_Windmill_Algo"] - s["Rating_Windmill_Algo_Iter"]).abs().max()
+            diff_max_min = (s["Rating_Windmill_Algo"] - s["Rating_Windmill_Algo_Min"]).abs().max()
             check_list.append(pd.Series({
                 "Tournament": tournament_name,
                 "Round": n_rounds,
                 "RMSE_Orig": rmse_orig,
                 "RMSE_Windmill_Algo": rmse_windmill_algo,
                 "RMSE_Windmill_Algo_Iter": rmse_windmill_algo_iter,
+                "RMSE_Windmill_Algo_Min": rmse_windmill_algo_min,
                 "Diff_Max_Orig": diff_max_orig,
-                "Diff_Max_Iter": diff_max_iter
+                "Diff_Max_Iter": diff_max_iter,
+                "Diff_Max_Min": diff_max_min,
             }))
 
             # Check if sum of residuals for each team is ~0
             max_sum_resid_windmill_algo = get_ranking_metrics(g, algo_name="Windmill_Algo")[1]
             max_sum_resid_windmill_algo_iter = get_ranking_metrics(g, algo_name="Windmill_Algo_Iter")[1]
+            max_sum_resid_windmill_algo_min = get_ranking_metrics(g, algo_name="Windmill_Algo_Min")[1]
             assert max_sum_resid_windmill_algo < 0.05
             assert max_sum_resid_windmill_algo_iter < 0.05
+            assert max_sum_resid_windmill_algo_min < 0.05
     df_check = pd.concat(check_list, axis=1).T
     assert df_check.loc[df_check["Round"] != 2, ["Diff_Max_Orig", "Diff_Max_Iter"]].max().max() == 0
     assert df_check.loc[df_check["Round"] == 2, ["Diff_Max_Orig", "Diff_Max_Iter"]].max().max() < 0.011

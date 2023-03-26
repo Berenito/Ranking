@@ -23,12 +23,23 @@ USAU_ALGO = BlockRankingAlgorithm(
 )
 
 WINDMILL_ALGO = BlockRankingAlgorithm(
-    algo_name='Windmill',
-    rank_diff_func='score_diff',
-    game_weight_func='uniform',
-    rank_fit_func='regression',
-    rank_fit_params={'n_round': 2}
+    algo_name="Windmill",
+    rank_diff_func="score_diff",
+    game_weight_func="uniform",
+    rank_fit_func="regression",
+    rank_fit_params={"n_round": 2}
+)
+
+# TODO - update sigmoid algo with better rank-diff & game-weight functions, check the fairness
+SIGMOID_ALGO = BlockRankingAlgorithm(
+    algo_name="Sigmoid",
+    rank_diff_func="score_diff",
+    game_weight_func="uniform",
+    rank_fit_func="minimization",
+    rank_transform_func="sigmoid",
+    rank_fit_params={"n_round": 2},
 )
 
 DIVISIONS = ["mixed", "open", "women"]
-ALGORITHMS = [USAU_ALGO, WINDMILL_ALGO]
+ALGORITHMS = [USAU_ALGO, WINDMILL_ALGO, SIGMOID_ALGO]
+

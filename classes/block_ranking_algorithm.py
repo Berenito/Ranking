@@ -23,12 +23,14 @@ class BlockRankingAlgorithm:
         rank_diff_func: t.Union[str, t.Callable] = "win_lose",
         game_weight_func: t.Union[str, t.Callable] = "uniform", 
         rank_fit_func: t.Union[str, t.Callable] = "regression",
-        game_ignore_func: t.Optional[t.Union[str, t.Callable]] = None, 
+        game_ignore_func: t.Optional[t.Union[str, t.Callable]] = None,
+        rank_transform_func: t.Optional[t.Union[str, t.Callable]] = None,
         algo_name: str = "Unknown_Algo", 
         rank_diff_params: t.Dict = {},
         game_weight_params: t.Dict = {}, 
         rank_fit_params: t.Dict = {}, 
-        game_ignore_params: t.Dict = {}
+        game_ignore_params: t.Dict = {},
+        rank_transform_params: t.Dict = {},
     ):
         """
         Initialize the algorithm.
@@ -48,11 +50,13 @@ class BlockRankingAlgorithm:
         :param game_weight_func: Game-weight function identifier
         :param rank_fit_func: Rank-fit function identifier
         :param game_ignore_func: Game-ignore function identifier
+        :param rank_transform_func: Rank-transform function identifier
         :param algo_name: Used for naming exported stuff
         :param rank_diff_params: Additional inputs to rank_diff_func
         :param game_weight_params: Additional inputs to game_weight_func
         :param rank_fit_params: Additional inputs to rank_fit_func
         :param game_ignore_params: Additional inputs to game_ignore_func
+        :param rank_transform_params: Additional inputs to rank_transform_func
         :return: Initialized BlockRankingAlgorithm object
         """
         self.name = algo_name
@@ -60,10 +64,12 @@ class BlockRankingAlgorithm:
         self.game_weight_func = game_weight_func
         self.rank_fit_func = rank_fit_func
         self.game_ignore_func = game_ignore_func
+        self.rank_transform_func = rank_transform_func
         self.rank_diff_params = rank_diff_params
         self.game_weight_params = game_weight_params
         self.rank_fit_params = rank_fit_params
         self.game_ignore_params = game_ignore_params
+        self.rank_transform_params = rank_transform_params
 
     def get_ratings(
         self, df_games: pd.DataFrame, return_games: bool = False, date: t.Optional[str] = None
@@ -90,7 +96,15 @@ class BlockRankingAlgorithm:
             lambda rw: get_game_weight(self.game_weight_func, rw, **self.game_weight_params), axis=1
         )
         ratings, df_games["Is_Ignored"], df_games["Team_Rank_Diff"] = get_rank_fit(
-            self.rank_fit_func, self.game_ignore_func, teams, df_games, components, self.game_ignore_params, **self.rank_fit_params
+            self.rank_fit_func,
+            self.game_ignore_func,
+            self.rank_transform_func,
+            teams,
+            df_games,
+            components,
+            self.game_ignore_params,
+            self.rank_transform_params,
+            **self.rank_fit_params,
         )
         ratings = ratings.rename(f"Rating_{self.name}")
         if return_games:
