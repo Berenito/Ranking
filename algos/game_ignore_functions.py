@@ -14,6 +14,7 @@ def get_ignored_games(
 ) -> pd.Series:
     """
     Apply specific game-ignore function given by "option" on the given Games Dataset based on the current ratings.
+
     :param option: Game-ignore function identifier
     :param df_games: Games Table
     :param ratings: Current ratings

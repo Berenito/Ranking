@@ -30,6 +30,7 @@ WINDMILL_ALGO = BlockRankingAlgorithm(
     rank_fit_params={"n_round": 2}
 )
 
+# TODO - update sigmoid algo with better rank-diff & game-weight functions, check the fairness
 SIGMOID_ALGO = BlockRankingAlgorithm(
     algo_name="Sigmoid",
     rank_diff_func="score_diff",
