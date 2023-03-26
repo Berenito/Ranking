@@ -204,10 +204,8 @@ def get_games_per_team_info(dataset: GamesDataset, team: str, algo_names: t.List
         games_show[f"Game_Wght_{algo_name}"] = (
             100 * games_show[f"Game_Wght_{algo_name}"] / games_show[f"Game_Wght_{algo_name}"].sum()
         )
-        games_show[f"Game_Rating_{algo_name}"] = (
-            dataset.summary.loc[team, f"Rating_{algo_name}"]
-            - games_show[f"Team_Rank_Diff_{algo_name}"]
-            + games_show[f"Game_Rank_Diff_{algo_name}"]
+        games_show[f"Game_Diff_{algo_name}"] = (
+            games_show[f"Game_Rank_Diff_{algo_name}"] - games_show[f"Team_Rank_Diff_{algo_name}"]
         )
     group = dp.Group(
         dp.Group(
@@ -244,9 +242,9 @@ def get_games_per_team_for_one_algo(df_games: pd.DataFrame, algo_name: str) -> d
     :return: Datapane table
     """
     df_games = df_games.rename(
-        columns={f"Game_Wght_{algo_name}": "Game Weight", f"Game_Rating_{algo_name}": "Game Rating"}
+        columns={f"Game_Wght_{algo_name}": "Game Weight", f"Game_Diff_{algo_name}": "Game Difference"}
     )
-    df_games = df_games[["Opponent", "Date", "Tournament", "Result", "Game Weight", "Game Rating"]].sort_values(
+    df_games = df_games[["Opponent", "Date", "Tournament", "Result", "Game Weight", "Game Difference"]].sort_values(
         by=["Date", "Opponent"], ascending=[False, True]
     ).reset_index(drop=True)
     df_games.index += 1
@@ -256,7 +254,7 @@ def get_games_per_team_for_one_algo(df_games: pd.DataFrame, algo_name: str) -> d
                       else (["background-color:seashell;"] if "L" in v["Result"] else ["background-color:white;"])
                   ) * df_games.shape[1],
         axis=1,
-    ).format({"Game Weight": "{:.1f}%", "Game Rating": "{:.2f}"})
+    ).format({"Game Weight": "{:.1f}%", "Game Difference": "{:.2f}"})
     return dp.Table(games_styled)
 
 
