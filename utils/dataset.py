@@ -53,12 +53,18 @@ def process_games(df_games: pd.DataFrame, remove_draws: bool = False) -> pd.Data
     for _, rw in df_games.loc[idx_forfeit].iterrows():
         logger.info(f"Forfeit game removed: {rw['Team_1']} vs {rw['Team_2']} at {rw['Tournament']} on {rw['Date']}.")
     df_games = df_games.loc[~idx_forfeit]
-    # Find dates in DD.MM.YYYY format and convert them to YYYY-MM-DD
-    idx_dates_bad_format = df_games["Date"].str[2] == "."
-    if idx_dates_bad_format.any():
-        logger.info(f"{idx_dates_bad_format.sum()} dates converted from DD.MM.YYYY to YYYY-MM-DD.")
-        df_games.loc[idx_dates_bad_format, "Date"] = df_games.loc[idx_dates_bad_format, "Date"].apply(
+    # Find dates in DD.MM.YYYY and YYYY-M-D format and convert them to YYYY-MM-DD
+    idx_dates_dot_format = df_games["Date"].str[2] == "."
+    if idx_dates_dot_format.any():
+        logger.info(f"{idx_dates_dot_format.sum()} dates converted from DD.MM.YYYY to YYYY-MM-DD.")
+        df_games.loc[idx_dates_dot_format, "Date"] = df_games.loc[idx_dates_dot_format, "Date"].apply(
             lambda x: datetime.strptime(x, "%d.%m.%Y").strftime("%Y-%m-%d")
+        )
+    idx_dates_short_format = df_games["Date"].str.len() < 10
+    if idx_dates_short_format.any():
+        logger.info(f"{idx_dates_short_format.sum()} dates converted from YYYY-M-D to YYYY-MM-DD.")
+        df_games.loc[idx_dates_short_format, "Date"] = df_games.loc[idx_dates_short_format, "Date"].apply(
+            lambda x: datetime.strptime(x, "%Y-%m-%d").strftime("%Y-%m-%d")
         )
     return df_games.sort_values(by=["Date", "Tournament", "Team_1", "Team_2"]).reset_index(drop=True)
 
