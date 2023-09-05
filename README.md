@@ -27,11 +27,11 @@ Take data from all the CSV files in the input folder and join them to create a b
 export some preliminary summary statistics (no rankings are calculated here).
 
 Prerequisites:
-* Prepare a folder with the tournament result data - CSV files with columns `Tournament, Date, Team_1, Team_2,
+* Prepare a folder with the tournament result data - CSV files named `games_<suffix>.csv` with columns `Tournament, Date, Team_1, Team_2,
   Score_1, Score_2, Division`
-* Add to the same folder a TXT file per division specifying the teams in the EUF system; multiple aliases can be
-  defined for each team in the same row, separated with commas (filename should be `teams-<division>.txt`)
-* Add to the same folder a TXT file with the pairs `<team>, <tournament>`; specifying that the given team has met the
+* Add to the same folder a CSV file with columns `Team`, `Aliases` specifying the teams in the EUF system; multiple aliases can be
+  defined for each team in the same row, separated with `, ` (filename should be `teams-<division>.txt`)
+* Add to the same folder a CSV file with columns `Team`, `Tournament` specifying that the given team has met the
   EUF roster requirements for the particular tournament (filename should be `teams_at_tournaments-<division>.txt`)
 
 Arguments:
@@ -76,16 +76,20 @@ Export the Ranking data to the Datapane application (all divisions and all the a
 
 Prerequisites:
 * Create the datapane account and get the token for app deployment
-* Run `calculate_rankings.py` script for the same date as specified here and all the divisions (use its output path as input to this script)
+* Run `calculate_rankings.py` script for the same date as specified here and desired division (use its output path as input to this script)
 
 Arguments:
 * `--input <INPUT>`- path to the folder with all necessary files
 * `--season <SEASON>` - current year
 * `--token <TOKEN>` - datapane token for logging in
 * `--date <DATE>` - date of calculation
-* 
+* `[--division <DIVISION>]` - women/mixed/open/all (default "all")
+
 Outputs:
 * Datapane webpage with deployed application
+
+*Note: Don't panic if the script finished with `requests.exceptions.HTTPError: 502 Server Error: Bad Gateway for url:`,
+it probably succeeded and the new version is uploaded.*
   
 
 

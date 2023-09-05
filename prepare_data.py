@@ -64,32 +64,43 @@ def main():
 
     for division in divisions:
         logger.info(f"Preparing data for season {args.season}, {division} division.")
-        with open(args.input / f"teams-{division}.txt", "r", encoding="utf-8") as f:
-            teams_euf = f.read().split("\n")
-        teams_euf = [t for t in teams_euf if len(t) > 0]  # Remove possible empty rows
+        df_teams = pd.read_csv(args.input / f"teams-{division}.csv")
+        teams_euf = df_teams["Team"].tolist()
+        teams_aliases = [[] if a != a else a.split(", ") for a in df_teams["Aliases"]]
         logger.info(f"{len(teams_euf)} teams defined for the {division} division.")
 
         df_list = []
-        for filename in [f for f in args.input.iterdir() if f.suffix == ".csv"]:
+        for filename in [f for f in args.input.iterdir() if f.name.startswith("games")]:
             df_tournament = pd.read_csv(filename)
             df_tournament = df_tournament.loc[df_tournament["Division"].str.lower().isin(DIVISION_ALIASES[division])]
             df_list.append(df_tournament.drop(columns="Division"))
         df_games = pd.concat(df_list)
         logger.info(f"{df_games.shape[0]} raw games found for the {division} division.")
 
+        df_teams_at_tournaments = pd.read_csv(args.input / f"teams_at_tournaments-{division}.csv")
+
         # Change the aliases of the teams to the original team name and remove them from the teams list
-        for i, team in enumerate(teams_euf):
-            if ", " in team:  # There are aliases defined for the team name
-                aliases = team.split(", ")[1:]
-                teams_euf[i] = team.split(", ")[0]
-                df_games["Team_1"].apply(lambda x: team if x in aliases else x)
-                df_games["Team_2"].apply(lambda x: team if x in aliases else x)
+        for team, aliases in zip(teams_euf, teams_aliases):
+            if aliases:
+                df_games["Team_1"] = df_games["Team_1"].apply(lambda x: team if x in aliases else x)
+                df_games["Team_2"] = df_games["Team_2"].apply(lambda x: team if x in aliases else x)
+                df_teams_at_tournaments["Team"] = df_teams_at_tournaments["Team"].apply(
+                    lambda x: team if x in aliases else x
+                )
+
+        # Check if all tournament names in teams_at_tournaments file are correct
+        is_valid_tournament = df_teams_at_tournaments["Tournament"].isin(df_games["Tournament"])
+        invalid_tournaments = df_teams_at_tournaments.loc[~is_valid_tournament, "Tournament"].unique()
+        if len(invalid_tournaments) > 0:
+            logger.warning(f"Incorrect tournament names detected in teams_at_tournaments: {invalid_tournaments}")
+
+        # Check if all team names in teams_at_tournaments file are correct
+        is_valid_team = df_teams_at_tournaments["Team"].isin(teams_euf)
+        invalid_teams = df_teams_at_tournaments.loc[~is_valid_team, "Team"].unique()
+        if len(invalid_teams) > 0:
+            logger.warning(f"Incorrect team names detected in teams_at_tournaments: {invalid_teams}")
 
         # Add suffix `@ <tournament>` to all teams without valid EUF roster for the given tournament
-        with open(args.input / f"teams_at_tournaments-{division}.txt", "r", encoding="utf-8") as f:
-            teams_at_tournaments = f.read().split("\n")
-        teams_at_tournaments = [t.split(", ") for t in teams_at_tournaments if len(t) > 0]
-        df_teams_at_tournaments = pd.DataFrame(teams_at_tournaments, columns=["Team", "Tournament"])
         df_teams_at_tournaments = df_teams_at_tournaments.pivot_table(
             index="Team", columns="Tournament", aggfunc="size", fill_value=0
         )
