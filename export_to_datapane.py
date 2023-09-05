@@ -25,6 +25,7 @@ def main():
     * --season - current year
     * --token - datapane token for logging in
     * --date - date of calculation
+    * --division - women/mixed/open/all
 
     Outputs:
     * Datapane webpage with deployed application
@@ -39,13 +40,20 @@ def main():
     parser.add_argument("--token", required=True, help="Datapane token for logging in")
     parser.add_argument("--season", required=True, type=int, help="Current year (for naming purposes)")
     parser.add_argument("--date", required=True, help="Date of calculation")
+    parser.add_argument(
+        "--division", default="all", choices=["women", "mixed", "open", "all"], help="Division (women/mixed/open/all)"
+    )
     args = parser.parse_args()
 
     dp.login(token=args.token)
 
-    app = dp.App(
-        *[dp.Page(title=division.capitalize(), blocks=get_division_page(args, division)) for division in DIVISIONS]
-    )
+    if args.division == "all":
+        app = dp.App(
+            *[dp.Page(title=division.capitalize(), blocks=get_division_page(args, division)) for division in DIVISIONS]
+        )
+    else:
+        app = dp.App(*get_division_page(args, args.division))
+
     app.upload(name=f"EUF {args.season} Rankings", description=f"EUF {args.season} Rankings", open=True)
 
 
