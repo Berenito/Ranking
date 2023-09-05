@@ -78,10 +78,6 @@ def main():
         logger.info(f"{df_games.shape[0]} raw games found for the {division} division.")
 
         df_teams_at_tournaments = pd.read_csv(args.input / f"teams_at_tournaments-{division}.csv")
-        is_valid_tournament = df_teams_at_tournaments["Tournament"].isin(df_games["Tournament"])
-        invalid_tournaments = df_teams_at_tournaments.loc[~is_valid_tournament, "Tournament"].unique()
-        if len(invalid_tournaments) > 0:
-            logger.warning(f"Incorrect tournament names detected in teams_at_tournaments: {invalid_tournaments}")
 
         # Change the aliases of the teams to the original team name and remove them from the teams list
         for team, aliases in zip(teams_euf, teams_aliases):
@@ -91,6 +87,18 @@ def main():
                 df_teams_at_tournaments["Team"] = df_teams_at_tournaments["Team"].apply(
                     lambda x: team if x in aliases else x
                 )
+
+        # Check if all tournament names in teams_at_tournaments file are correct
+        is_valid_tournament = df_teams_at_tournaments["Tournament"].isin(df_games["Tournament"])
+        invalid_tournaments = df_teams_at_tournaments.loc[~is_valid_tournament, "Tournament"].unique()
+        if len(invalid_tournaments) > 0:
+            logger.warning(f"Incorrect tournament names detected in teams_at_tournaments: {invalid_tournaments}")
+
+        # Check if all team names in teams_at_tournaments file are correct
+        is_valid_team = df_teams_at_tournaments["Team"].isin(teams_euf)
+        invalid_teams = df_teams_at_tournaments.loc[~is_valid_team, "Team"].unique()
+        if len(invalid_teams) > 0:
+            logger.warning(f"Incorrect team names detected in teams_at_tournaments: {invalid_teams}")
 
         # Add suffix `@ <tournament>` to all teams without valid EUF roster for the given tournament
         df_teams_at_tournaments = df_teams_at_tournaments.pivot_table(
