@@ -56,16 +56,6 @@ def main():
             print("Error occurred")  # TODO: better handling
 
 
-    # if args.division == "all":
-    #     app = dp.App(
-    #         *[dp.Page(title=division.capitalize(), blocks=get_division_page(args, division)) for division in DIVISIONS]
-    #     )
-    # else:
-    #     app = dp.App(*get_division_page(args, args.division))
-    #
-    # app.upload(name=f"EUF {args.season} Rankings", description=f"EUF {args.season} Rankings", open=True)
-
-
 def get_division_page(args: argparse.Namespace, division: str) -> t.Tuple[dp.Group, dp.Select]:
     """
     Read the pickle output from `calculate_rankings` and get Datapane page per one division (mixed/open/women).
