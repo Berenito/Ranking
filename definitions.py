@@ -41,5 +41,5 @@ SIGMOID_ALGO = BlockRankingAlgorithm(
 )
 
 DIVISIONS = ["mixed", "open", "women"]
-ALGORITHMS = [USAU_ALGO, WINDMILL_ALGO, SIGMOID_ALGO]
+ALGORITHMS = [USAU_ALGO]
 
