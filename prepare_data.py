@@ -113,11 +113,16 @@ def main():
         df_games = process_games(df_games)
         logger.info(f"{df_games.shape[0]} valid games found for the {division} division.")
 
-        dataset = GamesDataset(df_games, f"EUF-{args.season}-{division}")
-        dataset.games.to_csv(args.output / f"{dataset.name}-games.csv", index=False)
-        dataset.tournaments.to_csv(args.output / f"{dataset.name}-tournaments.csv")
-        dataset.calendar.to_csv(args.output / f"{dataset.name}-calendar.csv")
-        dataset.summary.to_csv(args.output / f"{dataset.name}-summary.csv")
+        df_games_euf = df_games.loc[~df_games["Team_1"].str.contains(" @ ") & ~df_games["Team_2"].str.contains(" @ ")]
+        logger.info(f"{df_games_euf.shape[0]} valid games found for the {division} division between EUF teams.")
+
+        dataset_all = GamesDataset(df_games, f"{args.season}-{division}-all")
+        dataset_euf = GamesDataset(df_games_euf, f"{args.season}-{division}-euf")
+        for dataset in [dataset_all, dataset_euf]:
+            dataset.games.to_csv(args.output / f"{dataset.name}-games.csv", index=False)
+            dataset.tournaments.to_csv(args.output / f"{dataset.name}-tournaments.csv")
+            dataset.calendar.to_csv(args.output / f"{dataset.name}-calendar.csv")
+            dataset.summary.to_csv(args.output / f"{dataset.name}-summary.csv")
         logger.info(f"CSV files saved to {args.output}.")
 
         # Print the list of non-EUF teams to check

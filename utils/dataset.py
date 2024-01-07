@@ -188,15 +188,12 @@ def get_summary_of_tournaments(df_games: pd.DataFrame, date: t.Optional[str] = N
         df_games = df_games.loc[df_games["Date"] <= date]
     df_games_dupl = duplicate_games(df_games)
     df_tournaments = df_games_dupl.groupby("Tournament").agg(
-        {
-            "Date": ["first", "last"],
-            "Team_1": [lambda x: x[~x.str.contains("@")].nunique(), "nunique", "count"],
-        }
+        {"Date": ["first", "last"], "Team_1": ["nunique", "count"]}
     )
-    df_tournaments.columns = ["Date_First", "Date_Last", "N_Teams_EUF", "N_Teams_All", "N_Games"]
+    df_tournaments.columns = ["Date_First", "Date_Last", "N_Teams", "N_Games"]
     df_tournaments["N_Games"] //= 2
-    df_tournaments = df_tournaments.reset_index().sort_values(by=["Date_First", "Date_Last", "Tournament"]).set_index("Tournament")
-    return df_tournaments
+    df_tournaments = df_tournaments.reset_index().sort_values(by=["Date_First", "Date_Last", "Tournament"])
+    return df_tournaments.set_index("Tournament")
 
 
 def get_calendar_summary(df_games: pd.DataFrame) -> pd.DataFrame:
@@ -205,11 +202,10 @@ def get_calendar_summary(df_games: pd.DataFrame) -> pd.DataFrame:
 
     :param df_games: Games Table
     :return: Weekly summary DataFrame with columns Date_Start, Date_End, Year, Calendar_Week,
-             N_Tournaments, N_Teams_EUF, N_Teams_All, N_Games (in the given week),
-             N_Tournaments_Cum, N_Teams_EUF_Cum, N_Teams_All_Cum, N_Games_Cum (cumulative)
+             N_Tournaments, N_Teams, N_Games (in the given week),
+             N_Tournaments_Cum, N_Teams_Cum, N_Games_Cum (cumulative)
     """
     df_games_dupl = duplicate_games(df_games)
-    df_games_dupl_euf = df_games_dupl.loc[~df_games_dupl["Team_1"].str.contains("@")]
     date_first, date_last = df_games["Date"].min(), df_games["Date"].max()
     date_range = pd.date_range(date_first, date_last, freq="W").strftime("%Y-%m-%d")
     if len(date_range) == 0:
@@ -221,12 +217,10 @@ def get_calendar_summary(df_games: pd.DataFrame) -> pd.DataFrame:
             "Year",
             "Calendar_Week",
             "N_Tournaments",
-            "N_Teams_EUF",
-            "N_Teams_All",
+            "N_Teams",
             "N_Games",
             "N_Tournaments_Cum",
-            "N_Teams_EUF_Cum",
-            "N_Teams_All_Cum",
+            "N_Teams_Cum",
             "N_Games_Cum",
         ]
     )
@@ -239,11 +233,9 @@ def get_calendar_summary(df_games: pd.DataFrame) -> pd.DataFrame:
     df_calendar["N_Tournaments"] = df_calendar.apply(
         lambda x: df_games.loc[df_games["Date"].between(x["Date_Start"], x["Date_End"])]["Tournament"].nunique(), axis=1
     )
-    df_calendar["N_Teams_EUF"] = df_calendar.apply(
-        lambda x: df_games_dupl_euf.loc[df_games_dupl_euf["Date"].between(x["Date_Start"], x["Date_End"])]["Team_1"].nunique(), axis=1
-    )
-    df_calendar["N_Teams_All"] = df_calendar.apply(
-        lambda x: df_games_dupl.loc[df_games_dupl["Date"].between(x["Date_Start"], x["Date_End"])]["Team_1"].nunique(), axis=1
+    df_calendar["N_Teams"] = df_calendar.apply(
+        lambda x: df_games_dupl.loc[df_games_dupl["Date"].between(x["Date_Start"], x["Date_End"])]["Team_1"].nunique(),
+        axis=1,
     )
     df_calendar["N_Games"] = df_calendar.apply(
         lambda x: df_games.loc[df_games["Date"].between(x["Date_Start"], x["Date_End"])].shape[0], axis=1
@@ -251,13 +243,12 @@ def get_calendar_summary(df_games: pd.DataFrame) -> pd.DataFrame:
     df_calendar["N_Tournaments_Cum"] = df_calendar["Date_End"].apply(
         lambda x: df_games.loc[df_games["Date"] <= x]["Tournament"].nunique()
     )
-    df_calendar["N_Teams_EUF_Cum"] = df_calendar["Date_End"].apply(
-        lambda x: df_games_dupl_euf.loc[df_games_dupl_euf["Date"] <= x]["Team_1"].nunique()
-    )
-    df_calendar["N_Teams_All_Cum"] = df_calendar["Date_End"].apply(
+    df_calendar["N_Teams_Cum"] = df_calendar["Date_End"].apply(
         lambda x: df_games_dupl.loc[df_games_dupl["Date"] <= x]["Team_1"].nunique()
     )
-    df_calendar["N_Games_Cum"] = df_calendar["Date_End"].apply(lambda x: df_games.loc[df_games["Date"] <= x].shape[0])
+    df_calendar["N_Games_Cum"] = df_calendar["Date_End"].apply(
+        lambda x: df_games.loc[df_games["Date"] <= x].shape[0]
+    )
     df_calendar = df_calendar.set_index(["Year", "Calendar_Week"])
 
     return df_calendar
