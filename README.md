@@ -1,6 +1,6 @@
 # Ranking (Development of EUF ranking system)
 
-Version: 2023-01-28
+Version: 2024-01-07
 
 The goal of this code is to provide a structure to the implementation of the ranking algorithms, 
 so they can be immediately applied to any available dataset. It also provides a possibility to gain 

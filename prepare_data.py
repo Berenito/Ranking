@@ -122,7 +122,7 @@ def main():
             dataset.games.to_csv(args.output / f"{dataset.name}-games.csv", index=False)
             dataset.tournaments.to_csv(args.output / f"{dataset.name}-tournaments.csv")
             dataset.calendar.to_csv(args.output / f"{dataset.name}-calendar.csv")
-            dataset.summary.to_csv(args.output / f"{dataset.name}-summary.csv")
+            dataset.summary.to_csv(args.output / f"{dataset.name}-summary.csv", float_format="%.3f")
         logger.info(f"CSV files saved to {args.output}.")
 
         # Print the list of non-EUF teams to check
