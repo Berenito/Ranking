@@ -30,9 +30,9 @@ Prerequisites:
 * Prepare a folder with the tournament result data - CSV files named `games_<suffix>.csv` with columns `Tournament, Date, Team_1, Team_2,
   Score_1, Score_2, Division`
 * Add to the same folder a CSV file with columns `Team`, `Aliases` specifying the teams in the EUF system; multiple aliases can be
-  defined for each team in the same row, separated with `, ` (filename should be `teams-<division>.txt`)
+  defined for each team in the same row, separated with `, ` (filename should be `teams-<division>.csv`)
 * Add to the same folder a CSV file with columns `Team`, `Tournament` specifying that the given team has met the
-  EUF roster requirements for the particular tournament (filename should be `teams_at_tournaments-<division>.txt`)
+  EUF roster requirements for the particular tournament (filename should be `teams_at_tournaments-<division>.csv`)
 
 Arguments:
 * `--input <INPUT>` - path to the folder with all necessary files
