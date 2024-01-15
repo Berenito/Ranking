@@ -46,15 +46,14 @@ def main():
     args = parser.parse_args()
 
     dp.login(token=args.token)
-
-    if args.division == "all":
-        app = dp.App(
-            *[dp.Page(title=division.capitalize(), blocks=get_division_page(args, division)) for division in DIVISIONS]
-        )
-    else:
-        app = dp.App(*get_division_page(args, args.division))
-
-    app.upload(name=f"EUF {args.season} Rankings", description=f"EUF {args.season} Rankings", open=True)
+    divisions = DIVISIONS if args.division == "all" else [args.division]
+    for division in divisions:
+        print(f"Division - {division}")
+        try:
+            app = dp.App(*get_division_page(args, division))
+            app.upload(name=f"EUF {args.season} Rankings {division}", description=f"EUF {args.season} Rankings", open=True)
+        except Exception:
+            print("Error occurred")  # TODO: better handling
 
 
 def get_division_page(args: argparse.Namespace, division: str) -> t.Tuple[dp.Group, dp.Select]:
