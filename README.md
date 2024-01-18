@@ -44,7 +44,7 @@ Procedure:
 * If division is "all", repeat the next steps for all three divisions
 * Read the tournament results CSVs and take only the games for the given division
 * Read the list of EUF teams; replace aliases where applicable
-* Read teams at tournaments list; add suffix to all teams without EUF-sanctioned roster for the given tournament
+* Read teams at tournaments list; remove all the games with any non-EUF team
 * Process the Game Table (check for invalid rows)
 * Calculate basic statistics for the season (without any rankings)
 * Save the output CSVs
@@ -68,7 +68,7 @@ Arguments:
 * `[--division <DIVISION>]` - women/mixed/open/all (default "all")
 
 Outputs:
-* CSV with Games, Summary (including ratings); pickle with GamesDataset object
+* CSV with Games, Summary (including ratings)
   
 
 
