@@ -17,7 +17,6 @@ USAU_ALGO = BlockRankingAlgorithm(
     game_weight_func="usau_no_date",
     rank_fit_func="iteration",
     game_ignore_func="blowout",
-    game_weight_params={"w0": 0.5, "w_first": 29, "w_last": 42},
     rank_fit_params={"rating_start": 0, "n_round": 2, "n_iter": 1000, "verbose": True},
 )
 
