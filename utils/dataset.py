@@ -161,16 +161,32 @@ def get_summary_of_games(df_games: pd.DataFrame, date: t.Optional[str] = None) -
     df_summary = pd.DataFrame(index=teams)
     df_summary["Wins"] = df_games.groupby("Team_1")["Score_1"].count().reindex(teams).fillna(0).astype(int)
     df_summary["Losses"] = df_games.groupby("Team_2")["Score_2"].count().reindex(teams).fillna(0).astype(int)
-    df_summary["Games"] = df_summary["Wins"] + df_summary["Losses"]
+    df_draws = df_games_dupl.loc[df_games_dupl["Score_1"] == df_games_dupl["Score_2"]]
+    df_summary["Draws"] = df_draws.groupby("Team_1")["Score_1"].count().reindex(teams).fillna(0).astype(int)
+    # Draws were incorrectly added to both wins and losses; subtract them
+    df_summary["Wins"] -= df_summary["Draws"]
+    df_summary["Losses"] -= df_summary["Draws"]
+    df_summary["Games"] = df_summary["Wins"] + df_summary["Losses"] + df_summary["Draws"]
     df_summary["Tournaments"] = df_games_dupl.groupby("Team_1")["Tournament"].nunique()
     df_summary["Goals_For"] = df_games_dupl.groupby("Team_1")["Score_1"].sum().reindex(teams).fillna(0)
     df_summary["Goals_Against"] = df_games_dupl.groupby("Team_1")["Score_2"].sum().reindex(teams).fillna(0)
-    df_summary["W_Ratio"] = df_summary["Wins"] / df_summary["Games"]
+    df_summary["W_Ratio"] = (df_summary["Wins"] + 0.5 * df_summary["Draws"]) / df_summary["Games"]
     df_games_dupl["Opponent_W_Ratio"] = df_summary["W_Ratio"].reindex(df_games_dupl["Team_2"]).values
     df_summary["Opponent_W_Ratio"] = df_games_dupl.groupby("Team_1")["Opponent_W_Ratio"].mean().reindex(teams).fillna(0)
     df_summary["Avg_Point_Diff"] = (df_summary["Goals_For"] - df_summary["Goals_Against"]) / df_summary["Games"]
     df_summary = df_summary[
-        ["Tournaments", "Games", "Wins", "Losses", "W_Ratio", "Opponent_W_Ratio", "Goals_For", "Goals_Against", "Avg_Point_Diff"]
+        [
+            "Tournaments",
+            "Games",
+            "Wins",
+            "Losses",
+            "Draws",
+            "W_Ratio",
+            "Opponent_W_Ratio",
+            "Goals_For",
+            "Goals_Against",
+            "Avg_Point_Diff",
+        ]
     ].sort_values(by="W_Ratio", ascending=False)
     return df_summary
 
