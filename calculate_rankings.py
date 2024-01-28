@@ -24,7 +24,7 @@ def main():
     * --output - path to save the output files
 
     Outputs:
-    * CSV with Games, Summary (including ratings); pickle with GamesDataset object
+    * CSV with Games, Summary (including ratings)
     """
     parser = argparse.ArgumentParser(description="Parser for ranking calculation.")
     parser.add_argument(
@@ -48,24 +48,21 @@ def main():
     logger = logging.getLogger("ranking.data_preparation")
 
     for division in divisions:
-        for team_option in ["euf", "all"]:
-            dataset = GamesDataset(
-                args.input / f"{args.season}-{division}-{team_option}-games.csv",
-                name=f"{args.season}-{division}-{team_option}",
-                date=args.date,
-            )
+        dataset = GamesDataset(
+            args.input / f"{args.season}-{division}-euf-games.csv",
+            name=f"{args.season}-{division}-euf",
+            date=args.date,
+        )
 
-            for algo in ALGORITHMS:
-                logger.info(f"Applying {algo.name} algorithm on the {dataset.name} dataset.")
-                dataset.add_ratings(algo, block_algo=True)
+        for algo in ALGORITHMS:
+            logger.info(f"Applying {algo.name} algorithm on the {dataset.name} dataset.")
+            dataset.add_ratings(algo, block_algo=True)
 
-                rmse, max_sum_resid = get_ranking_metrics(dataset.games, algo.name)
-                logger.info(f"RMSE: {rmse:.2f}, Max Sum Resid: {max_sum_resid:.2f}")
+            rmse, max_sum_resid = get_ranking_metrics(dataset.games, algo.name)
+            logger.info(f"RMSE: {rmse:.2f}, Max Sum Resid: {max_sum_resid:.2f}")
 
-            dataset.games.to_csv(args.output / f"{dataset.name}-games-{date_str}.csv", index=False, float_format="%.3f")
-            dataset.summary.to_csv(args.output / f"{dataset.name}-summary-{date_str}.csv", float_format="%.3f")
-            with open(args.output / f"{dataset.name}-{date_str}.pkl", "wb") as f:
-                pickle.dump(dataset, f)
+        dataset.games.to_csv(args.output / f"{dataset.name}-games-{date_str}.csv", index=False, float_format="%.3f")
+        dataset.summary.to_csv(args.output / f"{dataset.name}-summary-{date_str}.csv", float_format="%.3f")
         logger.info(f"Output files saved to {args.output}.")
 
 

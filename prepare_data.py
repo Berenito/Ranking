@@ -118,16 +118,16 @@ def main():
 
         dataset_all = GamesDataset(df_games, f"{args.season}-{division}-all")
         dataset_euf = GamesDataset(df_games_euf, f"{args.season}-{division}-euf")
-        for dataset in [dataset_all, dataset_euf]:
-            dataset.games.to_csv(args.output / f"{dataset.name}-games.csv", index=False)
-            dataset.tournaments.to_csv(args.output / f"{dataset.name}-tournaments.csv")
-            dataset.calendar.to_csv(args.output / f"{dataset.name}-calendar.csv")
-            dataset.summary.to_csv(args.output / f"{dataset.name}-summary.csv", float_format="%.3f")
+
+        dataset_euf.games.to_csv(args.output / f"{dataset_euf.name}-games.csv", index=False)
+        dataset_euf.tournaments.to_csv(args.output / f"{dataset_euf.name}-tournaments.csv")
+        dataset_euf.calendar.to_csv(args.output / f"{dataset_euf.name}-calendar.csv")
+        dataset_euf.summary.to_csv(args.output / f"{dataset_euf.name}-summary.csv", float_format="%.3f")
         logger.info(f"CSV files saved to {args.output}.")
 
         # Print the list of non-EUF teams to check
         logger.info(
-            "Teams not in the EUF season found in the data:\n" + "\n".join([t for t in sorted(dataset.teams) if "@" in t])
+            "Non-EUF teams found in the data:\n" + "\n".join([t for t in sorted(dataset_all.teams) if "@" in t])
         )
 
 
