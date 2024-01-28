@@ -19,7 +19,6 @@ USAU_ALGO = BlockRankingAlgorithm(
     game_ignore_func="blowout",
     game_weight_params={"w0": 0.5, "w_first": 29, "w_last": 42},
     rank_fit_params={"rating_start": 0, "n_round": 2, "n_iter": 1000, "verbose": True},
-    game_ignore_params={"min_valid": MIN_GAMES},
 )
 
 WINDMILL_ALGO = BlockRankingAlgorithm(
