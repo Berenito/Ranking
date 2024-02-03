@@ -8,12 +8,6 @@ from classes.games_dataset import GamesDataset
 from utils.dataset import process_games
 from utils.logging import setup_logger
 
-DIVISION_ALIASES = {
-    "open": ["open", "men"],
-    "women": ["women"],
-    "mixed": ["mixed", "mix"],
-}
-
 
 def main():
     """

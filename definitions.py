@@ -38,6 +38,10 @@ SIGMOID_ALGO = BlockRankingAlgorithm(
     rank_fit_params={"n_round": 2},
 )
 
-DIVISIONS = ["mixed", "open", "women"]
 ALGORITHMS = [USAU_ALGO]
-
+DIVISIONS = ["mixed", "open", "women"]
+DIVISION_ALIASES = {
+    "open": ["open", "men"],
+    "women": ["women"],
+    "mixed": ["mixed", "mix"],
+}
