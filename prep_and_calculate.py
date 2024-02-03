@@ -86,9 +86,7 @@ def main():
     )
 
 
-def prep_and_calculate(
-    input_path, season, divisions, date_str, output_path
-):
+def prep_and_calculate(input_path, season, divisions, date_str, output_path):
     """
     Take data from all the CSV files in the input folder and join them to create a big Game Table with the clean data;
     export some preliminary summary statistics. Then use this data to calculate the rankings.
