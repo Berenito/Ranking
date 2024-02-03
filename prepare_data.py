@@ -1,21 +1,35 @@
 import argparse
 import logging
+import os
 from pathlib import Path
 
 import pandas as pd
 
 from classes.games_dataset import GamesDataset
+from definitions import DIVISION_ALIASES
 from utils.dataset import process_games
 from utils.logging import setup_logger
 
-DIVISION_ALIASES = {
-    "open": ["open", "men"],
-    "women": ["women"],
-    "mixed": ["mixed", "mix"],
-}
-
 
 def main():
+    parser = argparse.ArgumentParser(description="Parser for EUF data preparation.")
+    parser.add_argument("--input", required=True, type=Path, help="Path to the folder with all necessary files")
+    parser.add_argument("--season", required=True, type=int, help="Current year (for naming purposes)")
+    parser.add_argument(
+        "--division", default="all", choices=["women", "mixed", "open", "all"], help="Division (women/mixed/open/all)"
+    )
+    parser.add_argument("--output", required=True, type=Path, help="Path to the folder to save the output CSVs")
+    args = parser.parse_args()
+
+
+    if args.division == "all":
+        divisions = ["mixed", "open", "women"]  # Prepare data for all divisions at once
+    else:
+        divisions = [args.division]
+
+    prepare_data(args.input, args.season, divisions, args.output)
+
+def prepare_data(input_path, season, divisions, output_path):
     """
     Take data from all the CSV files in the input folder and join them to create a big Game Table with the clean data;
     export some preliminary summary statistics (no rankings are calculated here).
@@ -45,39 +59,26 @@ def main():
     Outputs:
     * CSVs with Games, Tournaments, Calendar, and Summary (without any rankings)
     """
-    parser = argparse.ArgumentParser(description="EUF data preparation parser.")
-    parser.add_argument("--input", required=True, type=Path, help="Path to the folder with all necessary files")
-    parser.add_argument(
-        "--division", default="all", choices=["women", "mixed", "open", "all"], help="Division (women/mixed/open/all)"
-    )
-    parser.add_argument("--season", required=True, type=int, help="Current year (for naming purposes)")
-    parser.add_argument("--output", required=True, type=Path, help="Path to the folder to save the output CSVs")
-    args = parser.parse_args()
-
-    if args.division == "all":
-        divisions = ["mixed", "open", "women"]  # Prepare data for all divisions at once
-    else:
-        divisions = [args.division]
-
-    setup_logger(args.output / f"prepare_data-{args.season}-{args.division}.log")
+    os.makedirs(output_path, exist_ok=True)
+    setup_logger(output_path / f"prepare_data-{season}-{'_'.join(divisions)}.log")
     logger = logging.getLogger("ranking.data_preparation")
 
     for division in divisions:
-        logger.info(f"Preparing data for season {args.season}, {division} division.")
-        df_teams = pd.read_csv(args.input / f"teams-{division}.csv")
+        logger.info(f"Preparing data for season {season}, {division} division.")
+        df_teams = pd.read_csv(input_path / f"teams-{division}.csv")
         teams_euf = df_teams["Team"].tolist()
         teams_aliases = [[] if a != a else a.split(", ") for a in df_teams["Aliases"]]
         logger.info(f"{len(teams_euf)} teams defined for the {division} division.")
 
         df_list = []
-        for filename in [f for f in args.input.iterdir() if f.name.startswith("games")]:
+        for filename in [f for f in input_path.iterdir() if f.name.startswith("games")]:
             df_tournament = pd.read_csv(filename)
             df_tournament = df_tournament.loc[df_tournament["Division"].str.lower().isin(DIVISION_ALIASES[division])]
             df_list.append(df_tournament.drop(columns="Division"))
         df_games = pd.concat(df_list)
         logger.info(f"{df_games.shape[0]} raw games found for the {division} division.")
 
-        df_teams_at_tournaments = pd.read_csv(args.input / f"teams_at_tournaments-{division}.csv")
+        df_teams_at_tournaments = pd.read_csv(input_path / f"teams_at_tournaments-{division}.csv")
 
         # Change the aliases of the teams to the original team name and remove them from the teams list
         for team, aliases in zip(teams_euf, teams_aliases):
@@ -116,14 +117,14 @@ def main():
         df_games_euf = df_games.loc[~df_games["Team_1"].str.contains(" @ ") & ~df_games["Team_2"].str.contains(" @ ")]
         logger.info(f"{df_games_euf.shape[0]} valid games found for the {division} division between EUF teams.")
 
-        dataset_all = GamesDataset(df_games, f"{args.season}-{division}-all")
-        dataset_euf = GamesDataset(df_games_euf, f"{args.season}-{division}-euf")
+        dataset_all = GamesDataset(df_games, f"{season}-{division}-all")
+        dataset_euf = GamesDataset(df_games_euf, f"{season}-{division}-euf")
 
-        dataset_euf.games.to_csv(args.output / f"{dataset_euf.name}-games.csv", index=False)
-        dataset_euf.tournaments.to_csv(args.output / f"{dataset_euf.name}-tournaments.csv")
-        dataset_euf.calendar.to_csv(args.output / f"{dataset_euf.name}-calendar.csv")
-        dataset_euf.summary.to_csv(args.output / f"{dataset_euf.name}-summary.csv", float_format="%.3f")
-        logger.info(f"CSV files saved to {args.output}.")
+        dataset_euf.games.to_csv(output_path / f"{dataset_euf.name}-games.csv", index=False)
+        dataset_euf.tournaments.to_csv(output_path / f"{dataset_euf.name}-tournaments.csv")
+        dataset_euf.calendar.to_csv(output_path / f"{dataset_euf.name}-calendar.csv")
+        dataset_euf.summary.to_csv(output_path / f"{dataset_euf.name}-summary.csv", float_format="%.3f")
+        logger.info(f"CSV files saved to {output_path}.")
 
         # Print the list of non-EUF teams to check
         logger.info(
@@ -153,6 +154,3 @@ def add_suffix_if_not_euf_team_with_roster(df_teams_at_tournaments: pd.DataFrame
 
 if __name__ == "__main__":
     main()
-
-
-
