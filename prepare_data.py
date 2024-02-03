@@ -12,6 +12,27 @@ from utils.logging import setup_logger
 
 
 def main():
+    """
+    Take data from all the CSV files in the input folder and join them to create a big Game Table with the clean data;
+    export some preliminary summary statistics (no rankings are calculated here).
+
+    Prerequisites:
+    * Prepare a folder with the tournament result data - CSV files with columns Tournament, Date, Team_1, Team_2,
+      Score_1, Score_2, and Division
+    * Add to the same folder a TXT file per division specifying the teams in the EUF system; multiple aliases can be
+      defined for each team in the same row, separated with commas (filename should be teams-<division>.txt)
+    * Add to the same folder a TXT file with the pairs <team>, <tournament>; specifying that the given team has met the
+      EUF roster requirements for the particular tournament (filename should be teams_at_tournaments-<division>.txt)
+
+    Arguments:
+    * --input - path to the folder with all necessary files
+    * --season - current year
+    * --division - women/mixed/open/all
+    * --output - path to the folder to save the output CSVs
+
+    Outputs:
+    * CSVs with Games, Tournaments, Calendar, and Summary (without any rankings)
+    """
     parser = argparse.ArgumentParser(description="Parser for EUF data preparation.")
     parser.add_argument("--input", required=True, type=Path, help="Path to the folder with all necessary files")
     parser.add_argument("--season", required=True, type=int, help="Current year (for naming purposes)")
@@ -42,12 +63,6 @@ def prepare_data(input_path, season, divisions, output_path):
     * Add to the same folder a TXT file with the pairs <team>, <tournament>; specifying that the given team has met the
       EUF roster requirements for the particular tournament (filename should be teams_at_tournaments-<division>.txt)
 
-    Arguments:
-    * --input - path to the folder with all necessary files
-    * --division - women/mixed/open/all
-    * --season - current year
-    * --output - path to the folder to save the output CSVs
-
     Procedure:
     * Read the tournament results CSVs and take only the games for the given division
     * Read the list of EUF teams; replace aliases where applicable
@@ -56,8 +71,10 @@ def prepare_data(input_path, season, divisions, output_path):
     * Calculate basic statistics for the season (without any rankings)
     * Save the output CSVs
 
-    Outputs:
-    * CSVs with Games, Tournaments, Calendar, and Summary (without any rankings)
+    :input_path: path to the folder with all necessary files
+    :season: current year
+    :divisions: list of divisions for which the ranking should be calculated
+    :output_path: path to the folder in which to save the output CSVs
     """
     os.makedirs(output_path, exist_ok=True)
     setup_logger(output_path / f"prepare_data-{season}-{'_'.join(divisions)}.log")

@@ -11,7 +11,22 @@ from utils.logging import setup_logger
 
 
 def main():
+    """
+    Calculate the rankings for the given division.
 
+    Prerequisites:
+    * Run prepare_data.py script (use its output path as input to this script)
+
+    Arguments:
+    * --input - path to the folder with all necessary files
+    * --season - current year
+    * --division - women/mixed/open/all
+    * --date - date of calculation
+    * --output - path to the folder in which to save the output files
+
+    Outputs:
+    * CSV with Games, Summary (including ratings)
+    """
     parser = argparse.ArgumentParser(description="Parser for EUF ranking calculation.")
     parser.add_argument(
         "--input", required=True, type=Path, help="Folder containing the CSV with Games Table (from prepare_data)"
@@ -36,24 +51,20 @@ def main():
 
 def calculate_rankings(input_path, season, divisions, date_str, output_path):
     """
-    Calculate the rankings for the given division and algorithm.
+    Perform the calculation of the rankings for the given division(s) and input.
 
     Prerequisites:
     * Run prepare_data.py script (use its output path as input to this script)
 
-    Arguments:
-    * --input - path to the folder with all necessary files
-    * --division - women/mixed/open/all
-    * --season - current year
-    * --date - date of calculation
-    * --output - path to save the output files
-
     Outputs:
     * CSV with Games, Summary (including ratings)
+
+    :input_path: path to the folder with all necessary files
+    :season: current year
+    :divisions: list of divisions for which the ranking should be calculated
+    :date_str: date of calculation
+    :output_path: path to the folder in which to save the output files
     """
-
-
-
     os.makedirs(output_path, exist_ok=True)
     setup_logger(output_path / f"calculate_rankings-{season}-{'_'.join(divisions)}-{date_str}.log")
     logger = logging.getLogger("ranking.data_preparation")
