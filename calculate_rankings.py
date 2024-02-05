@@ -1,7 +1,6 @@
 import argparse
 import logging
 import pickle
-import os
 from pathlib import Path
 
 from classes.games_dataset import GamesDataset
@@ -39,17 +38,15 @@ def main():
     parser.add_argument("--output", required=True, type=Path, help="Path to the folder to save the output CSVs")
     args = parser.parse_args()
 
-    date_str = args.date.replace("-", "")
-
     if args.division == "all":
         divisions = DIVISIONS  # Calculate rankings for all divisions at once
     else:
         divisions = [args.division]
 
-    calculate_rankings(args.input, args.season, divisions, date_str, args.output)
+    calculate_rankings(args.input, args.season, divisions, args.date, args.output)
 
 
-def calculate_rankings(input_path, season, divisions, date_str, output_path):
+def calculate_rankings(input_path: Path, season: int, divisions: [str], date: str, output_path: Path):
     """
     Perform the calculation of the rankings for the given division(s) and input.
 
@@ -65,7 +62,9 @@ def calculate_rankings(input_path, season, divisions, date_str, output_path):
     :date_str: date of calculation
     :output_path: path to the folder in which to save the output files
     """
-    os.makedirs(output_path, exist_ok=True)
+    date_str = args.date.replace("-", "")
+    output_path.mkdir(exist_ok=True, parents=True)
+    
     setup_logger(output_path / f"calculate_rankings-{season}-{'_'.join(divisions)}-{date_str}.log")
     logger = logging.getLogger("ranking.data_preparation")
 

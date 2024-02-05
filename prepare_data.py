@@ -1,6 +1,5 @@
 import argparse
 import logging
-import os
 from pathlib import Path
 
 import pandas as pd
@@ -50,7 +49,7 @@ def main():
 
     prepare_data(args.input, args.season, divisions, args.output)
 
-def prepare_data(input_path, season, divisions, output_path):
+def prepare_data(input_path: Path, season: int, divisions: [str], output_path: Path):
     """
     Take data from all the CSV files in the input folder and join them to create a big Game Table with the clean data;
     export some preliminary summary statistics (no rankings are calculated here).
@@ -76,7 +75,7 @@ def prepare_data(input_path, season, divisions, output_path):
     :divisions: list of divisions for which the ranking should be calculated
     :output_path: path to the folder in which to save the output CSVs
     """
-    os.makedirs(output_path, exist_ok=True)
+    output_path.mkdir(exist_ok=True, parents=True)
     setup_logger(output_path / f"prepare_data-{season}-{'_'.join(divisions)}.log")
     logger = logging.getLogger("ranking.data_preparation")
 
