@@ -49,7 +49,10 @@ def get_rank_fit(
     :return: Series with the calculated ratings; Series with ignored games; Series with team rate difference per game
     """
     df_games = df_games.copy()
-    if option in ["regression", regression_rank_fit_function]:
+    
+    if isinstance(option, t.Callable):
+        ratings = option(teams, df_games, game_ignore_func, game_ignore_kwargs, **kwargs)
+    elif option in ["regression", regression_rank_fit_function]:
         ratings = regression_rank_fit_function(teams, df_games, components, **kwargs)
     elif option in ["iteration", iteration_rank_fit_function]:
         ratings = iteration_rank_fit_function(teams, df_games, game_ignore_func, game_ignore_kwargs, **kwargs)
