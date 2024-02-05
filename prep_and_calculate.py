@@ -51,14 +51,14 @@ def main():
     )
     parser.add_argument(
         "--division",
-        "-d",
+        "-D",
         default="all",
         choices=["women", "mixed", "open", "all"],
         dest="division",
         help="Division (women/mixed/open/all)",
     )
     parser.add_argument(
-        "--date", "-D", required=True, dest="date", help="Date of calculation"
+        "--date", "-d", required=True, dest="date", help="Date of calculation"
     )
     parser.add_argument(
         "--output",
