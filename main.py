@@ -81,7 +81,9 @@ def main():
         calc_input_path = prep_output_path = args.output / "data_preparation"
 
         prepare_data(args.input, args.season, divisions, prep_output_path)
-        calculate_rankings(calc_input_path, args.season, divisions, args.date, args.output)
+        calculate_rankings(
+            calc_input_path, args.season, divisions, args.date, args.output
+        )
 
     elif args.methods == "prep":
         prepare_data(args.input, args.season, divisions, args.output)
