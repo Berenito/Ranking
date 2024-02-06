@@ -130,27 +130,14 @@ def prepare_data(input_path: Path, season: int, divisions: [str], output_path: P
         logger.info(f"Preparing data for season {season}, {division} division.")
         df_teams = pd.read_csv(input_path / f"teams-{division}.csv")
         teams_euf = df_teams["Team"].tolist()
-        teams_aliases = [[] if a != a else a.split(", ") for a in df_teams["Aliases"]]
         logger.info(f"{len(teams_euf)} teams defined for the {division} division.")
 
-        df_list = []
-        for filename in [f for f in input_path.iterdir() if f.name.startswith("games")]:
-            df_tournament = pd.read_csv(filename)
-            df_tournament = df_tournament.loc[df_tournament["Division"].str.lower().isin(DIVISION_ALIASES[division])]
-            df_list.append(df_tournament.drop(columns="Division"))
-        df_games = pd.concat(df_list)
+        df_games = build_games_dataframe(input_path, division)
         logger.info(f"{df_games.shape[0]} raw games found for the {division} division.")
 
         df_teams_at_tournaments = pd.read_csv(input_path / f"teams_at_tournaments-{division}.csv")
 
-        # Change the aliases of the teams to the original team name and remove them from the teams list
-        for team, aliases in zip(teams_euf, teams_aliases):
-            if aliases:
-                df_games["Team_1"] = df_games["Team_1"].apply(lambda x: team if x in aliases else x)
-                df_games["Team_2"] = df_games["Team_2"].apply(lambda x: team if x in aliases else x)
-                df_teams_at_tournaments["Team"] = df_teams_at_tournaments["Team"].apply(
-                    lambda x: team if x in aliases else x
-                )
+        replace_aliases(df_teams, df_games, df_teams_at_tournaments)
 
         # Check if all tournament names in teams_at_tournaments file are correct
         is_valid_tournament = df_teams_at_tournaments["Tournament"].isin(df_games["Tournament"])
@@ -193,6 +180,39 @@ def prepare_data(input_path: Path, season: int, divisions: [str], output_path: P
         logger.info(
             "Non-EUF teams found in the data:\n" + "\n".join([t for t in sorted(dataset_all.teams) if "@" in t])
         )
+
+
+def build_games_dataframe(input_path: Path, division: str) -> pd.DataFrame:
+    """
+    Create and return games dataframe from the given input path for the given division
+
+    :param input_path: Path to the folder with all games files
+    :param division: string name of division for which the games dataframe should be created
+    :return: DataFrame with all games and their tournament, date, teams, and scores
+    """
+    df_list = []
+    for filename in [f for f in input_path.iterdir() if f.name.startswith("games")]:
+        df_tournament = pd.read_csv(filename)
+        df_tournament = df_tournament.loc[df_tournament["Division"].str.lower().isin(DIVISION_ALIASES[division])]
+        df_list.append(df_tournament.drop(columns="Division"))
+    return pd.concat(df_list)
+
+    
+def replace_aliases(df_teams: pd.DataFrame, df_games: pd.DataFrame, df_teams_at_tournaments: pd.DataFrame):
+    """
+    Replace aliases of all teams in df_games and df_teams_at_tournaments data frames with the primary team name
+
+    :param df_teams: DataFrame with all teams, their primary names, and their aliases
+    :param df_games: DataFrame with all games and their tournament, date, teams, and scores
+    :param df_teams_at_tournaments: DataFrame of 0/1 with teams as indices and tournaments as columns
+    """
+    for team, aliases in zip(df_teams["Teams"], df_teams["Aliases"]):
+        if not pd.isna(aliases):
+            df_games["Team_1"] = df_games["Team_1"].apply(lambda x: team if x in aliases else x)
+            df_games["Team_2"] = df_games["Team_2"].apply(lambda x: team if x in aliases else x)
+            df_teams_at_tournaments["Team"] = df_teams_at_tournaments["Team"].apply(
+                lambda x: team if x in aliases else x
+            )
 
 
 def add_suffix_if_not_euf_team_with_roster(df_teams_at_tournaments: pd.DataFrame, team: str, tournament: str) -> str:
@@ -255,7 +275,6 @@ def calculate_rankings(input_path: Path, season: int, divisions: [str], date: st
         dataset.games.to_csv(output_path / f"{dataset.name}-games-{date_str}.csv", index=False, float_format="%.3f")
         dataset.summary.to_csv(output_path / f"{dataset.name}-summary-{date_str}.csv", float_format="%.3f")
         logger.info(f"Output files saved to {output_path}.")
-
 
 
 if __name__ == "__main__":
