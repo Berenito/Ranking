@@ -65,7 +65,7 @@ def main():
         "--methods",
         "-m",
         default="both",
-        choices=["prep", "calc", "both"],
+        choices=["prepare", "calculate", "both"],
         dest="methods",
         help="Method(s) to be run (prepare_data/calculate_rankings/both)",
     )
@@ -85,10 +85,10 @@ def main():
             calc_input_path, args.season, divisions, args.date, args.output
         )
 
-    elif args.methods == "prep":
+    elif args.methods == "prepare":
         prepare_data(args.input, args.season, divisions, args.output)
 
-    elif args.methods == "calc":
+    elif args.methods == "calculate":
         calculate_rankings(args.input, args.season, divisions, args.date, args.output)
 
 
