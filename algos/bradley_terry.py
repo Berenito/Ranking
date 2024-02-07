@@ -5,7 +5,7 @@ from utils.dataset import get_points_won_matrix
 
 
 def get_bradley_terry_ratings(
-    df_games: pd.DataFrame, iterations: int = 10000
+    df_games: pd.DataFrame, iterations: int = 1000
 ) -> pd.Series:
     _df = df_games[["Team_1", "Team_2", "Score_1", "Score_2"]]
 
@@ -21,13 +21,12 @@ def get_bradley_terry_ratings(
             ratings=ratings, points_won_matrix=points_won_matrix, team=team
         )
     ratings = _normalize_ratings(ratings)
-
     return ratings
 
 
 def _normalize_ratings(ratings: pd.Series) -> pd.Series:
     """Normalize ratings so that the product of the ratings is 1."""
-    return ratings / ratings.product() ** (1 / len(ratings))
+    return ratings / (ratings.product() ** (1 / len(ratings)))
 
 
 def _calculate_new_rating(
