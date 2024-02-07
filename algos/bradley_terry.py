@@ -1,3 +1,4 @@
+from typing import cast
 import pandas as pd
 from tqdm import tqdm
 from utils.dataset import get_points_won_matrix
@@ -15,7 +16,7 @@ def get_bradley_terry_ratings(
 
     ratings = pd.Series([1] * n_teams, index=teams, name="Bradley-Terry rating")
     for i in tqdm(range(n_teams * iterations)):
-        team = teams[i % n_teams]
+        team = cast(str, teams[i % n_teams])
         ratings[team] = _calculate_new_rating(
             ratings=ratings, points_won_matrix=points_won_matrix, team=team
         )
