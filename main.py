@@ -206,7 +206,7 @@ def replace_aliases(df_teams: pd.DataFrame, df_games: pd.DataFrame, df_teams_at_
     :param df_games: DataFrame with all games and their tournament, date, teams, and scores
     :param df_teams_at_tournaments: DataFrame of 0/1 with teams as indices and tournaments as columns
     """
-    for team, aliases in zip(df_teams["Teams"], df_teams["Aliases"]):
+    for team, aliases in zip(df_teams["Team"], df_teams["Aliases"]):
         if not pd.isna(aliases):
             df_games["Team_1"] = df_games["Team_1"].apply(lambda x: team if x in aliases else x)
             df_games["Team_2"] = df_games["Team_2"].apply(lambda x: team if x in aliases else x)
