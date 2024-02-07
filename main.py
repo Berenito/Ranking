@@ -268,8 +268,8 @@ def calculate_rankings(input_path: Path, season: int, divisions: [str], date: st
             logger.info(f"Applying {algo.name} algorithm on the {dataset.name} dataset.")
             dataset.add_ratings(algo, block_algo=True)
 
-            rmse, max_sum_resid = get_ranking_metrics(dataset.games, algo.name)
-            logger.info(f"RMSE: {rmse:.2f}, Max Sum Resid: {max_sum_resid:.2f}")
+            # rmse, max_sum_resid = get_ranking_metrics(dataset.games, algo.name)
+            # logger.info(f"RMSE: {rmse:.2f}, Max Sum Resid: {max_sum_resid:.2f}")
 
 
         dataset.games.to_csv(output_path / f"{dataset.name}-games-{date_str}.csv", index=False, float_format="%.3f")
