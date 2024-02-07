@@ -1,10 +1,10 @@
 import logging
-import pickle
 import argparse
 import pandas as pd
 from pathlib import Path
 
 from classes.games_dataset import GamesDataset
+from classes.block_ranking_algorithm import BlockRankingAlgorithm
 from definitions import DIVISIONS, ALGORITHMS, DIVISION_ALIASES
 from utils.dataset import get_ranking_metrics, process_games
 from utils.logging import setup_logger
@@ -206,7 +206,7 @@ def replace_aliases(df_teams: pd.DataFrame, df_games: pd.DataFrame, df_teams_at_
     :param df_games: DataFrame with all games and their tournament, date, teams, and scores
     :param df_teams_at_tournaments: DataFrame of 0/1 with teams as indices and tournaments as columns
     """
-    for team, aliases in zip(df_teams["Teams"], df_teams["Aliases"]):
+    for team, aliases in zip(df_teams["Team"], df_teams["Aliases"]):
         if not pd.isna(aliases):
             df_games["Team_1"] = df_games["Team_1"].apply(lambda x: team if x in aliases else x)
             df_games["Team_2"] = df_games["Team_2"].apply(lambda x: team if x in aliases else x)
@@ -266,7 +266,7 @@ def calculate_rankings(input_path: Path, season: int, divisions: [str], date: st
 
         for algo in ALGORITHMS:
             logger.info(f"Applying {algo.name} algorithm on the {dataset.name} dataset.")
-            dataset.add_ratings(algo, block_algo=True)
+            dataset.add_ratings(algo, block_algo=isinstance(algo, BlockRankingAlgorithm))
 
             # rmse, max_sum_resid = get_ranking_metrics(dataset.games, algo.name)
             # logger.info(f"RMSE: {rmse:.2f}, Max Sum Resid: {max_sum_resid:.2f}")
