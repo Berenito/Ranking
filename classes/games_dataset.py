@@ -137,7 +137,6 @@ class GamesDataset:
         self,
         ranking_algo: t.Union[RankingAlgorithm, BlockRankingAlgorithm],
         sort: bool = True,
-        block_algo: bool = False,
     ):
         """
         Add ratings to self.summary based on provided ranking algorithm. If block ranking algorithm is specified, also
@@ -145,10 +144,9 @@ class GamesDataset:
 
         :param ranking_algo: (Block)RankingAlgorithm object
         :param sort: Whether to sort the output by the ratings
-        :param block_algo: Whether to use BlockRankingAlgorithm functionality
         """
         _logger.info(f"Calculating ratings by {ranking_algo.name}.")
-        if block_algo:
+        if isinstance(ranking_algo, BlockRankingAlgorithm):
             ratings, self.games = ranking_algo.get_ratings(self.games, return_games=True)
         else:
             ratings = ranking_algo.get_ratings(self.games)

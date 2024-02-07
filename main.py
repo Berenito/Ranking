@@ -96,7 +96,7 @@ def main():
         calculate_rankings(args.input, args.season, divisions, args.date, args.output)
 
 
-def prepare_data(input_path: Path, season: int, divisions: [str], output_path: Path):
+def prepare_data(input_path: Path, season: int, divisions: list[str], output_path: Path):
     """
     Take data from all the CSV files in the input folder and join them to create a big Game Table with the clean data;
     export some preliminary summary statistics (no rankings are calculated here).
@@ -235,7 +235,7 @@ def add_suffix_if_not_euf_team_with_roster(df_teams_at_tournaments: pd.DataFrame
         return team
 
 
-def calculate_rankings(input_path: Path, season: int, divisions: [str], date: str, output_path: Path):
+def calculate_rankings(input_path: Path, season: int, divisions: list[str], date: str, output_path: Path):
     """
     Perform the calculation of the rankings for the given division(s) and input.
 
@@ -266,7 +266,7 @@ def calculate_rankings(input_path: Path, season: int, divisions: [str], date: st
 
         for algo in ALGORITHMS:
             logger.info(f"Applying {algo.name} algorithm on the {dataset.name} dataset.")
-            dataset.add_ratings(algo, block_algo=isinstance(algo, BlockRankingAlgorithm))
+            dataset.add_ratings(algo)
 
             # rmse, max_sum_resid = get_ranking_metrics(dataset.games, algo.name)
             # logger.info(f"RMSE: {rmse:.2f}, Max Sum Resid: {max_sum_resid:.2f}")
