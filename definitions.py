@@ -25,7 +25,7 @@ WINDMILL_ALGO = BlockRankingAlgorithm(
     rank_diff_func="score_diff",
     game_weight_func="uniform",
     rank_fit_func="regression",
-    rank_fit_params={"n_round": 2}
+    rank_fit_params={"n_round": 2},
 )
 
 # TODO - update sigmoid algo with better rank-diff & game-weight functions, check the fairness
@@ -47,4 +47,3 @@ DIVISION_ALIASES = {
 }
 
 ALGORITHMS = [USAU_ALGO]
-
