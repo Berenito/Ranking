@@ -1,6 +1,8 @@
 from typing import cast
+
 import pandas as pd
 from tqdm import tqdm
+
 from utils.dataset import get_points_won_matrix
 
 

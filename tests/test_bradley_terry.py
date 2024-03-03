@@ -1,13 +1,15 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
+
 from algos.bradley_terry import get_bradley_terry_ratings
+
 
 def test_get_bradley_terry_ratings():
     """
     Test the Bradley-Terry model on a small example.
     This test is based on https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4274013/pdf/pone.0115367.pdf page 13 example a)
     """
-    
+
     df = pd.DataFrame(
         {
             "Team_1": ["A", "A", "A", "B", "B", "C"],
@@ -17,7 +19,9 @@ def test_get_bradley_terry_ratings():
         }
     )
     ratings = get_bradley_terry_ratings(df, iterations=10000)
-    win_probability = lambda t1, t2: ratings[t1]/(ratings[t2]+ratings[t1])
+
+    def win_probability(t1, t2):
+        return ratings[t1] / (ratings[t2] + ratings[t1])
 
     print(win_probability("A", "B"))
     print(win_probability("A", "C"))
@@ -32,5 +36,3 @@ def test_get_bradley_terry_ratings():
     assert np.isclose(win_probability("B", "C"), 0.638, atol=0.01)
     assert np.isclose(win_probability("B", "D"), 0.838, atol=0.01)
     assert np.isclose(win_probability("C", "D"), 0.746, atol=0.01)
-
-

@@ -218,21 +218,56 @@ def get_summary_of_games(
     df_games_dupl = duplicate_games(df_games)
     teams = get_teams_in_games(df_games)
     df_summary = pd.DataFrame(index=teams)
-    df_summary["Wins"] = df_games.groupby("Team_1")["Score_1"].count().reindex(teams).fillna(0).astype(int)
-    df_summary["Losses"] = df_games.groupby("Team_2")["Score_2"].count().reindex(teams).fillna(0).astype(int)
+    df_summary["Wins"] = (
+        df_games.groupby("Team_1")["Score_1"]
+        .count()
+        .reindex(teams)
+        .fillna(0)
+        .astype(int)
+    )
+    df_summary["Losses"] = (
+        df_games.groupby("Team_2")["Score_2"]
+        .count()
+        .reindex(teams)
+        .fillna(0)
+        .astype(int)
+    )
     df_draws = df_games_dupl.loc[df_games_dupl["Score_1"] == df_games_dupl["Score_2"]]
-    df_summary["Draws"] = df_draws.groupby("Team_1")["Score_1"].count().reindex(teams).fillna(0).astype(int)
+    df_summary["Draws"] = (
+        df_draws.groupby("Team_1")["Score_1"]
+        .count()
+        .reindex(teams)
+        .fillna(0)
+        .astype(int)
+    )
     # Draws were incorrectly added to both wins and losses; subtract them
     df_summary["Wins"] -= df_summary["Draws"]
     df_summary["Losses"] -= df_summary["Draws"]
-    df_summary["Games"] = df_summary["Wins"] + df_summary["Losses"] + df_summary["Draws"]
+    df_summary["Games"] = (
+        df_summary["Wins"] + df_summary["Losses"] + df_summary["Draws"]
+    )
     df_summary["Tournaments"] = df_games_dupl.groupby("Team_1")["Tournament"].nunique()
-    df_summary["Goals_For"] = df_games_dupl.groupby("Team_1")["Score_1"].sum().reindex(teams).fillna(0)
-    df_summary["Goals_Against"] = df_games_dupl.groupby("Team_1")["Score_2"].sum().reindex(teams).fillna(0)
-    df_summary["W_Ratio"] = (df_summary["Wins"] + 0.5 * df_summary["Draws"]) / df_summary["Games"]
-    df_games_dupl["Opponent_W_Ratio"] = df_summary["W_Ratio"].reindex(df_games_dupl["Team_2"]).values
-    df_summary["Opponent_W_Ratio"] = df_games_dupl.groupby("Team_1")["Opponent_W_Ratio"].mean().reindex(teams).fillna(0)
-    df_summary["Avg_Point_Diff"] = (df_summary["Goals_For"] - df_summary["Goals_Against"]) / df_summary["Games"]
+    df_summary["Goals_For"] = (
+        df_games_dupl.groupby("Team_1")["Score_1"].sum().reindex(teams).fillna(0)
+    )
+    df_summary["Goals_Against"] = (
+        df_games_dupl.groupby("Team_1")["Score_2"].sum().reindex(teams).fillna(0)
+    )
+    df_summary["W_Ratio"] = (
+        df_summary["Wins"] + 0.5 * df_summary["Draws"]
+    ) / df_summary["Games"]
+    df_games_dupl["Opponent_W_Ratio"] = (
+        df_summary["W_Ratio"].reindex(df_games_dupl["Team_2"]).values
+    )
+    df_summary["Opponent_W_Ratio"] = (
+        df_games_dupl.groupby("Team_1")["Opponent_W_Ratio"]
+        .mean()
+        .reindex(teams)
+        .fillna(0)
+    )
+    df_summary["Avg_Point_Diff"] = (
+        df_summary["Goals_For"] - df_summary["Goals_Against"]
+    ) / df_summary["Games"]
     df_summary = df_summary[
         [
             "Tournaments",
@@ -269,7 +304,9 @@ def get_summary_of_tournaments(
     )
     df_tournaments.columns = ["Date_First", "Date_Last", "N_Teams", "N_Games"]
     df_tournaments["N_Games"] //= 2
-    df_tournaments = df_tournaments.reset_index().sort_values(by=["Date_First", "Date_Last", "Tournament"])
+    df_tournaments = df_tournaments.reset_index().sort_values(
+        by=["Date_First", "Date_Last", "Tournament"]
+    )
     return df_tournaments.set_index("Tournament")
 
 
@@ -320,7 +357,9 @@ def get_calendar_summary(df_games: pd.DataFrame) -> pd.DataFrame:
         axis=1,
     )
     df_calendar["N_Teams"] = df_calendar.apply(
-        lambda x: df_games_dupl.loc[df_games_dupl["Date"].between(x["Date_Start"], x["Date_End"])]["Team_1"].nunique(),
+        lambda x: df_games_dupl.loc[
+            df_games_dupl["Date"].between(x["Date_Start"], x["Date_End"])
+        ]["Team_1"].nunique(),
         axis=1,
     )
     df_calendar["N_Games"] = df_calendar.apply(
@@ -431,6 +470,7 @@ def get_ranking_metrics(
     :param algo_name: Algorithm name, for correct column finding
     :return: RMSE; max avg of teams' residuals
     """
+    # Make a copy to avoid changes in the original DataFrame
     df_games = df_games.copy()
     if len(algo_name) > 0:
         algo_name = f"_{algo_name}"
