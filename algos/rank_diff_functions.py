@@ -20,6 +20,8 @@ def get_rank_diff(option: t.Union[str, t.Callable], game_row: pd.Series, **kwarg
     :return: rank difference for the given game
     """
     score_w, score_l = game_row["Score_1"], game_row["Score_2"]
+    if isinstance(option, t.Callable):
+        return option(score_w, score_l)
     if option in ["win_lose", win_lose_rank_diff_function]:
         r_diff = win_lose_rank_diff_function(score_w, score_l)
     elif option in ["score_diff", "windmill", score_diff_rank_diff_function]:

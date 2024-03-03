@@ -1,7 +1,9 @@
 """
 Define all important constants in this file.
 """
+from algos.bradley_terry import get_bradley_terry_ratings
 from classes.block_ranking_algorithm import BlockRankingAlgorithm
+from classes.ranking_algorithm import RankingAlgorithm
 
 # Ranking eligibility requirements
 MIN_TOURNAMENTS = 2
@@ -25,7 +27,7 @@ WINDMILL_ALGO = BlockRankingAlgorithm(
     rank_diff_func="score_diff",
     game_weight_func="uniform",
     rank_fit_func="regression",
-    rank_fit_params={"n_round": 2}
+    rank_fit_params={"n_round": 2},
 )
 
 # TODO - update sigmoid algo with better rank-diff & game-weight functions, check the fairness
@@ -38,6 +40,10 @@ SIGMOID_ALGO = BlockRankingAlgorithm(
     rank_fit_params={"n_round": 2},
 )
 
+BRADLEY_TERRY_ALGO = RankingAlgorithm(
+    rating_func=get_bradley_terry_ratings, algo_name="Bradley-Terry"
+)
+
 DIVISIONS = ["mixed", "open", "women"]
 
 DIVISION_ALIASES = {
@@ -46,5 +52,4 @@ DIVISION_ALIASES = {
     "mixed": ["mixed", "mix"],
 }
 
-ALGORITHMS = [USAU_ALGO]
-
+ALGORITHMS = [USAU_ALGO, BRADLEY_TERRY_ALGO]
