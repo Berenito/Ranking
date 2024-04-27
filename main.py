@@ -126,6 +126,8 @@ def prepare_data(input_path: Path, season: int, divisions: [str], output_path: P
     setup_logger(output_path / f"prepare_data-{season}-{'_'.join(divisions)}.log")
     logger = logging.getLogger("ranking.data_preparation")
 
+    df_teams_at_tournaments_all = pd.read_csv(input_path / "teams_at_tournaments.csv")
+
     for division in divisions:
         logger.info(f"Preparing data for season {season}, {division} division.")
         df_teams = pd.read_csv(input_path / f"teams-{division}.csv")
@@ -135,8 +137,7 @@ def prepare_data(input_path: Path, season: int, divisions: [str], output_path: P
         df_games = build_games_dataframe(input_path, division)
         logger.info(f"{df_games.shape[0]} raw games found for the {division} division.")
 
-        df_teams_at_tournaments = pd.read_csv(input_path / f"teams_at_tournaments-{division}.csv")
-
+        df_teams_at_tournaments = df_teams_at_tournaments_all.loc[df_teams_at_tournaments_all["Division"] == division]
         replace_aliases(df_teams, df_games, df_teams_at_tournaments)
 
         # Check if all tournament names in teams_at_tournaments file are correct
