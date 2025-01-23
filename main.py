@@ -219,12 +219,16 @@ def add_suffix_if_not_euf_team_with_roster(df_teams_at_tournaments: pd.DataFrame
     """
     Add suffix @ <tournament> the the non-EUF teams or EUF teams which did not fulfilled roster requirements for the
     given tournament.
+    This check is not applied for single games, which should contains `single game` or `single_game` substring.
 
     :param df_teams_at_tournaments: DataFrame of 0/1 with teams as indices and tournaments as columns
     :param team: Team name
     :param tournament: Tournament name
     :return: Final team name (either with suffix or not)
     """
+    if "single game" in tournament.lower() or "single_game" in tournament.lower():
+        return team
+
     if (
         (team not in df_teams_at_tournaments.index)
         or (tournament not in df_teams_at_tournaments.columns)

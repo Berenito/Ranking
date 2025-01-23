@@ -1,6 +1,4 @@
-# Ranking (Development of EUF ranking system)
-
-Version: 2024-01-07
+# EUF Ranking system for 2025 season
 
 The goal of this code is to provide a structure to the implementation of the ranking algorithms, 
 so they can be immediately applied to any available dataset. It also provides a possibility to gain 

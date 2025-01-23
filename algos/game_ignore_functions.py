@@ -42,7 +42,7 @@ def blowout_game_ignore_function(
     df_games: pd.DataFrame,
     ratings: pd.Series,
     min_rank_diff: float = 600,
-    min_valid: int = 5,
+    min_valid: int = 7,
     is_blowout: t.Callable = lambda x: x["Score_1"] > 2 * x["Score_2"] + 1,
 ) -> pd.Series:
     """
@@ -51,8 +51,8 @@ def blowout_game_ignore_function(
     For a game to be ignored, the following conditions have to be satisfied:
         * it has to be a blowout (score_w > 2*score_l + 1) (blowout_fcn)
         * team rating difference have to be > 600 (min_rank_diff)
-        * winner must have at least 5 (min_valid) un-ignored games
-    In case only some of the games can be ignored (due to 5-games rule), the most damaging ones are ignored.
+        * winner must have at least 7 (min_valid) un-ignored games
+    In case only some of the games can be ignored (due to 7-games rule), the most damaging ones are ignored.
     Default case is equal to the ignore function used in the USAU algorithm, but now can be also generalized easily.
 
     :param df_games: Games Table

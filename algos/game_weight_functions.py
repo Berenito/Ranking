@@ -28,6 +28,8 @@ def get_game_weight(option: t.Optional[t.Union[str, t.Callable]], game_row: pd.S
         game_wght = usau_game_weight_function(game_row["Score_1"], game_row["Score_2"], w_num, **kwargs)
     elif option in ["usau_no_date", usau_no_date_game_weight_function]:
         game_wght = usau_no_date_game_weight_function(game_row["Score_1"], game_row["Score_2"])
+    elif option in ["euf_2025", euf_2025_game_weight_function]:
+        game_wght = euf_2025_game_weight_function(game_row["Score_1"], game_row["Score_2"], game_row["Tournament"])
     else:
         raise ValueError("Unknown game-weight option, make sure it is defined in algos/game_weight_functions.py.")
 
@@ -73,3 +75,27 @@ def usau_no_date_game_weight_function(score_w: int, score_l: int) -> float:
     :return: Game weight
     """
     return np.min([1, np.sqrt((score_w + np.max([score_l, np.floor(0.5 * (score_w - 1))])) / 19)])
+
+
+def euf_2025_game_weight_function(score_w: int, score_l: int, tournament: str) -> float:
+    """
+    Game weight function used for the 2025 EUF season.
+    Return USAU game-weight function, source https://play.usaultimate.org/teams/events/rankings/ without
+    the date component. Change game weight based on the following rules:
+    1. Single games have weighting modifier 0.75 (contains `single game` in the tournament name)
+    2. Summer Tour games have weighting modifier 1.25 (contains `summer tour` in the tournament name)
+
+    :param score_w: Winning score
+    :param score_l: Losing score
+    :param tournament: Tournament name
+    :return: Game weight
+    """
+    base_weight = np.min([1, np.sqrt((score_w + np.max([score_l, np.floor(0.5 * (score_w - 1))])) / 19)])
+    if "single game" in tournament.lower() or "single_game" in tournament.lower():
+        modifier = 0.75
+    elif "summer tour" in tournament.lower() or "summer_tour" in tournament.lower():
+        modifier = 1.25
+    else:
+        modifier = 1
+
+    return base_weight * modifier

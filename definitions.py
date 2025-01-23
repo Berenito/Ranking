@@ -14,10 +14,10 @@ MAX_COMPONENT_REQUIRED = True
 USAU_ALGO = BlockRankingAlgorithm(
     algo_name="USAU",
     rank_diff_func="usau",
-    game_weight_func="usau_no_date",
+    game_weight_func="euf_2025",
     rank_fit_func="iteration",
     game_ignore_func="blowout",
-    rank_fit_params={"rating_start": 0, "n_round": 2, "n_iter": 1000, "verbose": True},
+    rank_fit_params={"rating_start": 0, "n_round": 2, "n_iter": 1000, "verbose": False},
 )
 
 WINDMILL_ALGO = BlockRankingAlgorithm(
