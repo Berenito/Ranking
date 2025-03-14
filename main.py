@@ -2,6 +2,9 @@ import logging
 import pickle
 import argparse
 import pandas as pd
+import mysql.connector
+import yaml
+from sqlalchemy import create_engine
 from pathlib import Path
 
 from classes.games_dataset import GamesDataset
@@ -22,6 +25,7 @@ def main():
     * --date - date of calculation
     * --output - path to the folder in which to save the output files
     * --methods - method(s) to be called: only data preparation, only ranking calculation, or both
+    * --data_source - 'local' means do everything with csvs, 'remote' means read and write the results to the sql database
 
     Outputs:
     * CSVs with Games, Tournaments, Calendar, and Summary (without any rankings) if prepare_data is called
@@ -60,7 +64,7 @@ def main():
     parser.add_argument(
         "--output",
         "-o",
-        required=True,
+        required=False,
         type=Path,
         dest="output",
         help="Path to the folder to save the output CSVs",
@@ -72,6 +76,15 @@ def main():
         choices=["prepare", "calculate", "both"],
         dest="methods",
         help="Method(s) to be run (prepare_data/calculate_rankings/both)",
+    )
+
+    parser.add_argument(
+        "--data_source",
+        "-ds",
+        default="local",
+        choices=["local", "remote"],
+        dest="data_source",
+        help="Where to get the data from and write to.",
     )
     args = parser.parse_args()
 
@@ -86,14 +99,14 @@ def main():
 
         prepare_data(args.input, args.season, divisions, prep_output_path)
         calculate_rankings(
-            calc_input_path, args.season, divisions, args.date, args.output
+            calc_input_path, args.season, divisions, args.date, args.output, args.data_source
         )
 
     elif args.methods == "prepare":
         prepare_data(args.input, args.season, divisions, args.output)
 
     elif args.methods == "calculate":
-        calculate_rankings(args.input, args.season, divisions, args.date, args.output)
+        calculate_rankings(args.input, args.season, divisions, args.date, args.output, args.data_source)
 
 
 def prepare_data(input_path: Path, season: int, divisions: [str], output_path: Path):
@@ -239,7 +252,7 @@ def add_suffix_if_not_euf_team_with_roster(df_teams_at_tournaments: pd.DataFrame
         return team
 
 
-def calculate_rankings(input_path: Path, season: int, divisions: [str], date: str, output_path: Path):
+def calculate_rankings(input_path: Path, season: int, divisions: [str], date: str, output_path: Path, data_source: str):
     """
     Perform the calculation of the rankings for the given division(s) and input.
 
@@ -275,11 +288,38 @@ def calculate_rankings(input_path: Path, season: int, divisions: [str], date: st
             rmse, max_sum_resid = get_ranking_metrics(dataset.games, algo.name)
             logger.info(f"RMSE: {rmse:.2f}, Max Sum Resid: {max_sum_resid:.2f}")
 
+        dataset.games['Division'] = division
+        dataset.games['Ranking_Calculation_Date'] = date
+        dataset.games['Season'] = season
 
-        dataset.games.to_csv(output_path / f"{dataset.name}-games-{date_str}.csv", index=False, float_format="%.3f")
-        dataset.summary.to_csv(output_path / f"{dataset.name}-summary-{date_str}.csv", float_format="%.3f")
-        logger.info(f"Output files saved to {output_path}.")
+        dataset.summary['Division'] = division.title()
+        dataset.summary['Ranking_Calculation_Date'] = date
+        dataset.summary['Season'] = season
+        dataset.summary['Ranking'] = range(1, len(dataset.summary) + 1)
 
+
+        if data_source == 'local':
+            dataset.games.to_csv(output_path / f"{dataset.name}-games-{date_str}.csv", index=False, float_format="%.3f")
+            dataset.summary.to_csv(output_path / f"{dataset.name}-summary-{date_str}.csv", float_format="%.3f")
+            logger.info(f"Output files saved to {output_path}.")
+
+        if data_source == 'remote':
+            with open("config.yml", "r") as file:
+                config = yaml.safe_load(file)
+
+            db_config = config["database"]
+
+            USER = db_config["user"]
+            HOST = db_config["host"]
+            PASSWORD = db_config["password"]
+            DATABASE = db_config["dbname"]
+            PORT = db_config["port"]
+
+            engine = create_engine(f"mariadb+mariadbconnector://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}")
+
+            dataset.games.to_sql("Test_Table_Games", con=engine, if_exists='append', index=False)
+            dataset.summary.to_sql("Test_Table_Summary", con=engine, if_exists='append', index=False)
+            logger.info("Output saved to remote database")
 
 if __name__ == "__main__":
     main()
