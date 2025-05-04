@@ -288,7 +288,7 @@ def calculate_rankings(input_path: Path, season: int, divisions: [str], date: st
             rmse, max_sum_resid = get_ranking_metrics(dataset.games, algo.name)
             logger.info(f"RMSE: {rmse:.2f}, Max Sum Resid: {max_sum_resid:.2f}")
 
-        dataset.games['Division'] = division
+        dataset.games['Division'] = division.title()
         dataset.games['Ranking_Calculation_Date'] = date
         dataset.games['Season'] = season
 
@@ -316,9 +316,8 @@ def calculate_rankings(input_path: Path, season: int, divisions: [str], date: st
             PORT = db_config["port"]
 
             engine = create_engine(f"mariadb+mariadbconnector://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}")
-
             dataset.games.to_sql("Test_Table_Games", con=engine, if_exists='append', index=False)
-            dataset.summary.to_sql("Test_Table_Summary", con=engine, if_exists='append', index=False)
+            dataset.summary.to_sql("Test_Table_Summary", con=engine, if_exists='append', index=True)
             logger.info("Output saved to remote database")
 
 if __name__ == "__main__":
